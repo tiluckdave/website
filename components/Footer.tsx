@@ -46,7 +46,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="">
-      <p className="text-slate-600 dark:text-slate-400" >Domain Sponsor by <ExternalLink href="#">dearVader</ExternalLink></p>
+      <p className="text-slate-600 dark:text-slate-400" >Domain sponsored by Shreyansh Dixit
       </div>
     </footer>
   );
