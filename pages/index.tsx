@@ -25,7 +25,7 @@ export default function Home({ videos }) {
           </div>
           <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
             <Image
-              alt="Lee Robinson"
+              alt="Tilak Dave"
               height={176}
               width={176}
               src="/avatar.png"

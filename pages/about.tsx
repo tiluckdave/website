@@ -2,6 +2,8 @@ import Link from 'next/link';
 
 import Timeline from '../components/Timeline';
 import Container from 'components/Container';
+import { ExternalLink } from 'components/Footer';
+
 
 export default function About() {
   return (
@@ -18,6 +20,11 @@ export default function About() {
           </p>
           <p>
             I grew up in small-town Akola and did schooling there. Currently I am in 3rd Year Diploma in CSE from Gov Poly Pune.
+          </p>
+          <p>Follow me on socials {' '}<Link href="https://linkedin.com/in/tiluckdave">LinkedIn</Link>, {' '}
+        <Link href="https://twitter.com/tiluckdave">Twitter</Link>, {' '}
+        <Link href="https://instagram.com/tiluckdave">Instagram</Link>, {' '}
+        <Link href="https://github.com/tiluckdave">GitHub</Link>.
           </p>
         </div>
         <Timeline />
