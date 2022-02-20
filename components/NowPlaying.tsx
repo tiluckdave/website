@@ -48,10 +48,10 @@ export default function NowPlaying() {
           />
         </svg>
       )}
-      <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate">
+      <div className="inline-flex flex-col leading-7 sm:flex-row w-full max-w-full truncate">
         {data?.songUrl ? (
           <a
-            className="capsize text-slate-800 dark:text-slate-200 font-medium  max-w-max truncate"
+            className="capsize text-slate-800 dark:text-slate-200 font-medium max-w-max truncate"
             href={data.songUrl}
             target="_blank"
             rel="noopener noreferrer"

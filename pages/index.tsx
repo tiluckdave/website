@@ -6,7 +6,9 @@ import BlogPostCard from '../components/BlogPostCard';
 
 export default function Home({ videos }) {
   return (
-    <Container>
+    <Container
+      title="Tilak Dave"
+      description="I learn, I develop and I create content!" >
       <div className="flex flex-col justify-center items-start max-w-2xl border-slate-200 dark:border-slate-700 mx-auto pb-16">
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">
@@ -33,7 +35,7 @@ export default function Home({ videos }) {
             />
           </div>
         </div>
-        <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-6 text-slate-900 dark:text-slate-50">
+        <h3 className="font-bold text-2xl md:text-3xl tracking-tight mb-6 text-slate-900 dark:text-slate-50">
           Featured Posts
         </h3>
         <div className="flex gap-6 flex-col md:flex-row">
@@ -54,7 +56,7 @@ export default function Home({ videos }) {
           />
         </div>
         <Link href="/blog">
-          <a className="flex mt-8 text-slate-600 dark:text-slate-400 leading-7 rounded-lg hover:text-slate-800 dark:hover:text-slate-200 transition-all h-6">
+          <a className="flex mt-8 text-slate-600 dark:text-slate-400 leading-7 rounded-lg hover:text-slate-800 dark:hover:text-slate-200 transition-all h-6 justify-center items-center">
             Read all posts
             <svg
               xmlns="http://www.w3.org/2000/svg"
