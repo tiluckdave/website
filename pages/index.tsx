@@ -40,20 +40,16 @@ export default function Home({ videos }) {
         </h3>
         <div className="flex gap-6 flex-col md:flex-row">
           <BlogPostCard
-            title="Test title of a featured blog post on the index page 1"
-            slug=""
+            title="8 gadgets every college student should invest in"
+            slug="8-gadgets"
             gradient="from-[#3B82F6] to-[#9333EA]"
           />
           <BlogPostCard
-            title="Test title of a featured blog post on the index page 2"
+            title="Coming Soon..."
             slug=""
             gradient="from-[#3B82F6] to-[#9333EA]"
           />
-          <BlogPostCard
-            title="Test title of a featured blog post on the index page 3"
-            slug=""
-            gradient="from-[#3B82F6] to-[#9333EA]"
-          />
+         
         </div>
         <Link href="/blog">
           <a className="flex mt-8 text-slate-600 dark:text-slate-400 leading-7 rounded-lg hover:text-slate-800 dark:hover:text-slate-200 transition-all h-6 justify-center items-center">

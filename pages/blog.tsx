@@ -55,10 +55,9 @@ export default function Blog({
               Most Popular
             </h3>
             <BlogPost
-              title="Title of the Most Popular blog post on my website"
-              summary="
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, ipsum eu porttitor consectetur, nisl nunc euismod nisi, euismod aliquet nisl nunc euismod nisi."
-              slug=""
+              title="8 gadgets every college student should invest in"
+              summary="Here are the top 8 gadgets which I feel every college student should think about investing in."
+              slug="8-gadgets"
             />
           </>
         )}
