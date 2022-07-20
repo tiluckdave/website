@@ -29,10 +29,10 @@ export default function Footer() {
           
         </div>
         <div className="flex flex-col space-y-4">
+          <ExternalLink href="https://github.com/tiluckdave">GitHub</ExternalLink>
           <ExternalLink href="https://instagram.com/tiluckdave">
             Instagram
           </ExternalLink>
-          <ExternalLink href="https://github.com/tiluckdave">GitHub</ExternalLink>
         </div>
         <div className="flex flex-col space-y-4">
         <Link href="/about">
@@ -46,7 +46,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="">
-      <p className="text-slate-500 dark:text-slate-500" >Domain sponsored by Zicroz</p>
+      <p className="text-slate-500 dark:text-slate-500" >Domain sponsored by Zicroz. Website Design inspired by <a href="leerob.io">leerob.io</a> </p>
       </div>
     </footer>
   );

@@ -12,11 +12,9 @@ export default function BlogPostCard({ title, slug, gradient }) {
         )}
       >
         <div className="flex flex-col justify-between h-full bg-slate-100 dark:bg-slate-900 rounded-lg p-4">
-          <div className="flex flex-col md:flex-row justify-between">
-            <h4 className="text-lg md:text-lg font-medium mb-6 sm:mb-10 w-full text-slate-900 dark:text-slate-100 tracking-tight">
+            <h4 className="text-lg md:text-lg font-medium mb-6 sm:mb-10 w-full text-slate-900 dark:text-slate-100">
               {title}
             </h4>
-          </div>
         </div>
       </a>
     </Link>

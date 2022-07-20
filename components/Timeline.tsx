@@ -45,24 +45,24 @@ const FullTimeline = () => (
     <Divider />
     <Year>2018</Year>
     <ul>
+      <Step title="Love ❤">
+        Finally proposed to my crush, and I was so excited!
+      </Step>
       <Step title="Won State level Essay Compitition ✍">
         Literally wrote the essay in 3 - 4 hours. But won the competition.
       </Step>
       <Step title="Final year of School 🎒">
         Last year of beloved school.
       </Step>
-      <Step title="Love ❤">
-        Finally proposed to my crush, and I was so excited!
-      </Step>
     </ul>
     <Divider />
     <Year>2017</Year>
     <ul>
-      <Step title="School Vice President 👨‍💼">
-        I was enough famous to win the election. My election symbol was Lotus.
-      </Step>
       <Step title="Won district level Pitch Compitition 🚗">
         Problem was traffic congetion near hot spot of cities.
+      </Step>
+      <Step title="School Vice President 👨‍💼">
+        I was enough famous to win the election. My election symbol was Lotus.
       </Step>
     </ul>
     <Divider />
@@ -102,6 +102,12 @@ export default function Timeline() {
       </h3>
       <Year>2022</Year>
       <ul>
+        <Step title="Started Game Development 🎮">
+          Trying out a little with Unity and Defold. Loving the Lua language.
+        </Step>
+        <Step title="President @ COM'e'IT 💻">
+          President of my department's student association. Not really proud of it though.
+        </Step>
         <Step title="First Freelancing Client 💵">
           Got my first client for a little webdev job. New start!
         </Step>
@@ -135,17 +141,17 @@ export default function Timeline() {
       <Divider />
       <Year>2019</Year>
       <ul>
-        <Step title="Left my home 🏃‍♂️">
-          I was disturbed and left my home. Thank God I realised I was wrong, returned back in 3 days.
-        </Step>
-        <Step title="96.20% ✔">
-          Secured this much in my 10th std. Okay, sorry for flex.
+        <Step title="Went to Pune for college 🎓">
+          Chose something which no one would. Got CSE at Government Polytechnic Pune.
         </Step>
         <Step title="First Website 🌐">
           Made my first website using WordPress. It was fun.
         </Step>
-        <Step title="Went to Pune for college 🎓">
-          Chose something which no one would. Got CSE at Government Polytechnic Pune.
+        <Step title="96.20% ✔">
+          Secured this much in my 10th std. Okay, sorry for flex.
+        </Step>
+        <Step title="Left my home 🏃‍♂️">
+          I was disturbed and left my home. Thank God I realised I was wrong, returned back in 3 days.
         </Step>
       </ul>
       {isShowingFullTimeline ? (

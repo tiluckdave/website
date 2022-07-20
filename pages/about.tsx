@@ -17,7 +17,7 @@ export default function About() {
           Hey, I’m Tilak. An student, developer and learner. I intern at BlueLearn as Event & Community Management arm. I am trying to build some amazing SaaS applications now-a-days along with a bit of freelancing.
           </p>
           <p>
-          I grew up in a small-town in west India named Akola and completed schooling there. Currently I am pursuing 3rd Year Diploma in Computer Science from Government Polytechnic in Pune.
+          I grew up in a small-town in west India named Akola and completed schooling there. Done with Diploma in Computer Science from Government Polytechnic in Pune. Currently waiting to get admitted for my degree college.
           </p>
           <p>Follow me on socials {' '}<Link href="https://linkedin.com/in/tiluckdave">LinkedIn</Link>, {' '}
         <Link href="https://twitter.com/tiluckdave">Twitter</Link>, {' '}

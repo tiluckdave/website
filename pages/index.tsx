@@ -20,9 +20,9 @@ export default function Home({ videos }) {
               <a href="https://bluelearn.in" className="font-semibold">BlueLearn</a>
             </h2>
             <p className="text-slate-600 dark:text-slate-400 mb-16">
-              Trying to build SaaS applications.
-              connect me on twitter.
-              Love what I do? <a href="https://buymeacoffee.com/tiluckdave" className="font-semibold">Buy me a coffee</a>
+              Trying our Game Development with Unity and Defold.
+              Learning the Lua Language.
+              Wanna Support? <a href="https://buymeacoffee.com/tiluckdave" className="font-semibold">Buy me a coffee</a>
             </p>
           </div>
           <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
