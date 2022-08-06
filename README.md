@@ -1,7 +1,7 @@
 ### Hello World 👋
 
 - 🔭 I’m currently working on building a SaaS product with NextJs
-- 🌱 I’m currently learning Web3 and BlockChain
+- 🌱 I’m currently learning Unique JavaScript frameworks
 - 👯 I’m looking to collaborate on nothing
 - 📫 How to reach me: @tiluckdave (on every socials)
 - 😄 Pronouns: He/Him
