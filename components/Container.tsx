@@ -38,8 +38,8 @@ export default function Container(props) {
   const { children, ...customMeta } = props;
   const router = useRouter();
   const meta = {
-    title: 'Tilak Dave – Student, Developer, Content Creator.',
-    description: `Web developer, Web3 enthusiast, and content creator.`,
+    title: 'Tilak Dave – Developer',
+    description: `Web developer, Mentor and Tech Enthusiast always on the urge to explore the newest technologies and believe that human future is in the hands of the most techy people.`,
     image: 'https://tiluckdave.in/static/images/banner.png',
     type: 'website',
     ...customMeta
@@ -54,12 +54,13 @@ export default function Container(props) {
         <meta property="og:url" content={`https://tiluckdave.in${router.asPath}`} />
         <link rel="canonical" href={`https://tiluckdave.in${router.asPath}`} />
         <meta property="og:type" content={meta.type} />
-        <meta property="og:site_name" content="Tilak Dave" />
+        <meta property="og:site_name" content={meta.title} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@tiluckdave" />
+        <meta name="twitter:creator" content="@tiluckdave" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
