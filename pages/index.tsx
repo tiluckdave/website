@@ -8,7 +8,7 @@ export default function Home({ videos }) {
   return (
     <Container
       title="Tilak Dave"
-      description="I learn, I develop and I create content!" >
+      description="Web developer, Mentor and Tech Enthusiast always on the urge to explore the newest technologies and believe that human future is in the hands of the most techy people." >
       <div className="flex flex-col justify-center items-start max-w-2xl border-slate-200 dark:border-slate-700 mx-auto pb-16">
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">
@@ -16,12 +16,10 @@ export default function Home({ videos }) {
               Tilak Dave
             </h1>
             <h2 className="text-slate-700 dark:text-slate-200 mb-4">
-              Community & Event Management Intern at{' '}
-              <a href="https://bluelearn.in" className="font-semibold">BlueLearn</a>
+              Web Developer, Looking for Internship
             </h2>
             <p className="text-slate-600 dark:text-slate-400 mb-16">
-              Trying our Game Development with Unity and Defold.
-              Learning the Lua Language.
+              Trying out Game Development with Unity and Defold. NextJs still on the preference for Web Development.
               Wanna Support? <a href="https://buymeacoffee.com/tiluckdave" className="font-semibold">Buy me a coffee</a>
             </p>
           </div>
