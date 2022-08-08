@@ -53,6 +53,7 @@ export default function Container(props) {
         <meta content={meta.description} name="description" />
         <meta property="og:url" content={`https://tiluckdave.in${router.asPath}`} />
         <link rel="canonical" href={`https://tiluckdave.in${router.asPath}`} />
+        <link rel="canonical" href={`https://www.tiluckdave.in${router.asPath}`} />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content={meta.title} />
         <meta property="og:description" content={meta.description} />

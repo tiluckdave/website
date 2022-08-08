@@ -6,7 +6,7 @@ async function generate() {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
   const pages = await globby([
     'pages/*.tsx',
-    'data/**/*.mdx',
+    'data/blog/*.mdx',
     '!data/*.mdx',
     '!pages/_*.tsx',
     '!pages/api',
@@ -28,6 +28,9 @@ async function generate() {
             return `
               <url>
                   <loc>${`https://tiluckdave.in${route}`}</loc>
+              </url>
+              <url>
+                  <loc>${`https://www.tiluckdave.in${route}`}</loc>
               </url>
             `;
           })
