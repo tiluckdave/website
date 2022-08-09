@@ -33,8 +33,14 @@ export default function Footer() {
           <ExternalLink href="https://instagram.com/tiluckdave">
             Instagram
           </ExternalLink>
+          <ExternalLink href="https://linkedin.com/in/tiluckdave">
+            LinkedIn
+          </ExternalLink>
         </div>
         <div className="flex flex-col space-y-4">
+          <Link href="/resume.pdf">
+            <a className="text-slate-500 hover:text-slate-600 dark:hover:text-slate-400 transition">Resume</a>
+          </Link>
         <Link href="/about">
             <a className="text-slate-500 hover:text-slate-600 dark:hover:text-slate-400 transition">
               About

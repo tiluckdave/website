@@ -19,8 +19,9 @@ export default function Home({ videos }) {
               Web Developer, Looking for Internship
             </h2>
             <p className="text-slate-600 dark:text-slate-400 mb-16">
-              Trying out Game Development with Unity and Defold. NextJs still on the preference for Web Development.
-              Wanna Support? <a href="https://buymeacoffee.com/tiluckdave" className="font-semibold">Buy me a coffee</a>
+              Trying out Game Development with Unity and Defold. NextJs still<br />
+              the best for Web Development.
+              To Support <a href="https://buymeacoffee.com/tiluckdave" className="font-semibold">Buy me a coffee</a>
             </p>
           </div>
           <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
