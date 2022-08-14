@@ -40,7 +40,7 @@ export default function Container(props) {
   const meta = {
     title: 'Tilak Dave – Developer',
     description: `Web developer, Mentor and Tech Enthusiast always on the urge to explore the newest technologies and believe that human future is in the hands of the most techy people.`,
-    image: 'https://tiluckdave.in/static/images/banner.png',
+    image: 'https://www.tiluckdave.in/static/images/banner.png',
     type: 'website',
     ...customMeta
   };
@@ -51,8 +51,7 @@ export default function Container(props) {
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
-        <meta property="og:url" content={`https://tiluckdave.in${router.asPath}`} />
-        <link rel="canonical" href={`https://tiluckdave.in${router.asPath}`} />
+        <meta property="og:url" content={`https://www.tiluckdave.in${router.asPath}`} />
         <link rel="canonical" href={`https://www.tiluckdave.in${router.asPath}`} />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content={meta.title} />
