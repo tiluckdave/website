@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://tiluckdave.in/sitemap.xml
+Sitemap: https://www.tiluckdave.in/sitemap.xml
