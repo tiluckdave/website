@@ -1,7 +1,7 @@
 const { spacing, fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  content: ['./pages/**/*.tsx', './components/**/*.tsx', './layouts/**/*.tsx'],
+  content: [ './pages/**/*.tsx', './components/**/*.tsx', './layouts/**/*.tsx' ],
   darkMode: 'class',
   theme: {
     extend: {
@@ -21,7 +21,7 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Nunito', ...fontFamily.sans]
+        sans: [ 'Nunito', ...fontFamily.sans ]
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -34,8 +34,8 @@ module.exports = {
               },
               code: { color: theme('colors.blue.400') }
             },
-            'h2,h3,h4': {
-              'scroll-margin-top': spacing[32]
+            'h1,h2,h3,h4': {
+              'scroll-margin-top': spacing[ 32 ]
             },
             thead: {
               borderBottomColor: theme('colors.gray.200')
@@ -59,9 +59,9 @@ module.exports = {
               borderLeftColor: theme('colors.gray.700'),
               color: theme('colors.gray.300')
             },
-            'h2,h3,h4': {
+            'h1,h2,h3,h4': {
               color: theme('colors.gray.100'),
-              'scroll-margin-top': spacing[32]
+              'scroll-margin-top': spacing[ 32 ]
             },
             hr: { borderColor: theme('colors.gray.700') },
             ol: {
@@ -76,7 +76,9 @@ module.exports = {
             },
             strong: { color: theme('colors.gray.100') },
             thead: {
-              color: theme('colors.gray.100'),
+              th: {
+                color: theme('colors.gray.100'),
+              },
               borderBottomColor: theme('colors.gray.600')
             },
             tbody: {
@@ -90,7 +92,7 @@ module.exports = {
     }
   },
   variants: {
-    typography: ['dark']
+    typography: [ 'dark' ]
   },
-  plugins: [require('@tailwindcss/typography')]
+  plugins: [ require('@tailwindcss/typography') ]
 };
