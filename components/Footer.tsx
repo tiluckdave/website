@@ -19,7 +19,7 @@ export default function Footer() {
       <hr className="w-full border-1 border-slate-200 dark:border-slate-800 mb-4" />
       <NowPlaying />
       <div className="w-full max-w-3xl grid grid-cols-1 gap-4 pb-8 sm:grid-cols-3">
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-4">
           <Link href="/">
             <a className="text-slate-500 hover:text-slate-600 dark:hover:text-slate-400 transition">Home</a>
           </Link>
