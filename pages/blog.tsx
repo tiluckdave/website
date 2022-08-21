@@ -49,19 +49,7 @@ export default function Blog({
             />
           </svg>
         </div>
-        {!searchValue && (
-          <>
-            <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-slate-900 md:text-4xl dark:text-slate-50">
-              Most Popular
-            </h3>
-            <BlogPost
-              title="8 gadgets every college student should invest in"
-              summary="Here are the top 8 gadgets which I feel every college student should think about investing in."
-              slug="8-gadgets"
-            />
-          </>
-        )}
-        <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-slate-900 md:text-4xl dark:text-slate-50">
+        <h3 className="mt-8 mb-8 text-2xl font-bold tracking-tight text-slate-900 md:text-4xl dark:text-slate-50">
           All Posts
         </h3>
         {!filteredBlogPosts.length && (

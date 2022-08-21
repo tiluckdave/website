@@ -1,0 +1,67 @@
+---
+title: 'Why SWR is awesome'
+publishedAt: '2022-06-20'
+summary: 'React hooks library for data fetching made by vercel, has a bright future.'
+image: '/static/images/2019/banner.jpg'
+---
+
+I was a big fan of [axios](https://axios-http.com/) for fetching data. I never wanted to try anything else untill I found Lee Robinson talk about SWR in hin course [React 2025](https://www.react2025.com). I gave it a try and it is the best library for data fetching.
+
+## What is SWR?
+
+SWR is a lightweight library created by Vercel (formerly ZEIT) that allows fetching, caching, or refetching data in realtime using React Hooks.
+
+SWR works with three main steps:
+
+- first, it returns the data from the cache (the stale part),
+- then sends the fetch request (the revalidate part),
+- and finally comes with the up-to-date data.
+
+But no worries, SWR handles all these steps for us. The only thing we have to do is give the `useSWR` hook the needed parameters to make the request.
+
+```jsx
+import { useSWR } from 'swr';
+
+function Home() {
+  const { data } = useSWR('/api/user', fetcher);
+
+  if (!data) return <div>loading...</div>;
+  return <div>hello {data.name}!</div>;
+}
+```
+
+though the `fetcher` is not defined by the SWR team, we have to define it separetly which can be as simple as using JavaScript `fetch` method.
+
+```js
+export default async (...args) => {
+  const res = await fetch(...args);
+  return res.json();
+};
+```
+
+## SWR features I have used
+
+- Revalidation on focus
+- Request deduplication
+- Local mutation
+- TypeScript ready
+- SSR support
+- Lightweight.
+
+You can use a simle mutate function to update the data in the cache. which will allow you to render the data on the page without waiting for the fetch request to complete. On the next revalidation request, the data will be fetched from the source.
+
+User experience at its peak as well as no extra measures in the development. Below is a quick example for local mutation.
+
+```js
+mutate(
+  '/api/comments',
+  async (data) => {
+    return { sites: [newComment, ...data.comments] };
+  },
+  false
+);
+```
+
+`false` parameter is passed to skip revalidation while updating the cache. Even if the fetch request is yet to complete. Setting it to `true` will make the revalidation request to complete before updating the cache.
+
+I am not a pro react developer, or an experienced SWR user. I have tried to explain why I like SWR from my own experience. If I have explained anything incorrect please let me know.

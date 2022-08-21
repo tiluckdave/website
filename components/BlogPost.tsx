@@ -9,8 +9,8 @@ export default function BlogPost({
   return (
     <Link href={`/blog/${slug}`}>
       <a className="w-full">
-        <div className="w-full mb-10">
-          <div className="flex flex-col justify-between md:flex-row">
+        <div className="w-full mb-6 border border-1 border-slate-400 dark:border-slate-600 p-4">
+          <div className="flex flex-col justify-between md:flex-row ">
             <h4 className="w-full mb-2 text-lg font-medium text-slate-900 md:text-xl dark:text-slate-100">
               {title}
             </h4>
