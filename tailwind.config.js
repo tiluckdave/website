@@ -28,11 +28,11 @@ module.exports = {
           css: {
             color: theme('colors.gray.700'),
             a: {
-              color: theme('colors.blue.300'),
+              color: theme('colors.blue.500'),
               '&:hover': {
                 color: theme('colors.blue.800')
               },
-              code: { color: theme('colors.blue.400') }
+              code: { color: theme('colors.blue.600') }
             },
             'h1,h2,h3,h4': {
               'scroll-margin-top': spacing[ 32 ]
@@ -56,8 +56,8 @@ module.exports = {
               code: { color: theme('colors.blue.400') }
             },
             blockquote: {
-              borderLeftColor: theme('colors.gray.700'),
-              color: theme('colors.gray.300')
+              borderLeftColor: theme('colors.gray.500'),
+              color: theme('colors.gray.400')
             },
             'h1,h2,h3,h4': {
               color: theme('colors.gray.100'),
