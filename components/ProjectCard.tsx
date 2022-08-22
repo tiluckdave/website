@@ -1,9 +1,8 @@
 import Link from 'next/link';
-import cn from 'classnames';
 
-export default function BlogPostCard({ title, slug }) {
+export default function ProjectCard({ title, url }) {
   return (
-    <Link href={`/blog/${slug}`}>
+    <Link href={`/${url}`}>
       <a
         className='w-full border rounded-md border-1 border-slate-400 dark:border-slate-600 hover:border-slate-500 hover:dark:border-slate-500 transition-all text-slate-700 hover:text-slate-900 dark:text-slate-300 hover:dark:text-slate-100'
       >

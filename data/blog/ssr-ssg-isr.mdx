@@ -1,0 +1,128 @@
+---
+title: 'What are SSR, SSG and ISR in NextJs?'
+publishedAt: '2022-08-22'
+summary: 'Different NextJs page rendering strategies, how and when to use each of them.'
+image: 'https://www.tiluckdave.in/static/images/ssr-ssg-isr.jpg'
+---
+
+NextJs can render a page using one of the four page rendering strategies
+
+- CSR - Client Side Rendering
+- SSR - Server Side Rendering
+- SSG - Static Site Generation
+- ISR - Incremental Static Regeneration
+
+![SSR / SSG / ISR](https://www.tiluckdave.in/static/images/ssr-ssg-isr.jpg)
+
+## CSR
+
+CSR is the most common and default way react works. Basically browser will initially load an empty HTML file. Javascript and styles which are loaded after, are responsible for rendering the page in the web browser.
+
+This is suitable for single page applications (SPA) and applications with lot of user interactions (e.g Games) and highly dynamic content such as forms, and chat applications.
+
+## SSR
+
+Biggest problem of CSR is that it is not Search Engine Optimized. Hence NextJs provides the ability to render the pages in server. Every page load creates a server request to dynamically load and send the fully rendered HTML page to the browser.
+
+This is used when Speed and SEO is very very important (e.g Landing Pages)
+
+To use Server-side Rendering for a page, you need to export an `async` function called `getServerSideProps`.
+
+```jsx
+export async function getServerSideProps() {
+  const res = await fetch(`https://.../data`);
+  const data = await res.json();
+
+  return { props: { data } };
+}
+
+export default function Page({ data }) {
+  // Render data...
+}
+```
+
+## SSG
+
+If we want to display static content like blog posts, we can use Static Site Generation. Instead of rendering in each page, SSG generates static pages on build time and serves them instantly on a new request.
+
+> This strategy might seem slow on development enviorment as every refresh triggers a new build but it is very fast on production.
+
+SSG servers pages which are 100% SEO friendly and super fast. One drawback of SSG is that we will have to rebuild and deploy our page every time we make a change otherwise content will never update.
+
+By default, Next.js pre-renders pages using Static Generation without fetching data. Here's an example:
+
+```jsx
+function About() {
+  return <div>About</div>;
+}
+
+export default About;
+```
+
+If page content depends on external data: Use `getStaticProps`.
+
+```jsx
+export async function getStaticProps() {
+  const res = await fetch('https://.../posts');
+  const posts = await res.json();
+
+  return {
+    props: {
+      posts
+    }
+  };
+}
+
+export default function Blog({ posts }) {
+  return (
+    <ul>
+      {posts.map((post) => (
+        <li>{post.title}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+You can read more about SSG in the [Next.js documentation](https://nextjs.org/docs/basic-features/pages#static-generation-recommended).
+
+## ISR
+
+ISR is the next improvement to SSG, It periodically builds and revalidates the new pages so that content never gets too much old.
+
+It comes with the same benefits as SSG but the drawback we discussed above is solve and we do not need to rebuild the site, it automatically revalidates after a specified amount of time and rebuilds our page in the background.
+
+Line 10 in the below example in the `getStaticProps` function specifies `revalidate` property.
+
+```jsx
+export async function getStaticProps() {
+  const res = await fetch('https://.../posts');
+  const posts = await res.json();
+
+  return {
+    props: {
+      posts
+    },
+
+    revalidate: 10 // In seconds
+  };
+}
+
+export default function Blog({ posts }) {
+  return (
+    <ul>
+      {posts.map((post) => (
+        <li key={post.id}>{post.title}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+You can read more about ISR in the [Next.js documentation](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration).
+
+## Conslusion
+
+Sole purpose of this post is to help understand the different strategies for rendering pages in NextJs and to copy paste the code snippets easily. Though the question about when to use which strategy is never clear. I recommend trying multiple strategies whenever you are confused.
+
+If you like this post consider supporting me by [donating](https://www.buymeacoffee.com/tiluckdave).

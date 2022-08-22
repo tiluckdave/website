@@ -1,10 +1,9 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 import Container from '../components/Container';
 import BlogPostCard from '../components/BlogPostCard';
 
-export default function Home({ videos }) {
+export default function Home() {
   return (
     <Container
       title="Tilak Dave"
@@ -40,26 +39,11 @@ export default function Home({ videos }) {
             title="Why SWR is awesome?"
             slug="why-swr-is-awesome"
           />
+          <BlogPostCard
+            title="What are SSR, SSG and ISR in NextJs?"
+            slug="ssr-ssg-isr"
+          />
         </div>
-        {/* <Link href="/blog">
-          <a className="flex mt- text-slate-600 dark:text-slate-400 leading-7 rounded-lg hover:text-slate-800 dark:hover:text-slate-200 transition-all h-6 justify-center items-center">
-            Read all posts
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              className="h-6 w-6 ml-1"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-              />
-            </svg>
-          </a>
-        </Link> */}
       </div>
     </Container>
   );
