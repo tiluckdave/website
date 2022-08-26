@@ -45,6 +45,16 @@ export default function Container(props) {
     ...customMeta
   };
 
+
+  const browserShare = async (meta) => {
+    const shareData = {
+      title: meta.title,
+      text: meta.description,
+      url: `https://www.tiluckdave.in${router.pathname}`
+    }
+    await navigator.share(shareData);
+  }
+
   return (
     <div className="bg-slate-100 dark:bg-slate-900">
       <Head>
@@ -80,6 +90,21 @@ export default function Container(props) {
             <NavItem href="/blog" text="Blog" />
             <NavItem href="/resume.pdf" text="Resume" />
           </div>
+          <div className='flex gap-2'>
+
+          <button 
+            aria-label="Share Page"
+            type="button" 
+            className="bg-slate-200 rounded-lg dark:bg-slate-800 hover:ring-2 ring-slate-300 w-9 h-9 transition-all text-slate-800 dark:text-slate-50 flex items-center justify-center" 
+            onClick={() => 
+              browserShare(meta)
+            }
+          >
+          <svg viewBox="0 0 24 24" stroke="currentColor" fill="currentColor" strokeWidth={0} className="w-5 h-5 text-slate-800 dark:text-slate-50" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M21,11 L21,20 C21,21.1045695 20.1045695,22 19,22 L5,22 C3.8954305,22 3,21.1045695 3,20 L3,11 L5,11 L5,20 L19,20 L19,11 L21,11 Z M13,5.41421356 L13,16 L11,16 L11,5.41421356 L7.70710678,8.70710678 L6.29289322,7.29289322 L12,1.58578644 L17.7071068,7.29289322 L16.2928932,8.70710678 L13,5.41421356 Z"/>
+          </svg>
+        </button>
+
           <button
             aria-label="Toggle Dark Mode"
             type="button"
@@ -114,6 +139,7 @@ export default function Container(props) {
               </svg>
             )}
           </button>
+          </div>
         </nav>
       </div>
       <main
@@ -121,6 +147,7 @@ export default function Container(props) {
         className="flex flex-col justify-center px-8 bg-slate-100 dark:bg-slate-900"
       >
         {children}
+        
         <Footer />
       </main>
     </div>
