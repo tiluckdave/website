@@ -14,12 +14,12 @@ export default function About() {
         </h1>
         <div className="mb-8 prose text-slate-600 dark:text-slate-400">
           <p>
-          Hey, I’m Tilak. An student, developer and learner. I intern at BlueLearn as Event & Community Management arm. I am trying to build some amazing SaaS applications now-a-days along with a bit of freelancing.
+          Hey, I’m Tilak - a student, developer and learner. I am trying to build some SaaS applications along with a bit of freelancing. Actively looking internship opportunities as a web developer.
           </p>
           <p>
-          I grew up in a small-town in west India named Akola and completed schooling there. Done with Diploma in Computer Science from Government Polytechnic in Pune. Currently waiting to get admitted for my degree college.
+          I grew up and did my schooling in the city of Akola. I’m done with a Diploma in Computer Science from Government Polytechnic in Pune. And I will get admitted to a degree college soon.
           </p>
-          <p>Follow me on socials {' '}<Link href="https://linkedin.com/in/tiluckdave">LinkedIn</Link>, {' '}
+          <p>Check me on socials {' '}<Link href="https://linkedin.com/in/tiluckdave">LinkedIn</Link>, {' '}
         <Link href="https://twitter.com/tiluckdave">Twitter</Link>, {' '}
         <Link href="https://instagram.com/tiluckdave">Instagram</Link>, {' '}
         <Link href="https://github.com/tiluckdave">GitHub</Link>.

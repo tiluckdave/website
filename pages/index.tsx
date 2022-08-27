@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <Container
       title="Tilak Dave"
-      description="Web developer, Mentor and Tech Enthusiast always on the urge to explore the newest technologies and believe that human future is in the hands of the most techy people." >
+      description="Student, developer, and learner. I am trying to build some SaaS applications along with a bit of freelancing." >
       <div className="flex flex-col justify-center items-start max-w-2xl border-slate-200 dark:border-slate-700 mx-auto pb-8">
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">
