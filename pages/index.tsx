@@ -36,12 +36,16 @@ export default function Home() {
         </h3>
         <div className="flex gap-6 flex-col w-full">
           <BlogPostCard
-            title="Why SWR is awesome?"
-            slug="why-swr-is-awesome"
+            title="Free alternatives to Heroku"
+            slug="top-heroku-alternatives"
           />
           <BlogPostCard
             title="What are SSR, SSG and ISR in NextJs?"
             slug="ssr-ssg-isr"
+          />
+          <BlogPostCard
+            title="Why SWR is awesome?"
+            slug="why-swr-is-awesome"
           />
         </div>
       </div>
