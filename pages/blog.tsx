@@ -19,7 +19,7 @@ export default function Blog({
       title="Blog – Tilak Dave"
       description="Thoughts on development, my career, social and my personal life."
     >
-      <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
+      <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-0">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-slate-900 md:text-5xl dark:text-slate-50">
           Blog
         </h1>

@@ -15,7 +15,7 @@ export const ExternalLink = ({ href, children }) => (
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full my-8">
+    <footer className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full mt-16 mb-8">
       <hr className="w-full border-1 border-slate-200 dark:border-slate-800 mb-4" />
       <NowPlaying />
       <div className="w-full max-w-3xl grid grid-cols-1 gap-4 pb-8 sm:grid-cols-3">
@@ -45,7 +45,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="">
-      <p className="text-slate-500 dark:text-slate-600" >Supporters - dearVader, yashdeshmukh, psy</p>
+      <p className="text-slate-500 dark:text-slate-500" >Supporters{`  -  `}dearVader, yashdeshmukh, psy</p>
       </div>
     </footer>
   );
