@@ -56,7 +56,7 @@ export default function Home() {
           <ProjectCard
             title="👩‍💻 Fast Feedback"
             url="https://fastfeedback.tiluckdave.in"
-            github=""
+            github="fastfeedback"
           />
           <ProjectCard
             title="🎮 Tic tac Toe"
@@ -68,11 +68,6 @@ export default function Home() {
             url="https://importcoding.com"
             github="importcoding"
           />
-          {/* <ProjectCard
-            title="💛 We Rock"
-            url="https://isnti.rocks"
-            github=""
-          /> */}
         </div>
       </div>
     </Container>
