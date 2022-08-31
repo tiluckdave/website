@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function ProjectCard({ title, url, github }) {
   return (
 
-        <div className="flex justify-between items-center bg-slate-200 dark:bg-slate-800 p-4 w-full rounded-md transition-all text-slate-700 dark:text-slate-300 hover:-translate-y-0.5 transition-all">
+        <div className="flex justify-between items-center bg-slate-200 dark:bg-slate-800 p-4 w-full rounded-md transition-all text-slate-700 dark:text-slate-300 hover:ring-1 hover:ring-slate-500 transition-all">
             <h4 className="text-lg md:text-lg font-medium">
               {title}
             </h4>
