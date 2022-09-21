@@ -46,13 +46,13 @@ export default function Container(props) {
   };
 
 
-  const browserShare = async (meta) => {
+  const browserShare = () => {
     const shareData = {
       title: meta.title,
       text: meta.description,
-      url: `https://www.tiluckdave.in${router.pathname}`
+      url: `https://www.tiluckdave.in${router.asPath}`
     }
-    await navigator.share(shareData);
+    navigator.share(shareData);
   }
 
   return (
@@ -97,7 +97,7 @@ export default function Container(props) {
             type="button" 
             className="bg-slate-200 rounded-lg dark:bg-slate-800 hover:ring-2 ring-slate-300 w-9 h-9 transition-all text-slate-800 dark:text-slate-50 flex items-center justify-center" 
             onClick={() => 
-              browserShare(meta)
+              browserShare()
             }
           >
           <svg viewBox="0 0 24 24" stroke="currentColor" fill="currentColor" strokeWidth={0} className="w-5 h-5 text-slate-800 dark:text-slate-200" xmlns="http://www.w3.org/2000/svg">
