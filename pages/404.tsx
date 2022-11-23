@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import Container from 'components/Container';
-import Head from 'next/head';
+
 
 export default function NotFound() {
   return (

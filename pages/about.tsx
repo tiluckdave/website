@@ -14,14 +14,17 @@ export default function About() {
         </h1>
         <div className="mb-8 prose text-slate-600 dark:text-slate-400">
           <p>
-          Hey, I’m Tilak - a student, developer and learner. I am trying to build some SaaS applications along with a bit of freelancing. Actively looking internship opportunities as a web developer.
+          
+Hey there! I'm Tilak, a student, developer, and lifelong learner. My passion is building great software and working on projects that are both exciting and challenging. I am currently seeking internship opportunities as a front-end web developer.
+
+
           </p>
           <p>
-          I grew up and did my schooling in the city of Akola. I’m done with a Diploma in Computer Science from Government Polytechnic in Pune. And I will get admitted to a degree college soon.
+          I grew up in Akola and did my schooling there. At present, I am pursuing a B Tech in Computer Science and Engineering from the Vishwakarma Institute of Technology in Pune, India.
           </p>
           <p>Check me on socials {' '}<Link href="https://linkedin.com/in/tiluckdave">LinkedIn</Link>, {' '}
         <Link href="https://twitter.com/tiluckdave">Twitter</Link>, {' '}
-        <Link href="https://instagram.com/tiluckdave">Instagram</Link>, {' '}
+        <Link href="https://instagram.com/tiluckdave">Instagram</Link>, {' and '}
         <Link href="https://github.com/tiluckdave">GitHub</Link>.
           </p>
         </div>

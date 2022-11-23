@@ -33,7 +33,7 @@ export default function MobileMenu() {
   return (
     <>
       <button
-        className={cn(styles.burger, 'visible md:hidden')}
+        className={cn(styles.burger, 'visible md:hidden ml-8')}
         aria-label="Toggle menu"
         type="button"
         onClick={toggleMenu}
@@ -43,18 +43,12 @@ export default function MobileMenu() {
       </button>
       {isMenuMounted && (
         <ul
-          className={cn(
-            styles.menu,
-            'flex flex-col absolute bg-slate-100 dark:bg-slate-900',
-            isMenuRendered && styles.menuRendered
-          )}
-        >
+          className='flex flex-col absolute left-0 w-screen h-screen mt-4 z-40 bg-slate-100 dark:bg-slate-900'>
           <li
             className="border-b border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 text-sm font-semibold"
-            style={{ transitionDelay: '150ms' }}
           >
             <Link href="/">
-              <a className="flex w-auto pb-4">Home</a>
+              <a className="flex w-auto p-4 px-8">Home</a>
             </Link>
           </li>
           <li
@@ -62,7 +56,7 @@ export default function MobileMenu() {
             style={{ transitionDelay: '200ms' }}
           >
             <Link href="/blog">
-              <a className="flex w-auto pb-4">Blog</a>
+              <a className="flex w-auto p-4 px-8">Blog</a>
             </Link>
           </li>
           <li
@@ -70,7 +64,7 @@ export default function MobileMenu() {
             style={{ transitionDelay: '250ms' }}
           >
             <Link href="/about">
-              <a className="flex w-auto pb-4">About</a>
+              <a className="flex w-auto p-4 px-8">About</a>
             </Link>
           </li>
           <li
@@ -78,7 +72,7 @@ export default function MobileMenu() {
             style={{ transitionDelay: '300ms' }}
           >
             <Link href="/uses">
-              <a className="flex w-auto pb-4">Uses</a>
+              <a className="flex w-auto p-4 px-8">Uses</a>
             </Link>
           </li>
           <li
@@ -86,7 +80,7 @@ export default function MobileMenu() {
             style={{ transitionDelay: '350ms' }}
           >
             <Link href="/resume.pdf">
-              <a className="flex w-auto pb-4">Resume</a>
+              <a className="flex w-auto p-4 px-8">Resume</a>
             </Link>
           </li>
         </ul>

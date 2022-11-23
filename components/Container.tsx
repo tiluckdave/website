@@ -17,9 +17,9 @@ function NavItem({ href, text }) {
       <a
         className={cn(
           isActive
-            ? 'font-semibold text-slate-800 dark:text-slate-200'
-            : 'font-normal text-slate-600 dark:text-slate-400',
-          'hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-all'
+            ? 'font-bold text-slate-900 dark:text-slate-100'
+            : 'font-semibold text-slate-700 dark:text-slate-300',
+          'hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:text-slate-900 dark:hover:text-slate-100 transition-all'
         )}
       >
         <span className="capsize">{text}</span>
@@ -56,7 +56,7 @@ export default function Container(props) {
   }
 
   return (
-    <div className="bg-slate-100 dark:bg-slate-900">
+    <div className="bg-slate-100 dark:bg-slate-900 min-h-screen">
       <Head>
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
@@ -78,9 +78,9 @@ export default function Container(props) {
           <meta property="article:published_time" content={meta.date} />
         )}
       </Head>
-      <div className="flex flex-col justify-center px-8">
-        <nav className="flex items-center justify-between w-full relative max-w-2xl border-slate-200 dark:border-slate-700 mx-auto pt-8 pb-8 sm:pb-16  text-slate-900 bg-slate-100  dark:bg-slate-900 bg-opacity-60 dark:text-slate-100">
-          <a href="#skip" className="skip-nav">
+      <div className="flex flex-col justify-center w-full sticky top-0 z-50 mb-16 backdrop-blur-lg bg-slate-100/30  dark:bg-slate-900/30 border border-slate-100 dark:border-slate-900 border-b-slate-300 dark:border-b-slate-700">
+        <nav className="flex items-center justify-between w-full relative md:max-w-2xl mx-auto pt-4 pb-4 text-slate-900 dark:text-slate-100">
+          <a href="#skip" className="skip-nav"> 
             Skip to content
           </a>
           <div className="ml-[-0.60rem]">
@@ -90,12 +90,12 @@ export default function Container(props) {
             <NavItem href="/blog" text="Blog" />
             <NavItem href="/resume.pdf" text="Resume" />
           </div>
-          <div className='flex gap-2'>
+          <div className='flex gap-2 px-8 md:px-0'>
 
           <button 
             aria-label="Share Page"
             type="button" 
-            className="bg-slate-200 rounded-lg dark:bg-slate-800 hover:ring-2 ring-slate-300 w-9 h-9 transition-all text-slate-800 dark:text-slate-50 flex items-center justify-center" 
+            className="w-9 h-9 transition-all text-slate-800 dark:text-slate-50 flex items-center justify-center" 
             onClick={() => 
               browserShare()
             }
@@ -108,7 +108,7 @@ export default function Container(props) {
           <button
             aria-label="Toggle Dark Mode"
             type="button"
-            className="w-9 h-9 bg-slate-200 rounded-lg dark:bg-slate-800 flex items-center justify-center  hover:ring-2 ring-slate-300  transition-all"
+            className="w-9 h-9 flex items-center justify-center transition-all"
             onClick={() =>
               setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
             }
@@ -125,7 +125,7 @@ export default function Container(props) {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
+                    strokeWidth={2.5}
                     d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
                   />
                 ) : (

@@ -102,6 +102,12 @@ export default function Timeline() {
       </h3>
       <Year>2022</Year>
       <ul>
+        <Step title="Degree College 🏫">
+          Got admitted to Vishwakarma Institute of Technology.
+        </Step>
+        <Step title="First SaaS app 🍎">
+          Made Fast Feedback, a mini SaaS application for developers.
+        </Step>
         <Step title="Started Game Development 🎮">
           Trying out a little with Unity and Defold. Loving the Lua language.
         </Step>
