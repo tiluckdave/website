@@ -3,8 +3,12 @@ import Image from 'next/image';
 import Container from '../components/Container';
 import BlogPostCard from '../components/BlogPostCard';
 import ProjectCard from 'components/ProjectCard';
+import { useTheme } from 'next-themes';
 
 export default function Home() {
+  // access current theme in a state from ThemeProvider
+  const { theme } = useTheme();
+  
   return (
     <Container
       title="Tilak Dave"
@@ -16,20 +20,30 @@ export default function Home() {
               Tilak Dave
             </h1>
             <h2 className="text-slate-800 dark:text-slate-200 mb-4 font-medium">
-              Student, Web Developer, Looking for Internship
+              Student, dApp Developer, Looking for Internship
             </h2>
             <p className="text-slate-700 dark:text-slate-300 mb-16">
-              Learning to build SaaS applications. I use NextJs for web development. Wanna Support me? <a href="https://buymeacoffee.com/tiluckdave" className="font-semibold">Buy me a coffee</a>
+              Learning blockchain development. I use NextJs for web development. Wanna Support me? <a href="https://buymeacoffee.com/tiluckdave" className="font-semibold">Buy me a coffee</a>
             </p>
           </div>
-          <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto rounded-full filter">
+          <div className="w-[80px] sm:w-[256px] relative mb-8 sm:mb-0 mr-auto rounded-full filter">
+            {theme === 'dark' ? (
             <Image
               alt="Tilak Dave"
-              height={176}
-              width={176}
-              src="/avatar.png"
+              height={256}
+              width={256}
+              src="/avatarv5.png"
               className="rounded-full filter"
               />
+              ) : (
+                <Image
+                alt="Tilak Dave"
+                height={256}
+                width={256}
+                src="/avatarv3.png"
+                className="rounded-full filter"
+                />
+                )}
           </div>
         </div>
         <h3 className="font-bold text-lg md:text-xl mb-6 text-slate-900 dark:text-slate-50">
@@ -54,19 +68,28 @@ export default function Home() {
         </h3>
         <div className="grid gap-4 sm:grid-cols-2 w-full">
           <ProjectCard
-            title="👩‍💻 Fast Feedback"
-            url="https://fastfeedback.tiluckdave.in"
-            github="fastfeedback"
+            title="💲 Concordium Transfer"
+            url="https://ccd.tiluckdave.in"
+            github="https://github.com/tiluckdave/ccd-shebuilds-hack"
+            desc="A coin transfer application built on Concordium blockchain technology, with age verification to ensure users are over 18."
           />
           <ProjectCard
-            title="🎮 Tic tac Toe"
-            url="https://tictactoe.tiluckdave.in"
-            github="tic-tac-toe"
+            title="💳 Social Credit System"
+            url=""
+            github="https://github.com/Team-Stealth-Mode"
+            desc="A system that uses CCTV feeds and public records to detect user behavior and build a social credit score for individuals, giving insight into their trustworthiness and financial status."
+          />
+          <ProjectCard
+            title="👩‍💻 Fast Feedback"
+            url="https://fastfeedback.tiluckdave.in"
+            github="https://github.com/tiluckdave/fastfeedback"
+            desc="SaaS application that allows users to add comments and feedback to static websites"
           />
           <ProjectCard
             title="💻 Import Coding"
             url="https://importcoding.com"
-            github="importcoding"
+            github="https://github.com/tiluckdave/importcoding"
+            desc="Documentation site built using Docusaurus to easily navigate and understand project information."
           />
         </div>
       </div>

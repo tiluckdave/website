@@ -100,6 +100,13 @@ export default function Timeline() {
       <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-slate-900 dark:text-slate-50">
         Timeline
       </h3>
+      <Year>2023</Year>
+      <ul>
+        <Step title="First Hackathon 👩‍💻">
+          Participated in my first hackathon. Guess what? I won it!
+        </Step>
+      </ul>
+      <Divider />
       <Year>2022</Year>
       <ul>
         <Step title="Degree College 🏫">
