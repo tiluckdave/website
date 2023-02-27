@@ -2,13 +2,13 @@ import { useState } from 'react';
 
 const Divider = () => {
   return (
-    <div className="border border-slate-200 dark:border-slate-600 w-full my-8" />
+    <div className="border border-zinc-200 dark:border-zinc-600 w-full my-8" />
   );
 };
 
 const Year = ({ children }) => {
   return (
-    <h3 className="text-lg md:text-xl font-bold mb-4 tracking-tight text-slate-900 dark:text-slate-100">
+    <h3 className="text-lg md:text-xl font-bold mb-4 tracking-tight text-zinc-900 dark:text-zinc-100">
       {children}
     </h3>
   );
@@ -31,11 +31,11 @@ const Step = (props) => {
             <path d="M22 4L12 14.01l-3-3" />
           </g>
         </svg>
-        <p className="font-medium text-slate-900 dark:text-slate-100">
+        <p className="font-medium text-zinc-900 dark:text-zinc-100">
           {props.title}
         </p>
       </div>
-      <p className="text-slate-700 dark:text-slate-400 ml-6">{props.children}</p>
+      <p className="text-zinc-700 dark:text-zinc-400 ml-6">{props.children}</p>
     </li>
   );
 };
@@ -97,7 +97,7 @@ export default function Timeline() {
 
   return (
     <>
-      <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-slate-900 dark:text-slate-50">
+      <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-zinc-900 dark:text-zinc-50">
         Timeline
       </h3>
       <Year>2023</Year>
@@ -172,7 +172,7 @@ export default function Timeline() {
       ) : (
         <button
           type="button"
-          className="flex items-center text-sm my-4 mx-auto px-4 py-2 rounded-md font-medium text-slate-900 dark:text-slate-100"
+          className="flex items-center text-sm my-4 mx-auto px-4 py-2 rounded-md font-medium text-zinc-900 dark:text-zinc-100"
           onClick={() => showFullTimeline(true)}
         >
           See More

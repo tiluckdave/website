@@ -43,16 +43,16 @@ export default function MobileMenu() {
       </button>
       {isMenuMounted && (
         <ul
-          className='flex flex-col absolute left-0 w-screen h-screen mt-4 z-40 bg-slate-100 dark:bg-slate-900'>
+          className='flex flex-col absolute left-0 w-screen h-screen mt-4 z-40 bg-zinc-100 dark:bg-zinc-900'>
           <li
-            className="border-b border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 text-sm font-semibold"
+            className="border-b border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 text-sm font-semibold"
           >
             <Link href="/">
               <a className="flex w-auto p-4 px-8">Home</a>
             </Link>
           </li>
           <li
-            className="border-b border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 text-sm font-semibold"
+            className="border-b border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 text-sm font-semibold"
             style={{ transitionDelay: '200ms' }}
           >
             <Link href="/blog">
@@ -60,7 +60,7 @@ export default function MobileMenu() {
             </Link>
           </li>
           <li
-            className="border-b border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 text-sm font-semibold"
+            className="border-b border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 text-sm font-semibold"
             style={{ transitionDelay: '250ms' }}
           >
             <Link href="/about">
@@ -68,7 +68,7 @@ export default function MobileMenu() {
             </Link>
           </li>
           <li
-            className="border-b border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 text-sm font-semibold"
+            className="border-b border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 text-sm font-semibold"
             style={{ transitionDelay: '300ms' }}
           >
             <Link href="/uses">
@@ -76,7 +76,7 @@ export default function MobileMenu() {
             </Link>
           </li>
           <li
-            className="border-b border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 text-sm font-semibold"
+            className="border-b border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 text-sm font-semibold"
             style={{ transitionDelay: '350ms' }}
           >
             <Link href="/resume.pdf">
@@ -92,7 +92,7 @@ export default function MobileMenu() {
 function MenuIcon(props: JSX.IntrinsicElements['svg']) {
   return (
     <svg
-      className="h-5 w-5 absolute text-slate-900 dark:text-slate-100"
+      className="h-5 w-5 absolute text-zinc-900 dark:text-zinc-100"
       width="20"
       height="20"
       viewBox="0 0 20 20"
@@ -120,7 +120,7 @@ function MenuIcon(props: JSX.IntrinsicElements['svg']) {
 function CrossIcon(props: JSX.IntrinsicElements['svg']) {
   return (
     <svg
-      className="h-5 w-5 absolute text-slate-900 dark:text-slate-100"
+      className="h-5 w-5 absolute text-zinc-900 dark:text-zinc-100"
       viewBox="0 0 24 24"
       width="24"
       height="24"

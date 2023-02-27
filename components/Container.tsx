@@ -17,9 +17,9 @@ function NavItem({ href, text }) {
       <a
         className={cn(
           isActive
-            ? 'font-bold text-slate-900 dark:text-slate-100'
-            : 'font-semibold text-slate-700 dark:text-slate-300',
-          'hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:text-slate-900 dark:hover:text-slate-100 transition-all'
+            ? 'font-bold text-zinc-900 dark:text-zinc-100'
+            : 'font-semibold text-zinc-700 dark:text-zinc-300',
+          'hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:text-zinc-900 dark:hover:text-zinc-100 transition-all'
         )}
       >
         <span className="capsize">{text}</span>
@@ -56,7 +56,7 @@ export default function Container(props) {
   }
 
   return (
-    <div className="bg-slate-100 dark:bg-slate-900 min-h-screen">
+    <div className="bg-zinc-100 dark:bg-zinc-900 min-h-screen">
       <Head>
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
@@ -78,8 +78,8 @@ export default function Container(props) {
           <meta property="article:published_time" content={meta.date} />
         )}
       </Head>
-      <div className="flex flex-col justify-center w-full sticky top-0 z-50 mb-16 backdrop-blur-lg bg-slate-100/30  dark:bg-slate-900/30 border border-slate-100 dark:border-slate-900 border-b-slate-300 dark:border-b-slate-700">
-        <nav className="flex items-center justify-between w-full relative md:max-w-2xl mx-auto pt-4 pb-4 text-slate-900 dark:text-slate-100">
+      <div className="flex flex-col justify-center w-full sticky top-0 z-50 mb-16 backdrop-blur-lg bg-zinc-100/30  dark:bg-zinc-900/30 border border-zinc-100 dark:border-zinc-900 border-b-zinc-300 dark:border-b-zinc-700">
+        <nav className="flex items-center justify-between w-full relative md:max-w-2xl mx-auto pt-4 pb-4 text-zinc-900 dark:text-zinc-100">
           <a href="#skip" className="skip-nav"> 
             Skip to content
           </a>
@@ -95,12 +95,12 @@ export default function Container(props) {
           <button 
             aria-label="Share Page"
             type="button" 
-            className="w-9 h-9 transition-all text-slate-800 dark:text-slate-50 flex items-center justify-center" 
+            className="w-9 h-9 transition-all text-zinc-800 dark:text-zinc-50 flex items-center justify-center" 
             onClick={() => 
               browserShare()
             }
           >
-          <svg viewBox="0 0 24 24" stroke="currentColor" fill="currentColor" strokeWidth={0} className="w-5 h-5 text-slate-800 dark:text-slate-200" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 24 24" stroke="currentColor" fill="currentColor" strokeWidth={0} className="w-5 h-5 text-zinc-800 dark:text-zinc-200" xmlns="http://www.w3.org/2000/svg">
             <path fillRule="evenodd" d="M21,11 L21,20 C21,21.1045695 20.1045695,22 19,22 L5,22 C3.8954305,22 3,21.1045695 3,20 L3,11 L5,11 L5,20 L19,20 L19,11 L21,11 Z M13,5.41421356 L13,16 L11,16 L11,5.41421356 L7.70710678,8.70710678 L6.29289322,7.29289322 L12,1.58578644 L17.7071068,7.29289322 L16.2928932,8.70710678 L13,5.41421356 Z"/>
           </svg>
         </button>
@@ -119,7 +119,7 @@ export default function Container(props) {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                className="w-5 h-5 text-slate-800 dark:text-slate-200"
+                className="w-5 h-5 text-zinc-800 dark:text-zinc-200"
               >
                 {resolvedTheme === 'dark' ? (
                   <path
@@ -144,7 +144,7 @@ export default function Container(props) {
       </div>
       <main
         id="skip"
-        className="flex flex-col justify-center px-8 bg-slate-100 dark:bg-slate-900"
+        className="flex flex-col justify-center px-8 bg-zinc-100 dark:bg-zinc-900"
       >
         {children}
         

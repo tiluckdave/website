@@ -11,7 +11,7 @@ export default function Document(props) {
         <meta content="#ffffff" name="theme-color" />
         <meta content="#ffffff" name="msapplication-TileColor" />
       </Head>
-      <body className="bg-slate-50 dark:bg-slate-900 text-slate-50 dark:text-slate-900">
+      <body className="bg-zinc-50 dark:bg-zinc-900 text-zinc-50 dark:text-zinc-900">
         <Main />
         <NextScript />
       </body>

@@ -20,7 +20,7 @@ export default function BlogLayout({
       type="article"
     >
       <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-16">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-slate-900 md:text-5xl dark:text-slate-50">
+        <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 md:text-5xl dark:text-zinc-50">
           {post.title}
         </h1>
         <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
@@ -32,12 +32,12 @@ export default function BlogLayout({
               src="/avatar.png"
               className="rounded-full"
             />
-            <p className="ml-2 text-sm text-slate-700 dark:text-slate-300">
+            <p className="ml-2 text-sm text-zinc-700 dark:text-zinc-300">
               {'Tilak Dave / '}
               {format(parseISO(post.publishedAt), 'MMMM dd, yyyy')}
             </p>
           </div>
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 min-w-32 md:mt-0">
+          <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 min-w-32 md:mt-0">
             {post.readingTime.text}
           </p>
         </div>
