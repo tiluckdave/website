@@ -45,9 +45,9 @@ const FullTimeline = () => (
     <Divider />
     <Year>2018</Year>
     <ul>
-      <Step title="Love ❤">
+      {/* <Step title="Love ❤">
         Finally proposed to my crush, and I was so excited!
-      </Step>
+      </Step> */}
       <Step title="Won State level Essay Compitition ✍">
         Literally wrote the essay in 3 - 4 hours. But won the competition.
       </Step>
@@ -162,9 +162,6 @@ export default function Timeline() {
         </Step>
         <Step title="96.20% ✔">
           Secured this much in my 10th std. Okay, sorry for flex.
-        </Step>
-        <Step title="Left my home 🏃‍♂️">
-          I was disturbed and left my home. Thank God I realised I was wrong, returned back in 3 days.
         </Step>
       </ul>
       {isShowingFullTimeline ? (
