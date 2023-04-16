@@ -28,6 +28,8 @@ async function generate() {
             return `
               <url>
                   <loc>${`https://www.tiluckdave.in${route}`}</loc>
+                  <changefreq>weekly</changefreq>
+                  <priority>1</priority>
               </url>
             `;
           })
