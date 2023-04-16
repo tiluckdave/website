@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <Container
       title="Tilak Dave"
-      description="Student, developer, and learner. I am trying to build some SaaS applications along with a bit of freelancing."
+      description="Student, developer, and learner. I am trying to build some dApps"
     >
       <div className="flex flex-col justify-center items-start max-w-2xl border-zinc-200 dark:border-zinc-700 mx-auto mb-8">
         <div className="flex flex-col-reverse sm:flex-row items-start">
@@ -25,7 +25,7 @@ export default function Home() {
             </h2>
             <p className="text-zinc-700 dark:text-zinc-300 mb-16">
               Learning blockchain development. I use NextJs for web development.
-              Wanna Support me?{' '}
+              Yep, I do sing occasionally. Wanna Support me?{' '}
               <a
                 href="https://buymeacoffee.com/tiluckdave"
                 className="font-semibold"
@@ -35,38 +35,29 @@ export default function Home() {
             </p>
           </div>
           <div className="w-[80px] sm:w-[256px] relative mt-3 mb-8 sm:mb-0 mr-auto rounded-full filter">
-            {theme === 'dark' ? (
+            
               <Image
                 alt="Tilak Dave"
                 height={256}
                 width={256}
-                src="/avatarv5.png"
+                src="/avtr.jpg"
                 className="rounded-full filter"
               />
-            ) : (
-              <Image
-                alt="Tilak Dave"
-                height={256}
-                width={256}
-                src="/avatarv3.png"
-                className="rounded-full filter"
-              />
-            )}
           </div>
         </div>
         <h3 className="font-bold text-xl md:text-2xl mb-6 text-zinc-900 dark:text-zinc-50">
           Featured Posts
         </h3>
         <div className="grid gap-4 md:grid-cols-3 w-full mb-6">
-          <BlogPostCard
-            title="Free alternatives to Heroku"
-            slug="top-heroku-alternatives"
-          />
+          <BlogPostCard title="Next.js vs Create React App: The Ultimate Showdown!" slug="react-vs-next" />
           <BlogPostCard
             title="What are SSR, SSG and ISR in NextJs?"
             slug="ssr-ssg-isr"
           />
-          <BlogPostCard title="Why SWR is awesome?" slug="why-swr-is-awesome" />
+          <BlogPostCard
+            title="Free alternatives to Heroku"
+            slug="top-heroku-alternatives"
+          />
         </div>
         <h3 className="font-bold text-xl md:text-2xl my-6 text-zinc-900 dark:text-zinc-50">
           Projects

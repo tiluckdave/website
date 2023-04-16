@@ -22,11 +22,11 @@ const CustomLink = (props) => {
 };
 
 function RoundedImage(props) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />;
+  return <img alt={props.alt} className="rounded-lg mx-auto max-h-[65vh]" {...props} />;
 }
 
 const MDXComponents = {
-  Image: RoundedImage,
+  img: RoundedImage,
   ImageWithTheme,
   a: CustomLink,
   ConsCard,

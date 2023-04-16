@@ -9,7 +9,11 @@ module.exports = withContentlayer()({
   images: {
     domains: [
       'i.scdn.co', // Spotify Album Art
-      'pbs.twimg.com' // Twitter Profile Picture
+      'pbs.twimg.com', // Twitter Profile Picture
+      'www.tiluckdave.in',
+      'media1.giphy.com',
+      'memegenerator.net',
+      'c.tenor.com',
     ]
   },
   webpack: (config, { dev, isServer }) => {
