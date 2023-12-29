@@ -5,8 +5,6 @@ import Container from 'components/Container';
 import type { PropsWithChildren } from 'react';
 import type { Blog } from '.contentlayer/types';
 
-
-
 export default function BlogLayout({
   children,
   post
@@ -29,7 +27,7 @@ export default function BlogLayout({
               alt="Tilak Dave"
               height={24}
               width={24}
-              src="/avatar.png"
+              src="/avtr.jpg"
               className="rounded-full"
             />
             <p className="ml-2 text-sm text-zinc-700 dark:text-zinc-300">
@@ -44,8 +42,7 @@ export default function BlogLayout({
         <div className="w-full mt-4 prose dark:prose-dark max-w-none">
           {children}
         </div>
-        <div className="mt-8">
-        </div>
+        <div className="mt-8"></div>
       </article>
     </Container>
   );

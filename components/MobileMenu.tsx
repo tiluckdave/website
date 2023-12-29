@@ -1,29 +1,9 @@
 import cn from 'classnames';
-import Link from 'next/link';
 import useDelayedRender from 'use-delayed-render';
 import { useState, useEffect } from 'react';
 import styles from 'styles/mobile-menu.module.css';
 
-export default function MobileMenu() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { mounted: isMenuMounted, rendered: isMenuRendered } = useDelayedRender(
-    isMenuOpen,
-    {
-      enterDelay: 20,
-      exitDelay: 300
-    }
-  );
-
-  function toggleMenu() {
-    if (isMenuOpen) {
-      setIsMenuOpen(false);
-      document.body.style.overflow = '';
-    } else {
-      setIsMenuOpen(true);
-      document.body.style.overflow = 'hidden';
-    }
-  }
-
+export default function MobileMenu({ isMenuOpen, toggleMenu }) {
   useEffect(() => {
     return function cleanup() {
       document.body.style.overflow = '';
@@ -41,50 +21,6 @@ export default function MobileMenu() {
         <MenuIcon data-hide={isMenuOpen} />
         <CrossIcon data-hide={!isMenuOpen} />
       </button>
-      {isMenuMounted && (
-        <ul
-          className='flex flex-col absolute left-0 w-screen h-screen mt-4 z-40 bg-zinc-100 dark:bg-zinc-900'>
-          <li
-            className="border-b border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 text-sm font-semibold"
-          >
-            <Link href="/">
-              <a className="flex w-auto p-4 px-8">Home</a>
-            </Link>
-          </li>
-          <li
-            className="border-b border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 text-sm font-semibold"
-            style={{ transitionDelay: '200ms' }}
-          >
-            <Link href="/blog">
-              <a className="flex w-auto p-4 px-8">Blog</a>
-            </Link>
-          </li>
-          <li
-            className="border-b border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 text-sm font-semibold"
-            style={{ transitionDelay: '250ms' }}
-          >
-            <Link href="/about">
-              <a className="flex w-auto p-4 px-8">About</a>
-            </Link>
-          </li>
-          <li
-            className="border-b border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 text-sm font-semibold"
-            style={{ transitionDelay: '300ms' }}
-          >
-            <Link href="/uses">
-              <a className="flex w-auto p-4 px-8">Uses</a>
-            </Link>
-          </li>
-          <li
-            className="border-b border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 text-sm font-semibold"
-            style={{ transitionDelay: '350ms' }}
-          >
-            <Link href="/resume.pdf">
-              <a className="flex w-auto p-4 px-8">Resume</a>
-            </Link>
-          </li>
-        </ul>
-      )}
     </>
   );
 }
@@ -92,7 +28,7 @@ export default function MobileMenu() {
 function MenuIcon(props: JSX.IntrinsicElements['svg']) {
   return (
     <svg
-      className="h-5 w-5 absolute text-zinc-900 dark:text-zinc-100"
+      className="h-5 w-5 absolute text-zinc-100 dark:text-zinc-900"
       width="20"
       height="20"
       viewBox="0 0 20 20"
@@ -120,7 +56,7 @@ function MenuIcon(props: JSX.IntrinsicElements['svg']) {
 function CrossIcon(props: JSX.IntrinsicElements['svg']) {
   return (
     <svg
-      className="h-5 w-5 absolute text-zinc-900 dark:text-zinc-100"
+      className="h-5 w-5 absolute text-zinc-100 dark:text-zinc-900"
       viewBox="0 0 24 24"
       width="24"
       height="24"

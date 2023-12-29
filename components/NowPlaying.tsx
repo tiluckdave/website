@@ -10,10 +10,7 @@ function AnimatedBars() {
     animate(
       '#logo',
       {
-        transform: [
-          'rotate(0deg) scale(1)',
-          'rotate(360deg) scale(1)'
-        ]
+        transform: ['rotate(0deg) scale(1)', 'rotate(360deg) scale(1)']
       },
       {
         duration: 2.0,
@@ -37,7 +34,7 @@ export default function NowPlaying() {
   const { data } = useSWR<NowPlayingSong>('/api/now-playing', fetcher);
 
   return (
-    <div className="flex flex-row-reverse items-center sm:flex-row mb-1 space-x-0 sm:space-x-2 w-full">
+    <div className="flex flex-row-reverse items-center sm:flex-row mb-1 space-x-0 sm:space-x-2 w-full my-4">
       {data?.songUrl ? (
         <AnimatedBars />
       ) : (

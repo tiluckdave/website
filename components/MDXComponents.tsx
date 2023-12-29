@@ -1,10 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
-
-import ProsCard from 'components/ProsCard';
-import ConsCard from 'components/ConsCard';
-import Step from 'components/Step';
-import ImageWithTheme from 'components/ImageWithTheme';
 
 const CustomLink = (props) => {
   const href = props.href;
@@ -22,16 +16,18 @@ const CustomLink = (props) => {
 };
 
 function RoundedImage(props) {
-  return <img alt={props.alt} className="rounded-lg mx-auto max-h-[65vh]" {...props} />;
+  return (
+    <img
+      alt={props.alt}
+      className="rounded-lg mx-auto max-h-[65vh]"
+      {...props}
+    />
+  );
 }
 
 const MDXComponents = {
   img: RoundedImage,
-  ImageWithTheme,
-  a: CustomLink,
-  ConsCard,
-  ProsCard,
-  Step,
+  a: CustomLink
 };
 
 export default MDXComponents;

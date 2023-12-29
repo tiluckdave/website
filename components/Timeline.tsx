@@ -45,15 +45,10 @@ const FullTimeline = () => (
     <Divider />
     <Year>2018</Year>
     <ul>
-      {/* <Step title="Love ❤">
-        Finally proposed to my crush, and I was so excited!
-      </Step> */}
       <Step title="Won State level Essay Compitition ✍">
         Literally wrote the essay in 3 - 4 hours. But won the competition.
       </Step>
-      <Step title="Final year of School 🎒">
-        Last year of beloved school.
-      </Step>
+      <Step title="Final year of School 🎒">Last year of beloved school.</Step>
     </ul>
     <Divider />
     <Year>2017</Year>
@@ -69,20 +64,21 @@ const FullTimeline = () => (
     <Year>2011</Year>
     <ul>
       <Step title="First Computer at home 💾">
-        I remember playing roadrash every night chance by chance with my brother!
+        I remember playing roadrash every night chance by chance with my
+        brother!
       </Step>
       <Step title="Climbed stage for a speech 🎤">
         My first speech for Republic day. Stood there quaking with fear.
       </Step>
       <Step title="School's Music Squad 🎶">
-        Became a part of school's music squad. Singing songs at multiple ocasions!
+        Became a part of school's music squad. Singing songs at multiple
+        ocasions!
       </Step>
     </ul>
     <Divider />
     <Year>2005</Year>
     <ul>
-      <Step title="Went to school 🏫">
-      </Step>
+      <Step title="Went to school 🏫"></Step>
     </ul>
     <Divider />
     <Year>2003</Year>
@@ -102,6 +98,18 @@ export default function Timeline() {
       </h3>
       <Year>2023</Year>
       <ul>
+        <Step title="Dream Laptop in the house 🥳">
+          Bought my dream laptop. MacBook Air M2.
+        </Step>
+        <Step title="SIH 2023 Winner 🎉">
+          Amazing Team, Amazing Experience, Amazing Hackathon.
+        </Step>
+        <Step title="DeFi track Winner at HackWeb3Conf 🕸️">
+          $500 in crypto and a chance to pitch in front of investors.
+        </Step>
+        <Step title="Event Management @ TEDxVITPune ❌">
+          Also made a website for the event.
+        </Step>
         <Step title="First Hackathon 👩‍💻">
           Participated in my first hackathon. Guess what? I won it!
         </Step>
@@ -119,26 +127,29 @@ export default function Timeline() {
           Trying out a little with Unity and Defold. Loving the Lua language.
         </Step>
         <Step title="President @ COM'e'IT 💻">
-          President of my department's student association. Not really proud of it though.
+          President of my department's student association. Not really proud of
+          it though.
         </Step>
         <Step title="First Freelancing Client 💵">
           Got my first client for a little webdev job. New start!
         </Step>
         <Step title="Started Investing 📈">
-          Used my earnings and invested a small part into Indian Stock Market.
+          Used my earnings and invested a small part into stocks.
         </Step>
       </ul>
       <Divider />
       <Year>2021</Year>
       <ul>
         <Step title="Joined BlueLEarn as an Intern 👨‍👩‍👧‍👦">
-          Staying in the community lead me join the company as an Event and Community Management Intern. Started earning a little.
+          Staying in the community lead me join the company as an Event and
+          Community Management Intern. Started earning a little.
         </Step>
         <Step title="Got interest about Finance 💲">
           Learnt a bit about Financial literacy from youtube.
         </Step>
         <Step title="Member of BlueLearn 🤼">
-          One of the best descisions I ever made. I'm so glad I joined the community and made multiple connections with awesome minds!
+          One of the best descisions I ever made. I'm so glad I joined the
+          community and made multiple connections with awesome minds!
         </Step>
       </ul>
       <Divider />
@@ -148,14 +159,15 @@ export default function Timeline() {
           Taught Web Development and C language to school students and juniors.
         </Step>
         <Step title="Lockdown happened 🔒">
-          Came back to home, had a nice long vacations.
+          Came back to home, had a nice long vacation.
         </Step>
       </ul>
       <Divider />
       <Year>2019</Year>
       <ul>
         <Step title="Went to Pune for college 🎓">
-          Chose something which no one would. Got CSE at Government Polytechnic Pune.
+          Chose something which no one would. Got CSE at Government Polytechnic
+          Pune.
         </Step>
         <Step title="First Website 🌐">
           Made my first website using WordPress. It was fun.
