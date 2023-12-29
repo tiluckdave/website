@@ -10,7 +10,7 @@ import cn from 'classnames';
 import Footer from 'components/Footer';
 import MobileMenu from 'components/MobileMenu';
 
-function NavItem({ href, text }) {
+function NavItem({ href, text, target = '_self' }) {
   const router = useRouter();
   const isActive = router.asPath === href;
 
@@ -23,6 +23,7 @@ function NavItem({ href, text }) {
             : 'font-semibold text-zinc-300 dark:text-zinc-700',
           'hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:text-zinc-100 dark:hover:text-zinc-900 transition-all'
         )}
+        target={target}
       >
         <span className="capsize">{text}</span>
       </a>
@@ -118,7 +119,11 @@ export default function Container(props) {
             <NavItem href="/" text="Home" />
             <NavItem href="/about" text="About" />
             <NavItem href="/blog" text="Blog" />
-            <NavItem href="/resume.pdf" text="Resume" />
+            <NavItem
+              href="https://tiluckdave.in/resume.pdf"
+              target="_blank"
+              text="Resume"
+            />
           </div>
           <div className="flex gap-2 px-8 md:px-0">
             <button
@@ -214,9 +219,12 @@ export default function Container(props) {
             className="text-zinc-100 dark:text-zinc-900 text-sm font-semibold"
             style={{ transitionDelay: '350ms' }}
           >
-            <Link href="/resume.pdf">
-              <a className="flex w-auto p-4 px-8">Resume</a>
-            </Link>
+            <a
+              className="flex w-auto p-4 px-8"
+              href="https://tiluckdave.in/resume.pdf"
+            >
+              Resume
+            </a>
           </li>
         </ul>
       )}
