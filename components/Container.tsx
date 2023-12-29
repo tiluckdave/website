@@ -185,14 +185,14 @@ export default function Container(props) {
         </nav>
       </div>
       {isMenuMounted && (
-        <ul className="w-11/12 lg:w-3/4 xl:w-7/12 backdrop-blur-md flex flex-col rounded-3xl left-0 top-24 sticky mx-auto z-40 bg-zinc-900/70 dark:bg-zinc-100/70 mb-16">
-          <li className="border-b border-zinc-700 dark:border-zinc-300 text-zinc-100 dark:text-zinc-900 text-sm font-semibold">
+        <ul className="w-11/12 lg:w-3/4 xl:w-7/12 backdrop-blur-md flex flex-col rounded-3xl left-0 top-24 sticky mx-auto z-40 bg-zinc-900/50 dark:bg-zinc-100/50">
+          <li className="border-b border-zinc-700/50 dark:border-zinc-300/50 text-zinc-100 dark:text-zinc-900 text-sm font-semibold">
             <Link href="/">
               <a className="flex w-auto p-4 px-8">Home</a>
             </Link>
           </li>
           <li
-            className="border-b border-zinc-700 dark:border-zinc-300 text-zinc-100 dark:text-zinc-900 text-sm font-semibold"
+            className="border-b border-zinc-700/50 dark:border-zinc-300/50 text-zinc-100 dark:text-zinc-900 text-sm font-semibold"
             style={{ transitionDelay: '200ms' }}
           >
             <Link href="/blog">
@@ -200,7 +200,7 @@ export default function Container(props) {
             </Link>
           </li>
           <li
-            className="border-b border-zinc-700 dark:border-zinc-300 text-zinc-100 dark:text-zinc-900 text-sm font-semibold"
+            className="border-b border-zinc-700/50 dark:border-zinc-300/50 text-zinc-100 dark:text-zinc-900 text-sm font-semibold"
             style={{ transitionDelay: '250ms' }}
           >
             <Link href="/about">
@@ -208,7 +208,7 @@ export default function Container(props) {
             </Link>
           </li>
           <li
-            className="border-b border-zinc-700 dark:border-zinc-300 text-zinc-100 dark:text-zinc-900 text-sm font-semibold"
+            className="border-b border-zinc-700/50 dark:border-zinc-300/50 text-zinc-100 dark:text-zinc-900 text-sm font-semibold"
             style={{ transitionDelay: '300ms' }}
           >
             <Link href="/uses">
