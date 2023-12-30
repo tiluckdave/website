@@ -59,8 +59,8 @@ export default function Home() {
         <div className="grid gap-4 sm:grid-cols-1 w-full mb-16">
           <ProjectCard
             title="⚖️ Nyay Sathi"
-            url="https://web3-lance.vercel.app"
-            github="https://github.com/tiluckdave/Web3Lance"
+            url="https://nyaysathi.vercel.app"
+            github="https://github.com/tiluckdave/nyaysathi"
             desc="Our SIH solution for Ministry of Law and Justice helping marginalised communitties and illiterate people to get legal help."
           />
           <ProjectCard
