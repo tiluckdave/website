@@ -1,6 +1,6 @@
 import 'styles/global.css';
 import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
 import Script from 'next/script';
@@ -25,6 +25,8 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider attribute="class">
+      <Analytics />
+      <SpeedInsights />
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
@@ -45,8 +47,6 @@ export default function App({ Component, pageProps }: AppProps) {
         }}
       />
       <Component {...pageProps} />
-      <Analytics />
-      <SpeedInsights />
     </ThemeProvider>
   );
 }
