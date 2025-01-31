@@ -1,0 +1,75 @@
+---
+title: "NyaySathi: AI Legal Assistant"
+publishedAt: "2023-12-21"
+summary: "NyaySathi is an AI-powered legal assistant that helps users navigate complex legal processes, understand their rights, and access legal resources."
+images:
+  - "/images/projects/nyaysathi/2.png"
+  - "/images/projects/nyaysathi/1.png"
+team:
+  - name: "Tilak Dave"
+    role: "Developer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/tiluckdave/"
+link: "https://github.com/tiluckdave/nyaysathi"
+---
+
+## Overview
+
+In India, limited legal awareness and access are widespread issues, often affecting marginalised communities. The challenges stem from language barriers and the intricate nature of the legal system, making it difficult for many individuals to understand and exercise their legal rights effectively.
+
+"NyaySaathi: AI Legal Assistant" is an innovative solution aimed at tackling the widespread issues of limited legal awareness and access in India, particularly affecting marginalised communities. Recognizing the challenges posed by language barriers and the complex nature of the legal system, the developers have designed an inclusive and user-friendly mobile application.
+
+The core feature of NyaySaathi is its digital legal assistant, a sophisticated AI tool that simplifies legal queries using plain language. This addresses the issue of understanding legal rights effectively, especially for individuals who may find the legal landscape daunting. The application adopts a "Know Your Rights" framework, guiding users through their rights in a comprehensible manner.
+
+To enhance user experience and facilitate better comprehension of legal cases, Nyay Saathi introduces a case file summarizer. This tool simplifies the complexities of legal cases, making the information more accessible to users. Additionally, the app incorporates cutting-edge technology by implementing secure document storage on the blockchain. This ensures both accessibility and security for crucial files and evidence, a critical aspect in the legal domain.
+
+By combining AI-driven simplification of legal queries, a "Know Your Rights" framework, case file summarizer, and secure blockchain-based document storage, Nyay Saathi strives to empower individuals with the knowledge and tools necessary to navigate the legal system effectively. This initiative is poised to bridge the gap in legal awareness and access, particularly benefiting marginalised communities and contributing to a more equitable legal landscape in India
+
+## Key Features
+
+- **Biometric Authentication**: Users can authenticate on the website through their biometric data i.e Fingerprint scanning for improved security as the application has critical documents and data.
+- **Multilingual Assistant**: Application's chat assistant works in multiple languages through text as well as through voice for better adaptability among the citizens of India, illiterate people and marginalised communities.
+- **Gamified Legal Education**: As the problem statement lies under Smart Education category, we are providing Question Of The Day quiz to solve for the users to improve legal education in India.
+- **KYR based upon profile**: Application can fetch and show rights of the user in real time based on the profile of the user i.e. gender, age, address, profession for better personalization
+- **Secure Document Storage**: The application uses blockchain technology for secure document storage to ensure the safety of the user's data and documents.
+- **Case File Summarizer**: The application uses AI to summarize the legal cases for better understanding of the user.
+- **Directory for Legal AID centres**: A directory for all the legal aid clinics across India is given on the website for people to reach out to them whenever they need help.
+- **Legal News**: The application provides legal news to the users to keep them updated with the latest happenings in the legal world.
+- **Evidence Management**: Critical files and evidence are stored on a secure IPFS storage on the blockchain to avoid evidence tampering and loss.
+
+![NyaySathi Use Case Diagram](/images/projects/nyaysathi/3.png)_Use Case Diagram_
+
+## Technologies Used
+
+- **Next.js**: Client and Server Side Framework
+- **Authentication**: NextAuth, WebAuthN Biometric
+- **Data Modeling and Artificial Intelligence**: Indian Kanoon API, e - courts API, Crime Check API, Open AI API
+- **Blockchain IPFS**: Decentralised Storage, The InterPlanetary File System is a protocol, hypermedia and file sharing peer-to-peer network for storing and sharing data in a distributed file system
+- **Firebase**: Database, Storage, Hosting
+
+## AI Implementation
+
+The application incorporates OpenAI's GPT-4 model, refined with Retrieval-Augmented Generation (RAG), to generate accurate and comprehensible legal information. This section provides an in-depth explanation of the technologies and methodologies used, including RAG, Python Flask server, API implementation, and the LangChain package.
+
+### OpenAI's GPT-4
+
+At the core of NyaySaathi is OpenAI's GPT-4, a state-of-the-art language model that excels in understanding and generating human-like text. GPT-4's ability to process and generate natural language makes it an ideal choice for handling complex legal queries and providing clear, simplified explanations.
+
+### Retrieval-Augmented Generation (RAG)
+
+RAG combines retrieval-based and generation-based approaches to improve the quality and relevance of AI-generated content.
+
+#### How does it work?
+
+- Relevant legal data is scraped from various internet sources, such as legal documents, case law, statutes, and legal commentaries.
+- This data is converted into vector embeddings using algorithms that transform text into numerical representations, capturing semantic meaning.
+- When a user poses a legal query, the system retrieves the most relevant embeddings from the pre-processed dataset.
+- The retrieval step ensures that the context provided to the GPT-4 model is highly relevant to the query, improving the accuracy and specificity of the response.
+- The retrieved embeddings, along with the original query, are fed into the GPT-4 model.
+- GPT-4 uses this context to generate a coherent, informative response that addresses the user's query in plain language.
+
+![RAG Implementation Diagram](/images/projects/nyaysathi/4.png)_RAG Implementation_
+
+## Outcome
+
+NyaySaathi represents a significant step forward in leveraging AI to address social challenges and empower individuals with legal knowledge. By combining cutting-edge technologies, such as AI-driven simplification, blockchain-based security, and multilingual support, the application offers a comprehensive solution to the complex problem of legal awareness and access.
