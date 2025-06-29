@@ -6,42 +6,25 @@ import {
   Heading,
   Icon,
   IconButton,
-  SmartImage,
+  Media,
   Tag,
-  Text
-} from "@/once-ui/components";
-import { baseURL } from "@/app/resources";
+  Text,
+  Meta,
+  Schema
+} from "@once-ui-system/core";
+import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
-import { person, about, social } from "@/app/resources/content";
+import React from "react";
 
 export async function generateMetadata() {
-  const title = about.title;
-  const description = about.description;
-  const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      url: `https://${baseURL}/about`,
-      images: [
-        {
-          url: ogImage,
-          alt: title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
+  return Meta.generate({
+    title: about.title,
+    description: about.description,
+    baseURL: baseURL,
+    image: `/api/og/generate?title=${encodeURIComponent(about.title)}`,
+    path: about.path,
+  });
 }
 
 export default function About() {
@@ -69,26 +52,17 @@ export default function About() {
   ];
   return (
     <Column maxWidth="m">
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: person.name,
-            jobTitle: person.role,
-            description: about.intro.description,
-            url: `https://${baseURL}/about`,
-            image: `${baseURL}/images/${person.avatar}`,
-            sameAs: social
-              .filter((item) => item.link && !item.link.startsWith("mailto:")) // Filter out empty links and email links
-              .map((item) => item.link),
-            worksFor: {
-              "@type": "Organization",
-              name: about.work.experiences[0].company || "",
-            },
-          }),
+      <Schema
+        as="webPage"
+        baseURL={baseURL}
+        title={about.title}
+        description={about.description}
+        path={about.path}
+        image={`/api/og/generate?title=${encodeURIComponent(about.title)}`}
+        author={{
+          name: person.name,
+          url: `${baseURL}${about.path}`,
+          image: `${baseURL}${person.avatar}`,
         }}
       />
       {about.tableOfContent.display && (
@@ -107,6 +81,7 @@ export default function About() {
         {about.avatar.display && (
           <Column
             className={styles.avatar}
+            position="sticky"
             minWidth="160"
             paddingX="l"
             paddingBottom="xl"
@@ -122,7 +97,7 @@ export default function About() {
             {person.languages.length > 0 && (
               <Flex wrap gap="8">
                 {person.languages.map((language, index) => (
-                  <Tag key={index} size="l">
+                  <Tag key={language} size="l">
                     {language}
                   </Tag>
                 ))}
@@ -174,18 +149,30 @@ export default function About() {
               {person.role}
             </Text>
             {social.length > 0 && (
-              <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap>
+              <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth data-border="rounded">
                 {social.map(
                   (item) =>
                     item.link && (
-                      <Button
-                        key={item.name}
-                        href={item.link}
-                        prefixIcon={item.icon}
-                        label={item.name}
-                        size="s"
-                        variant="secondary"
-                      />
+                        <React.Fragment key={item.name}>
+                            <Button
+                                className="s-flex-hide"
+                                key={item.name}
+                                href={item.link}
+                                prefixIcon={item.icon}
+                                label={item.name}
+                                size="s"
+                                weight="default"
+                                variant="secondary"
+                            />
+                            <IconButton
+                                className="s-flex-show"
+                                size="l"
+                                key={`${item.name}-icon`}
+                                href={item.link}
+                                icon={item.icon}
+                                variant="secondary"
+                            />
+                        </React.Fragment>
                     ),
                 )}
               </Flex>
@@ -229,21 +216,26 @@ export default function About() {
                       ))}
                     </Column>
                     {experience.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" paddingLeft="40" wrap>
-                        {experience.images.map((image: { width: number; height: number; alt: string; src: string }, index) => (
+                      <Flex fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
+                        {experience.images.map((image, index) => (
                           <Flex
                             key={index}
                             border="neutral-medium"
                             radius="m"
-                            minWidth={image?.width}
-                            height={image?.height}
+                            //@ts-ignore
+                            minWidth={image.width}
+                            //@ts-ignore
+                            height={image.height}
                           >
-                            <SmartImage
+                            <Media
                               enlarge
                               radius="m"
-                              sizes={image?.width.toString()}
-                              alt={image?.alt}
-                              src={image?.src}
+                              //@ts-ignore
+                              sizes={image.width.toString()}
+                              //@ts-ignore
+                              alt={image.alt}
+                              //@ts-ignore
+                              src={image.src}
                             />
                           </Flex>
                         ))}
@@ -288,25 +280,30 @@ export default function About() {
               <Column fillWidth gap="l">
                 {about.technical.skills.map((skill, index) => (
                   <Column key={`${skill}-${index}`} fillWidth gap="4">
-                    <Text variant="heading-strong-l">{skill.title}</Text>
+                    <Text id={skill.title} variant="heading-strong-l">{skill.title}</Text>
                     <Text variant="body-default-m" onBackground="neutral-weak">
                       {skill.description}
                     </Text>
                     {skill.images && skill.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image: { width: number; height: number; alt: string; src: string }, index) => (
+                        {skill.images.map((image, index) => (
                           <Flex
                             key={index}
                             border="neutral-medium"
                             radius="m"
+                            //@ts-ignore
                             minWidth={image.width}
+                            //@ts-ignore
                             height={image.height}
                           >
-                            <SmartImage
+                            <Media
                               enlarge
                               radius="m"
+                              //@ts-ignore
                               sizes={image.width.toString()}
+                              //@ts-ignore
                               alt={image.alt}
+                              //@ts-ignore
                               src={image.src}
                             />
                           </Flex>
