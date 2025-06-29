@@ -15,7 +15,7 @@ const person = {
 
 const newsletter = {
   display: false,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  title: <>Subscribe to {person.firstName}&apos;s Newsletter</>,
   description: (
     <>
       I occasionally write about design, technology, and share thoughts on the intersection of
@@ -96,7 +96,7 @@ const about = {
         role: "Intern, Software Engineer",
         achievements: [
           <>
-            Developed connectors and integrations for the workato community library using Workato's connector SDK.
+            Developed connectors and integrations for the workato community library using Workato&apos;s connector SDK.
           </>,
           <>
             Act as subject matter expert for stuff related to connectors and the SDK.
