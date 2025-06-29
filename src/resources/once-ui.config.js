@@ -171,5 +171,21 @@ const mailchimp = {
   }
 };
 
+// default schema data
+const schema = {
+  logo: "",
+  type: "Organization",
+  name: "Once UI",
+  description: home.description,
+  email: "lorant@once-ui.com",
+};
 
-export { display, mailchimp, routes, protectedRoutes, baseURL, fonts, style, effects, dataStyle };
+// social links
+const sameAs = {
+  threads: "https://www.threads.com/@once_ui",
+  linkedin: "https://www.linkedin.com/company/once-ui/",
+  discord: "https://discord.com/invite/5EyAQ4eNdS",
+};
+
+
+export { display, mailchimp, routes, protectedRoutes, baseURL, fonts, style, schema, sameAs, effects, dataStyle };
