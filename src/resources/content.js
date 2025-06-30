@@ -4,7 +4,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Software Engineer",
+  role: "Intern, Software Engineer",
   avatar: "/images/avatar.png",
   email: "davetilak003@gmail.com",
   location: "Asia/Kolkata", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
@@ -44,17 +44,17 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
+  title: `${person.name}'s Website`,
   description: `Personal website showcasing my work as a ${person.role}`,
   headline: <>Tilak Dave</>,
   featured: {
     display: false,
-    title: <>Building <strong className="ml-4">prempushp.in</strong></>,
-    href: "https://prempushp.in",
+    title: <>Rebuilding my <strong className="ml-4">website</strong> in 15 days.</>,
+    href: "https://www.tiluckdave.in",
   },
   subline: (
     <>
-      a software engineer at Workato, where I develop connectors and integrations After hours, I build my own projects.
+      a software engineering intern at Workato, where I develop connectors and integrations. After hours, I build my own projects.
     </>
   ),
 };
@@ -62,7 +62,7 @@ const home = {
 const about = {
   path: "/about",
   label: "About",
-  title: `About – ${person.name}`,
+  title: `About - ${person.name}`,
   description: `Meet ${person.name}, ${person.role} from ${person.location}`,
   tableOfContent: {
     display: false,
@@ -130,13 +130,12 @@ const about = {
     ],
   },
   technical: {
-    display: false, // set to false to hide this section
+    display: false,
     title: "Technical skills",
     skills: [
       {
         title: "Figma",
         description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
         images: [
           {
             src: "/images/projects/project-01/cover-02.jpg",
@@ -155,7 +154,6 @@ const about = {
       {
         title: "Next.js",
         description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
         images: [
           {
             src: "/images/projects/project-01/cover-04.jpg",
@@ -179,7 +177,7 @@ const blog = {
 const work = {
   path: "/work",
   label: "Projects",
-  title: `Projects – ${person.name}`,
+  title: `Projects - ${person.name}`,
   description: `Dev projects by ${person.name}`,
 };
 
