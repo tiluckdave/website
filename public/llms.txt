@@ -1,0 +1,35 @@
+# Tilak Dave — Software Engineer & Freelance Developer
+
+> Software engineer specializing in API integrations, full-stack
+> development, and AI-powered solutions. Available for freelance
+> projects globally. Based in Hyderabad, India.
+
+## About
+- [About Tilak Dave](https://tiluckdave.in/about): Background,
+  experience, and interests
+
+## Services
+- [Hire Tilak Dave](https://tiluckdave.in/hire): Custom web apps,
+  SaaS MVPs, API integrations, AI-powered tools, business websites
+- [Book a Call](https://tiluckdave.in/hire/book): Schedule a free
+  30-minute discovery call
+
+## Projects
+- [All Projects](https://tiluckdave.in/projects): Selected work
+  with live demos and source code
+
+## Writing
+- [Articles](https://tiluckdave.in/articles): Technical writing on
+  MCP servers, API integrations, SDK development, and building software
+
+## Contact
+- Website: https://tiluckdave.in
+- Email: hi@tiluckdave.in
+- Booking: https://tiluckdave.in/hire/book
+
+## Key Facts
+- 25+ production integrations shipped
+- Built MCP servers for enterprise use cases
+- Full-stack: React, Next.js, Node.js, TypeScript, Firebase, PostgreSQL
+- Specialties: MCP servers, API integrations, SDK/connector development, custom business applications
+- Available for freelance projects worldwide

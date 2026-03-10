@@ -1,0 +1,217 @@
+# PRD Section 9.4 — Cross-posting automation
+# Triggered on push to content/articles/, detects new MDX files, posts to Dev.to and Hashnode
+name: Cross-post articles
+
+on:
+  push:
+    paths:
+      - "content/articles/**/*.mdx"
+
+jobs:
+  cross-post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Detect new article files
+        id: detect
+        run: |
+          NEW_FILES=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'content/articles/*.mdx' | head -20)
+          echo "files=$NEW_FILES" >> $GITHUB_OUTPUT
+          if [ -z "$NEW_FILES" ]; then
+            echo "no_new_files=true" >> $GITHUB_OUTPUT
+          else
+            echo "no_new_files=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Cross-post new articles
+        if: steps.detect.outputs.no_new_files == 'false'
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+          HASHNODE_TOKEN: ${{ secrets.HASHNODE_TOKEN }}
+          HASHNODE_PUBLICATION_ID: ${{ secrets.HASHNODE_PUBLICATION_ID }}
+        run: |
+          npm install gray-matter
+
+          node << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
+          const matter = require('gray-matter');
+
+          const BASE_URL = 'https://tiluckdave.in';
+          const TRACKING_FILE = '.github/cross-posted.json';
+
+          // Load tracking data
+          let tracked = {};
+          if (fs.existsSync(TRACKING_FILE)) {
+            tracked = JSON.parse(fs.readFileSync(TRACKING_FILE, 'utf-8'));
+          }
+
+          // Get new files from environment variable
+          const newFilesRaw = process.env.NEW_FILES || '';
+          const newFiles = newFilesRaw.split('\n').filter(Boolean);
+
+          async function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+          }
+
+          // Sanitize MDX → Markdown for cross-posting
+          function sanitizeMdx(content, slug) {
+            return content
+              // Remove imports and exports
+              .replace(/^import\s+.*$/gm, '')
+              .replace(/^export\s+.*$/gm, '')
+              // Replace relative image paths with absolute URLs
+              .replace(/!\[([^\]]*)\]\(\.\/([^)]+)\)/g, `![$1](${BASE_URL}/images/$2)`)
+              .replace(/!\[([^\]]*)\]\(\/([^)]+)\)/g, `![$1](${BASE_URL}/$2)`)
+              // Replace custom MDX components with plain text note
+              .replace(/<[A-Z][A-Za-z]*[^/]*\/>/g, `\n*See original post: ${BASE_URL}/articles/${slug}*\n`)
+              .replace(/<[A-Z][A-Za-z]*[^>]*>[\s\S]*?<\/[A-Z][A-Za-z]*>/g, `\n*See original post: ${BASE_URL}/articles/${slug}*\n`)
+              .trim();
+          }
+
+          async function postToDevTo(article, slug, markdown) {
+            const canonicalUrl = `${BASE_URL}/articles/${slug}`;
+            const body = {
+              article: {
+                title: article.title,
+                body_markdown: `*This article was originally published at [tiluckdave.in](${canonicalUrl})*\n\n${markdown}`,
+                published: true,
+                canonical_url: canonicalUrl,
+                tags: (article.tags || []).slice(0, 4),
+                description: article.description || '',
+              },
+            };
+
+            const res = await fetch('https://dev.to/api/articles', {
+              method: 'POST',
+              headers: {
+                'api-key': process.env.DEVTO_API_KEY,
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(body),
+            });
+
+            if (!res.ok) {
+              const text = await res.text();
+              throw new Error(`Dev.to API error: ${res.status} ${text}`);
+            }
+
+            return await res.json();
+          }
+
+          async function postToHashnode(article, slug, markdown) {
+            const canonicalUrl = `${BASE_URL}/articles/${slug}`;
+            const query = `
+              mutation PublishPost($input: PublishPostInput!) {
+                publishPost(input: $input) {
+                  post {
+                    id
+                    url
+                  }
+                }
+              }
+            `;
+
+            const variables = {
+              input: {
+                title: article.title,
+                contentMarkdown: `*Originally published at [tiluckdave.in](${canonicalUrl})*\n\n${markdown}`,
+                originalArticleURL: canonicalUrl,
+                publicationId: process.env.HASHNODE_PUBLICATION_ID,
+                tags: [],
+              },
+            };
+
+            const res = await fetch('https://gql.hashnode.com', {
+              method: 'POST',
+              headers: {
+                Authorization: process.env.HASHNODE_TOKEN,
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ query, variables }),
+            });
+
+            if (!res.ok) {
+              const text = await res.text();
+              throw new Error(`Hashnode API error: ${res.status} ${text}`);
+            }
+
+            return await res.json();
+          }
+
+          async function main() {
+            for (const file of newFiles) {
+              const slug = path.basename(file, '.mdx');
+
+              if (tracked[slug]) {
+                console.log(`Skipping ${slug} — already cross-posted`);
+                continue;
+              }
+
+              const raw = fs.readFileSync(file, 'utf-8');
+              const { data: frontmatter, content } = matter(raw);
+
+              if (!frontmatter.published) {
+                console.log(`Skipping ${slug} — not published`);
+                continue;
+              }
+
+              const markdown = sanitizeMdx(content, slug);
+              console.log(`Cross-posting: ${slug}`);
+
+              const result = { slug, devto: null, hashnode: null, postedAt: new Date().toISOString() };
+
+              try {
+                const devtoResult = await postToDevTo(frontmatter, slug, markdown);
+                result.devto = devtoResult.url || devtoResult.id;
+                console.log(`Dev.to: posted at ${result.devto}`);
+              } catch (err) {
+                console.error(`Dev.to failed for ${slug}:`, err.message);
+              }
+
+              await sleep(2500);
+
+              try {
+                const hashnodeResult = await postToHashnode(frontmatter, slug, markdown);
+                result.hashnode = hashnodeResult.data?.publishPost?.post?.url;
+                console.log(`Hashnode: posted at ${result.hashnode}`);
+              } catch (err) {
+                console.error(`Hashnode failed for ${slug}:`, err.message);
+              }
+
+              tracked[slug] = result;
+              await sleep(2500);
+            }
+
+            // Save tracking file
+            fs.writeFileSync(TRACKING_FILE, JSON.stringify(tracked, null, 2));
+          }
+
+          main().catch(err => {
+            console.error('Cross-posting failed:', err);
+            process.exit(1);
+          });
+          EOF
+        env:
+          NEW_FILES: ${{ steps.detect.outputs.files }}
+
+      - name: Commit tracking file
+        if: steps.detect.outputs.no_new_files == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .github/cross-posted.json
+          git diff --staged --quiet || git commit -m "chore: update cross-posting tracker"
+          git push

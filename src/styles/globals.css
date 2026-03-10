@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+/* =============================================
+   CSS Custom Properties — Design Tokens
+   PRD Section 4.2 Color Palette
+   ============================================= */
+
+:root {
+  --bg-primary: #F5F5F0;
+  --bg-code: #E8E4DF;
+  --text-primary: #2A2A28;
+  --text-secondary: #9A8A7E;
+  --text-muted: #B0A999;
+  --accent: #B08A57;
+  --accent-hover: #8C7C4A;
+  --border: rgba(176, 169, 153, 0.3);
+
+  /* PRD Section 4.3 Font Stacks */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, "Cascadia Code",
+    Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #111111;
+    --bg-code: #1E1E1E;
+    --text-primary: #E8E4DF;
+    --text-secondary: #B0A999;
+    --text-muted: #8A8478;
+    --accent: #C9B06B;
+    --accent-hover: #D4C19C;
+    --border: rgba(176, 169, 153, 0.12);
+  }
+}
+
+/* =============================================
+   Tailwind v4 theme tokens
+   ============================================= */
+
+@theme inline {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-code: var(--bg-code);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --font-family-sans: var(--font-sans);
+  --font-family-mono: var(--font-mono);
+}
+
+/* =============================================
+   Base Styles
+   ============================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* =============================================
+   Typography Scale — PRD Section 4.3
+   ============================================= */
+
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin: 0 0 24px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin: 48px 0 16px;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin: 32px 0 12px;
+}
+
+p {
+  margin: 0 0 24px;
+}
+
+/* =============================================
+   Links — PRD Section 4.4
+   Always underlined. Hover shifts font-weight only.
+   ============================================= */
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 400;
+}
+
+a:hover {
+  font-weight: 500;
+}
+
+/* =============================================
+   Code — PRD Section 4.4
+   ============================================= */
+
+code {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  background-color: var(--bg-code);
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+pre {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: var(--bg-code);
+  padding: 16px;
+  overflow-x: auto;
+  margin: 0 0 24px;
+  border-radius: 0;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
