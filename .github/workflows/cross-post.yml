@@ -41,6 +41,7 @@ jobs:
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
           HASHNODE_TOKEN: ${{ secrets.HASHNODE_TOKEN }}
           HASHNODE_PUBLICATION_ID: ${{ secrets.HASHNODE_PUBLICATION_ID }}
+          NEW_FILES: ${{ steps.detect.outputs.files }}
         run: |
           npm install gray-matter
 
@@ -204,8 +205,6 @@ jobs:
             process.exit(1);
           });
           EOF
-        env:
-          NEW_FILES: ${{ steps.detect.outputs.files }}
 
       - name: Commit tracking file
         if: steps.detect.outputs.no_new_files == 'false'
