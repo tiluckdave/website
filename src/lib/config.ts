@@ -23,9 +23,9 @@ export const siteConfig = {
 	twitterHandle: "@tiluckdave",
 
 	seo: {
-		defaultTitle: "Tilak Dave — I Build Smart, Snappy Software for Real People",
+		defaultTitle: "Tilak Dave — Software Engineer & Developer",
 		defaultDescription:
-			"Hey there! I'm Tilak Dave, software developer in India, I love making APIs, useful apps, and technical magic. If you need to automate something (or just want to chat about code and cricket), I'm your guy. Let's make your idea real, together.",
+			"Tilak Dave — software engineer in India. I build web apps, API integrations, and AI tools. Hire me for your next project.",
 		defaultKeywords: [
 			"Tilak Dave",
 			"custom APIs India",
@@ -40,9 +40,9 @@ export const siteConfig = {
 		],
 
 		home: {
-			title: "Tilak Dave — Building Useful Tools (and Having Fun Doing It)",
+			title: "Tilak Dave — Software Engineer",
 			description:
-				"Hi! I'm Tilak, software developer I turn daydreams into working web apps, connect weird APIs, and sprinkle a bit of AI where it actually helps. Let's build something fun and useful for your project!",
+				"I'm Tilak, a software engineer in India. I build web apps, API integrations, and AI-powered tools. Explore my work or hire me for your project.",
 			keywords: [
 				"Tilak Dave",
 				"web developer India",
@@ -53,11 +53,11 @@ export const siteConfig = {
 			],
 		},
 		about: {
-			title: "About Tilak - Not Just Code, But Heart (and a Lot of Coffee)",
+			title: "About Tilak Dave — Engineer, Builder, Human",
 			description:
-				"Hey, I'm Tilak. I live in India and I code apps, APIs, and clever tools that solve everyday pains. Need an integration, a system that just works, or a consultant who actually listens? I'm here to help (and bring the snacks).",
+				"I'm Tilak Dave — software engineer from India. I build real things, lead teams, and write about what I learn. This is my story.",
 			ogDescription:
-				"Get to know Tilak: developer, problem-solver, and not afraid of a challenge - or a good samosa. I love automating the boring stuff and making clients smile.",
+				"Software engineer, TEDx organizer, hackathon winner. Get to know Tilak Dave — the person behind the code.",
 			keywords: [
 				"Tilak Dave bio",
 				"developer India",
@@ -68,11 +68,11 @@ export const siteConfig = {
 			],
 		},
 		projects: {
-			title: "Tilak Dave's Projects — Real Results, Zero Fluff",
+			title: "Projects by Tilak Dave — Apps, APIs & AI Tools",
 			description:
-				"See the actual software projects I've shipped: from custom integration platforms (with lots of moving parts!) to business dashboards and quirky tools. Every case comes with the why, how, and what-happened-next - nothing hidden behind buzzwords.",
+				"Web apps, API integrations, and AI tools I've shipped. Each project includes the problem, what I built, and the outcome.",
 			ogDescription:
-				"Explore projects built by Tilak - API wizardry, web apps, business platforms, and a dash of creative fun.",
+				"Web apps, API integrations, and AI tools built by Tilak Dave. See the problem, solution, and results.",
 			keywords: [
 				"Tilak Dave portfolio",
 				"web app projects India",
@@ -82,10 +82,10 @@ export const siteConfig = {
 			],
 		},
 		articles: {
-			title: "Articles & Experiments from Tilak's Laptop",
+			title: "Articles by Tilak Dave — Engineering & Life",
 			description:
-				"Read posts by Tilak Dave about API mishaps, debugging adventures, business apps, and occasionally food or cricket. These stories are for devs, founders, and anyone curious about how software *actually* gets built (sometimes sweat, often laughs).",
-			ogTitle: "Coding, Cricket, and Coffee: Articles by Tilak Dave",
+				"Writing by Tilak Dave on software engineering, API integrations, AI, and the occasional personal essay. Read and learn something.",
+			ogTitle: "Articles by Tilak Dave — Engineering & Life",
 			keywords: [
 				"developer blog India",
 				"API adventure stories",
@@ -96,16 +96,16 @@ export const siteConfig = {
 			],
 		},
 		privacy: {
-			title: "Privacy - No Sneaky Stuff Here",
+			title: "Privacy Policy — tiluckdave.in",
 			description:
-				"Here's my privacy policy: I only collect what's needed to keep this site and our chats safe and enjoyable. No weird tracking, no unwelcome emails. Your data, your rules!",
+				"Privacy policy for tiluckdave.in. I only collect what's needed to run this site. No tracking, no spam, no surprises.",
 			keywords: ["privacy policy tiluckdave.in"],
 		},
 		hireWork: {
 			description:
-				"Peek into real projects I've tackled: what was broken, how I fixed it, and why my clients now sleep a little better. Expect honest stories, a sprinkle of tech jargon, and outcomes you can brag about at your next call.",
+				"Real projects with real outcomes. See what I've built, what problems I solved, and the results. Then hire me for yours.",
 			ogDescription:
-				"Real work, real fixes, and a developer who actually cares (and enjoys the challenge).",
+				"Real projects, real results. See Tilak Dave's work — then hire him for yours.",
 			keywords: [
 				"Tilak Dave work samples",
 				"project outcomes India",
@@ -115,12 +115,12 @@ export const siteConfig = {
 			],
 		},
 		hireBook: {
-			title: "Book a Friendly Call with Tilak (It's On Me!)",
+			title: "Book a Free Call with Tilak Dave",
 			description:
-				"Let's hop on a quick call (promise, it's not salesy) about your idea or software headache. I'm here to help you figure stuff out - and bring solutions, not problems. Calendly slots are open and I might even tell a bad joke.",
-			ogTitle: "Book a Call with Tilak - Let's Build Something Cool",
+				"Pick a time and let's talk about your project. Free 30-minute discovery call — no sales pitch, just a real conversation about what you need.",
+			ogTitle: "Book a Free Discovery Call with Tilak Dave",
 			ogDescription:
-				"Easy and free: Book a discovery call with Tilak Dave, software developer and good listener, so we can make your next project a reality.",
+				"Free 30-minute call to discuss your project. Pick a time that works for you and let's get started.",
 			keywords: [
 				"book Tilak Dave call",
 				"discovery call developer",
@@ -130,11 +130,11 @@ export const siteConfig = {
 			],
 		},
 		hireContact: {
-			title: "Contact Tilak - Your Idea, My Code, Let's Chat!",
+			title: "Contact Tilak Dave — Start a Project",
 			description:
-				"Want to skip small talk? Tell me about your project straight up! This form gets you to my inbox (or just email if you like emojis). I love building custom software, connecting APIs, and solving 'oh no' issues for folks all over India (and beyond).",
+				"Tell me about your project. I reply within 24 hours. Fill in the form or reach out directly — let's figure out if we're a good fit.",
 			ogDescription:
-				"Say hi and let's cook up your dream project. I promise a quick reply, actual feedback, and zero sales pressure.",
+				"Got a project in mind? Contact Tilak Dave. Replies within 24 hours, no sales pressure.",
 			keywords: [
 				"contact Tilak Dave",
 				"project inquiry developer",
@@ -185,9 +185,9 @@ export const siteConfig = {
 		responseTime: "Typical reply within a day.",
 
 		metaTitle:
-			"Hire Tilak Dave — Software Developer for Custom Apps & Integrations",
+			"Hire Tilak Dave — Freelance Software Developer",
 		metaDescription:
-			"Looking for a web developer? I'm Tilak, based in India. I build web apps, automations, and solutions to real business problems. Let's make your project happen.",
+			"I build web apps, API integrations, and AI tools for founders and teams. Based in India, available globally. Let's build something together.",
 		metaKeywords: [
 			"hire web developer India",
 			"Tilak Dave freelance coder",

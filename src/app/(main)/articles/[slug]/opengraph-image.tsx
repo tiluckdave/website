@@ -45,9 +45,9 @@ export default async function OGImage({ params }: { params: Promise<{ slug: stri
         <div style={{ color: "#E4E4E0", fontSize: "42px", fontWeight: 700, lineHeight: 1.2, maxWidth: "1000px", display: "flex" }}>
           {title}
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div style={{ color: "#5C6170", fontSize: "16px", display: "flex" }}>{date}</div>
-          <div style={{ color: "#5C6170", fontSize: "16px", display: "flex" }}>{siteConfig.domain}</div>
+          <div style={{ color: "#C9B06B", fontSize: "18px", fontWeight: 700, display: "flex" }}>Read article →</div>
         </div>
       </div>
     ),

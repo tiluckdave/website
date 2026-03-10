@@ -33,7 +33,8 @@ export default function OGImage() {
             MCP servers, API integrations, full-stack development
           </div>
         </div>
-        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ color: "#C9B06B", fontSize: "18px", fontWeight: 700, display: "flex" }}>Read the articles →</div>
           <div style={{ color: "#5C6170", fontSize: "16px", display: "flex" }}>{siteConfig.domain}</div>
         </div>
       </div>

@@ -35,7 +35,8 @@ export default function OGImage() {
             Software Engineer
           </div>
         </div>
-        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ color: "#C9B06B", fontSize: "18px", fontWeight: 700, display: "flex" }}>View my work →</div>
           <div style={{ color: "#5C6170", fontSize: "16px", display: "flex" }}>
             {siteConfig.domain}
           </div>

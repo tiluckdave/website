@@ -33,7 +33,8 @@ export default function OGImage() {
             Web apps, API integrations, and AI tools by {siteConfig.name}
           </div>
         </div>
-        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ color: "#C9B06B", fontSize: "18px", fontWeight: 700, display: "flex" }}>View all projects →</div>
           <div style={{ color: "#5C6170", fontSize: "16px", display: "flex" }}>{siteConfig.domain}</div>
         </div>
       </div>
