@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/config";
 import projects from "@/../content/projects.json";
 
 export const metadata: Metadata = {
-  title: siteConfig.hireWork.heading,
+  title: siteConfig.seo.hireWork.title,
   description: siteConfig.seo.hireWork.description,
   keywords: [...siteConfig.seo.hireWork.keywords],
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     canonical: `${siteConfig.url}/hire/work`,
   },
   openGraph: {
-    title: `${siteConfig.hireWork.heading} — ${siteConfig.name}`,
+    title: siteConfig.seo.hireWork.title,
     description: siteConfig.seo.hireWork.ogDescription,
     url: `${siteConfig.url}/hire/work`,
     images: [{ url: "/hire/opengraph-image", width: 1200, height: 630 }],
