@@ -1,7 +1,6 @@
 import HireNav from "@/components/hire-nav";
 import HireFooter from "@/components/hire-footer";
 
-// PRD Section 7 — Hire section layout with adjusted navigation
 export default function HireLayout({
   children,
 }: {
@@ -9,12 +8,13 @@ export default function HireLayout({
 }) {
   return (
     <>
+      <div className="ambient-glow ambient-glow--hire" aria-hidden="true" />
       <HireNav />
       <main
         style={{
-          maxWidth: "640px",
+          maxWidth: "680px",
           margin: "0 auto",
-          padding: "48px 24px 96px",
+          padding: "40px 24px 96px",
         }}
       >
         {children}

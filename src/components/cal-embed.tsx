@@ -1,59 +1,33 @@
 "use client";
 
+import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
 
-// PRD Section 7.3 — Cal.com embed wrapper (vanilla JS approach for compatibility)
-// Uses @calcom/embed-core script tag approach
 export default function CalEmbed() {
+  const username = process.env.NEXT_PUBLIC_CALCOM_USERNAME ?? "tiluckdave";
+  const eventSlug = process.env.NEXT_PUBLIC_CALCOM_EVENT_SLUG ?? "discovery";
+  const calLink = `${username}/${eventSlug}`;
+
   useEffect(() => {
-    type CalFunction = {
-      (...args: unknown[]): void;
-      loaded?: boolean;
-      ns?: Record<string, unknown>;
-      q?: unknown[];
-    };
-
-    const w = window as typeof window & { Cal?: CalFunction };
-
-    if (!w.Cal) {
-      const script = document.createElement("script");
-      script.src = "https://app.cal.com/embed/embed.js";
-      document.head.appendChild(script);
-
-      w.Cal = function (...args: unknown[]) {
-        (w.Cal!.q = w.Cal!.q || []).push(args);
-      } as CalFunction;
-    }
-
-    const Cal = w.Cal!;
-
-    Cal("init", { origin: "https://cal.com" });
-
-    Cal("inline", {
-      elementOrSelector: "#cal-embed",
-      // TILAK: Replace with your Cal.com username/event-slug
-      calLink: "tiluckdave/discovery",
-      config: {
+    (async function () {
+      const cal = await getCalApi({ namespace: eventSlug });
+      cal("ui", {
+        cssVarsPerTheme: {
+          light: { "cal-brand": "#2C5F4B" },
+          dark: { "cal-brand": "#5B9A7B" },
+        },
+        hideEventTypeDetails: false,
         layout: "month_view",
-        theme: "auto",
-        brandColor: "#B08A57",
-      },
-    });
-
-    Cal("ui", {
-      styles: { branding: { brandColor: "#B08A57" } },
-      hideEventTypeDetails: false,
-    });
-  }, []);
+      });
+    })();
+  }, [eventSlug]);
 
   return (
-    <div
-      id="cal-embed"
-      style={{
-        width: "100%",
-        minHeight: "500px",
-        overflow: "scroll",
-      }}
+    <Cal
+      namespace={eventSlug}
+      calLink={calLink}
+      style={{ width: "100%", height: "100%", overflow: "scroll" }}
+      config={{ layout: "month_view" }}
     />
   );
 }

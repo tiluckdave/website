@@ -3,9 +3,6 @@
 import { useState, FormEvent } from "react";
 import Link from "next/link";
 
-// PRD Section 7.4 — Freelance contact form
-// Fields: name, email, project description, budget, timeline, referral
-// Honeypot spam protection, no CAPTCHA
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -82,7 +79,6 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate>
-      {/* Honeypot field — hidden from users, catches bots */}
       <div style={{ display: "none" }} aria-hidden="true">
         <label htmlFor="website">Website (leave blank)</label>
         <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
@@ -143,10 +139,10 @@ export default function ContactForm() {
           disabled={status === "sending"}
         >
           <option value="">Select a range</option>
-          <option value="under-1000">Under $1,000</option>
-          <option value="1000-5000">$1,000 – $5,000</option>
-          <option value="5000-15000">$5,000 – $15,000</option>
-          <option value="15000-plus">$15,000+</option>
+          <option value="under-500">Under $500</option>
+          <option value="500-1000">$500 – $1,000</option>
+          <option value="1000-3000">$1,000 – $3,000</option>
+          <option value="3000-5000">$3,000 – $5,000</option>
           <option value="not-sure">Not sure yet</option>
         </select>
       </div>

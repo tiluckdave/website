@@ -1,0 +1,126 @@
+---
+title: "MDX Components Guide"
+date: "2026-03-10"
+description: "A reference guide for all custom MDX components available on this site."
+tags: ["reference", "mdx"]
+published: false
+---
+
+All custom components below are available globally in every MDX file — no imports needed.
+
+---
+
+## Callout
+
+<Callout type="info">This is an **info** callout. Use it for general notes.</Callout>
+
+<Callout type="tip">This is a **tip** callout. Use it for helpful suggestions.</Callout>
+
+<Callout type="warning">This is a **warning** callout. Use it for things to watch out for.</Callout>
+
+<Callout type="danger">This is a **danger** callout. Use it for destructive or breaking actions.</Callout>
+
+Props: `type` — `"info"` (default) | `"tip"` | `"warning"` | `"danger"`
+
+---
+
+## Steps
+
+<Steps>
+<Step n="1" title="Install dependencies">
+Run `pnpm install` in your project root.
+</Step>
+<Step n="2" title="Configure the project">
+Edit `config.ts` with your settings. Make sure all required fields are filled in.
+</Step>
+<Step n="3" title="Start the dev server">
+Run `pnpm dev` and open `http://localhost:3000` in your browser.
+</Step>
+</Steps>
+
+Props for `Step`: `number` (required) | `title` (required)
+
+---
+
+## CodeTabs
+
+<CodeTabs>
+```bash title="npm"
+npm install next react react-dom
+```
+
+```bash title="pnpm"
+pnpm add next react react-dom
+```
+
+```bash title="yarn"
+yarn add next react react-dom
+```
+</CodeTabs>
+
+---
+
+## Code block
+
+```typescript title="config.ts" showLineNumbers
+export const config = {
+  name: "my-app",
+  version: "1.0.0",
+  debug: false,
+};
+```
+
+---
+
+## FileTree
+
+<FileTree>
+- src/
+  - app/
+    - page.tsx
+    - layout.tsx
+  - components/
+    - nav.tsx
+    - footer.tsx
+- package.json
+- tsconfig.json
+</FileTree>
+
+---
+
+## LinkPreview
+
+<LinkPreview
+  url="https://github.com/tiluckdave/website"
+  title="tiluckdave/website"
+  description="Source code for tiluckdave.in — personal portfolio and blog."
+/>
+
+---
+
+## Table
+
+| Component   | Type      | Required |
+|-------------|-----------|----------|
+| Callout     | Server    | No       |
+| Steps       | Server    | No       |
+| FileTree    | Server    | No       |
+| CodeTabs    | Server+Client | No  |
+| LinkPreview | Server    | No       |
+| Figure      | Server    | No       |
+
+---
+
+## Standard elements
+
+**Bold**, *italic*, `inline code`, [link](/articles)
+
+> Blockquote renders as italic text.
+
+- Unordered list
+- Second item
+  - Nested item
+
+1. Ordered list
+2. Second item
+3. Third item

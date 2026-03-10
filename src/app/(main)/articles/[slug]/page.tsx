@@ -1,9 +1,22 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
+import remarkGfm from "remark-gfm";
 import { getAllArticles, getArticleBySlug } from "@/lib/content";
 import { mdxComponents } from "@/components/mdx-components";
+import { siteConfig } from "@/lib/config";
 import type { Metadata } from "next";
+
+const rehypePrettyCodeOptions = {
+  theme: {
+    dark: "github-dark",
+    light: "github-light",
+  },
+  keepBackground: false,
+  defaultLang: "plaintext",
+};
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -19,24 +32,37 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const article = getArticleBySlug(slug);
   if (!article) return {};
 
+  const ogImageUrl = article.frontmatter.image
+    ? article.frontmatter.image
+    : `/articles/${slug}/opengraph-image`;
+
   return {
     title: article.frontmatter.title,
     description: article.frontmatter.description,
+    keywords: article.frontmatter.tags,
+    authors: [{ name: siteConfig.name, url: siteConfig.url }],
     alternates: {
-      canonical: `https://tiluckdave.in/articles/${slug}`,
+      canonical: `${siteConfig.url}/articles/${slug}`,
     },
     openGraph: {
       title: article.frontmatter.title,
       description: article.frontmatter.description,
       type: "article",
       publishedTime: article.frontmatter.date,
-      url: `https://tiluckdave.in/articles/${slug}`,
+      url: `${siteConfig.url}/articles/${slug}`,
+      authors: [siteConfig.name],
+      tags: article.frontmatter.tags,
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: article.frontmatter.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.frontmatter.title,
+      description: article.frontmatter.description,
+      images: [ogImageUrl],
     },
   };
 }
 
-// PRD Section 6.4 — Individual article page
-// Title, date, reading time, MDX body at 18px, edit-on-GitHub link, series nav
 export default async function ArticlePage({ params }: PageProps) {
   const { slug } = await params;
   const article = getArticleBySlug(slug);
@@ -55,28 +81,35 @@ export default async function ArticlePage({ params }: PageProps) {
   const nextArticle =
     currentIndex < seriesArticles.length - 1 ? seriesArticles[currentIndex + 1] : null;
 
+  const articleUrl = `${siteConfig.url}/articles/${slug}`;
   const articleJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: article.frontmatter.title,
     description: article.frontmatter.description,
     datePublished: article.frontmatter.date,
+    dateModified: article.frontmatter.date,
+    keywords: article.frontmatter.tags.join(", "),
+    wordCount: article.content.split(/\s+/).length,
+    timeRequired: `PT${article.readingTime}M`,
     author: {
       "@type": "Person",
-      name: "Tilak Dave",
-      url: "https://tiluckdave.in",
+      name: siteConfig.name,
+      url: siteConfig.url,
     },
     publisher: {
       "@type": "Person",
-      name: "Tilak Dave",
-      url: "https://tiluckdave.in",
+      name: siteConfig.name,
+      url: siteConfig.url,
     },
-    url: `https://tiluckdave.in/articles/${slug}`,
-    mainEntityOfPage: `https://tiluckdave.in/articles/${slug}`,
+    url: articleUrl,
+    mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
+    image: `${siteConfig.url}/articles/${slug}/opengraph-image`,
+    isPartOf: { "@type": "Blog", url: `${siteConfig.url}/articles` },
   };
 
   return (
-    <>
+    <div className="animate-in">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -103,30 +136,31 @@ export default async function ArticlePage({ params }: PageProps) {
           <span>{article.readingTime} min read</span>
         </div>
 
-        {/* Article body at 18px per PRD section 6.4 */}
+        {article.frontmatter.image && (
+          <Image
+            src={article.frontmatter.image}
+            alt={article.frontmatter.title}
+            width={640}
+            height={360}
+            style={{ width: "100%", height: "auto", marginBottom: "40px" }}
+            priority
+          />
+        )}
+
         <div style={{ fontSize: "18px", lineHeight: 1.75 }}>
-          <MDXRemote source={article.content} components={mdxComponents} />
+          <MDXRemote
+            source={article.content}
+            components={mdxComponents}
+            options={{
+              mdxOptions: {
+                remarkPlugins: [remarkGfm],
+                rehypePlugins: [[rehypePrettyCode as any, rehypePrettyCodeOptions]],
+              },
+            }}
+          />
         </div>
       </article>
 
-      <div
-        style={{
-          marginTop: "64px",
-          paddingTop: "24px",
-          borderTop: "1px solid var(--border)",
-          fontSize: "14px",
-        }}
-      >
-        <Link
-          href={`https://github.com/tiluckdave/website/edit/main/content/articles/${slug}.mdx`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Edit on GitHub →
-        </Link>
-      </div>
-
-      {/* Series navigation — shown only when article is part of a series */}
       {article.frontmatter.series && (prevArticle || nextArticle) && (
         <nav
           style={{
@@ -153,6 +187,6 @@ export default async function ArticlePage({ params }: PageProps) {
           </div>
         </nav>
       )}
-    </>
+    </div>
   );
 }

@@ -1,75 +1,50 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/config";
+import FaqList from "@/components/faq-list";
 
 export const metadata: Metadata = {
-  title: "Hire Tilak Dave — Freelance Software Developer | Custom Apps, MCP Servers, AI Solutions",
-  description:
-    "Hire Tilak Dave for custom web applications, SaaS MVPs, API integrations, MCP servers, and AI-powered solutions. Based in India, working globally.",
+  title: siteConfig.hire.metaTitle,
+  description: siteConfig.hire.metaDescription,
+  keywords: [...siteConfig.hire.metaKeywords],
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
   alternates: {
-    canonical: "https://tiluckdave.in/hire",
+    canonical: `${siteConfig.url}/hire`,
+  },
+  openGraph: {
+    title: siteConfig.hire.metaTitle,
+    description: siteConfig.hire.metaDescription,
+    url: `${siteConfig.url}/hire`,
+    images: [{ url: "/hire/opengraph-image", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/hire/opengraph-image"],
   },
 };
 
-// PRD Section 7.1 — Services overview page
-export default function HirePage() {
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What kind of software can you build?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Custom web applications, SaaS products, dashboards, internal tools, business applications (ordering systems, CRMs, billing platforms), MCP servers and AI integrations, websites and landing pages, and API integrations and automation.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How much does a custom web app cost?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "It depends on the scope. Simple landing pages start around $500. A full SaaS MVP with authentication, payments, and a core feature set typically runs $3,000–$10,000. Enterprise applications and complex integrations are scoped individually. I provide a clear proposal with price, scope, and timeline before you commit.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do you work with international clients?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. I work with clients in the US, UK, Europe, and globally. I'm based in India (IST) but maintain overlap with US and EU business hours. All communication is async-first — you won't be waiting on timezone differences.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What is your typical timeline?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "A landing page or small site: 1–2 weeks. A focused SaaS MVP: 4–8 weeks. Complex applications: 2–4 months. I give you a specific timeline in the proposal, and I meet it.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How do we communicate during a project?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Async-first. I use Slack, Linear, or whatever you use. Weekly written updates with what shipped, what's next, and any decisions needed. I don't do daily standups — I do weekly check-ins that respect your time.",
-        },
-      },
-    ],
-  };
+const professionalServiceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: `${siteConfig.name} — Freelance Software Developer`,
+  url: `${siteConfig.url}/hire`,
+  email: siteConfig.email,
+  description: siteConfig.hire.metaDescription,
+  areaServed: "Worldwide",
+};
 
-  const professionalServiceJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: "Tilak Dave — Freelance Software Developer",
-    url: "https://tiluckdave.in/hire",
-    email: "hi@tiluckdave.in",
-    description:
-      "Custom web applications, SaaS MVPs, API integrations, MCP servers, and AI-powered solutions.",
-    areaServed: "Worldwide",
-    priceRange: "$500–$15,000+",
-  };
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: siteConfig.hire.faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: { "@type": "Answer", text: faq.a },
+  })),
+};
+
+export default function HirePage() {
+  const { hire } = siteConfig;
 
   return (
     <>
@@ -82,165 +57,130 @@ export default function HirePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <h1>I build software that solves real problems.</h1>
-      <p style={{ color: "var(--text-secondary)" }}>
-        From MVPs to production systems — for startups, businesses, and brands worldwide.
-      </p>
-
-      <p>
-        <Link href="/hire/book">Let&apos;s talk about your project →</Link>
-      </p>
-
-      <h2>What I Build</h2>
-
-      <div style={{ marginBottom: "24px" }}>
-        <p style={{ fontWeight: 500, marginBottom: "8px" }}>Custom Web Applications</p>
-        <p>
-          SaaS products, dashboards, internal tools — built to work reliably in
-          production. I&apos;ll help you ship your MVP without burning through your
-          runway, and build it in a way that scales when you grow.
+      <div className="stagger-children">
+        {hire.availableForWork && (
+          <div style={{ fontSize: "13px", color: "var(--accent)", marginBottom: "16px" }}>
+            <span className="available-dot" />
+            {hire.availableLabel}
+          </div>
+        )}
+        <h1 style={{ fontSize: "clamp(32px, 5vw, 48px)", marginBottom: "16px" }}>
+          {hire.headline}
+        </h1>
+        <p style={{ color: "var(--text-secondary)", fontSize: "18px", maxWidth: "520px" }}>
+          {hire.subheadline}
         </p>
+        <div style={{ display: "flex", gap: "24px", flexWrap: "wrap", marginTop: "32px" }}>
+          <Link href={hire.ctaPrimary.href}>{hire.ctaPrimary.label}</Link>
+          <Link href={hire.ctaSecondary.href}>{hire.ctaSecondary.label}</Link>
+        </div>
       </div>
 
-      <div style={{ marginBottom: "24px" }}>
-        <p style={{ fontWeight: 500, marginBottom: "8px" }}>Custom Business Applications</p>
-        <p>
-          Ordering systems, billing platforms, inventory management, CRMs, and any
-          operational software a business needs to run. Replace your spreadsheets
-          with software that actually works for your workflow.
+      <section style={{ marginTop: "48px" }}>
+        <h2 style={{ marginTop: 0 }}>{hire.servicesHeading}</h2>
+        <div className="services-grid stagger-children">
+          {hire.services.map((service) => (
+            <div key={service.name} className="service-card">
+              <div
+                style={{
+                  fontSize: "11px",
+                  fontWeight: 600,
+                  letterSpacing: "0.08em",
+                  color: "var(--text-muted)",
+                  marginBottom: "10px",
+                  textTransform: "uppercase",
+                }}
+              >
+                {service.category}
+              </div>
+              <h3 style={{ margin: "0 0 8px", fontSize: "17px", fontWeight: 500 }}>{service.name}</h3>
+              <p style={{ color: "var(--text-secondary)", fontSize: "14px", margin: 0, lineHeight: 1.6 }}>
+                {service.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ marginTop: "64px" }}>
+        <h2 style={{ marginTop: 0 }}>{hire.howIWorkHeading}</h2>
+        <div className="stagger-children">
+          {hire.steps.map((step, i) => (
+            <div
+              key={step.title}
+              style={{
+                display: "flex",
+                gap: "16px",
+                paddingBottom: i < hire.steps.length - 1 ? "24px" : 0,
+              }}
+            >
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <div
+                  style={{
+                    width: "32px",
+                    height: "32px",
+                    borderRadius: "50%",
+                    background: "var(--accent)",
+                    color: "var(--bg-primary)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "13px",
+                    fontWeight: 700,
+                    flexShrink: 0,
+                  }}
+                >
+                  {i + 1}
+                </div>
+                {i < hire.steps.length - 1 && (
+                  <div style={{ width: "1px", flex: 1, background: "var(--border)", marginTop: "6px" }} />
+                )}
+              </div>
+              <div style={{ paddingBottom: i < hire.steps.length - 1 ? "8px" : 0 }}>
+                <div style={{ fontWeight: 600, marginBottom: "6px", lineHeight: "32px" }}>{step.title}</div>
+                <p style={{ color: "var(--text-secondary)", margin: 0, fontSize: "15px" }}>
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section
+        className="gradient-section"
+        style={{ margin: "64px -24px 0", padding: "40px 24px" }}
+      >
+        <h2 style={{ marginTop: 0 }}>{hire.whyMeHeading}</h2>
+        {hire.whyMe.map((para, i) => (
+          <p key={i} style={i === hire.whyMe.length - 1 ? { marginBottom: 0 } : undefined}>
+            {para}
+            {i === hire.whyMe.length - 1 && (
+              <>
+                {" "}
+                <Link href="/projects">See what I&apos;ve built →</Link> or{" "}
+                <Link href="/articles">read my writing →</Link> to get a sense of how I think about software.
+              </>
+            )}
+          </p>
+        ))}
+      </section>
+
+      <section style={{ marginTop: "64px" }}>
+        <h2 style={{ marginTop: 0 }}>{hire.faqHeading}</h2>
+        <FaqList faqs={[...hire.faqs]} />
+      </section>
+
+      <div
+        className="gradient-section"
+        style={{ margin: "64px -24px 0", padding: "48px 24px", textAlign: "center" }}
+      >
+        <p style={{ fontSize: "20px", fontWeight: 600, marginBottom: "16px" }}>
+          {hire.ctaBottomText}
         </p>
-      </div>
-
-      <div style={{ marginBottom: "24px" }}>
-        <p style={{ fontWeight: 500, marginBottom: "8px" }}>MCP Servers & AI-Powered Solutions</p>
-        <p>
-          Custom Model Context Protocol servers, LLM integrations, intelligent
-          automation, AI features for existing products. Give your tools an AI layer,
-          or build something new from scratch. I&apos;ve built MCP servers for enterprise
-          use cases — this isn&apos;t experimental for me.
-        </p>
-      </div>
-
-      <div style={{ marginBottom: "24px" }}>
-        <p style={{ fontWeight: 500, marginBottom: "8px" }}>Websites & Landing Pages</p>
-        <p>
-          Business sites, brand sites, personal sites. Fast, accessible, built to
-          convert. Your digital presence, done right.
-        </p>
-      </div>
-
-      <div style={{ marginBottom: "24px" }}>
-        <p style={{ fontWeight: 500, marginBottom: "8px" }}>API Integrations & Automation</p>
-        <p>
-          Connect systems, build connectors, automate workflows. I&apos;ve shipped 25+
-          production integrations across payment processors, CRMs, data platforms,
-          and internal tools. Stop copying data between tools. Let software do it.
-        </p>
-      </div>
-
-      <h2>How I Work</h2>
-
-      <div style={{ marginBottom: "16px" }}>
-        <p style={{ fontWeight: 500, marginBottom: "4px" }}>1. Discovery</p>
-        <p>
-          We talk. You tell me what you need. I ask the right questions — about your
-          users, your constraints, what success looks like.
-        </p>
-      </div>
-
-      <div style={{ marginBottom: "16px" }}>
-        <p style={{ fontWeight: 500, marginBottom: "4px" }}>2. Samples & Proposal</p>
-        <p>
-          Before you commit, I build samples so you can see and feel what you&apos;re
-          paying for. Then a clear scope, timeline, and price. No surprises.
-        </p>
-      </div>
-
-      <div style={{ marginBottom: "16px" }}>
-        <p style={{ fontWeight: 500, marginBottom: "4px" }}>3. Build</p>
-        <p>
-          Weekly updates, async-first communication. I ship fast without cutting
-          corners. You&apos;ll always know where things stand.
-        </p>
-      </div>
-
-      <div style={{ marginBottom: "24px" }}>
-        <p style={{ fontWeight: 500, marginBottom: "4px" }}>4. Launch & Maintain</p>
-        <p>
-          Your product goes live. I stick around to make sure it keeps working —
-          bug fixes, updates, support. I&apos;m not here to hand off and disappear.
-        </p>
-      </div>
-
-      <h2>Why Me</h2>
-
-      <p>
-        I&apos;ve built MCP servers that run in enterprise workflows — not as demos, but
-        as production infrastructure. I&apos;ve shipped integrations across payment
-        systems, analytics platforms, and internal APIs, 25+ of them in production.
-        Full-stack capability from database schema to deployment pipeline means you
-        don&apos;t need three contractors where one will do.
-      </p>
-      <p>
-        I&apos;m based in India (IST) but work with clients across the US, UK, and Europe
-        with real time overlap. Async-first means your project moves forward while
-        you sleep.{" "}
-        <Link href="/projects">See what I&apos;ve built →</Link> or{" "}
-        <Link href="/articles">read my writing →</Link> to get a sense of how I
-        think about software.
-      </p>
-
-      <p>
-        <Link href="/hire/book">Let&apos;s talk about your project →</Link>
-      </p>
-
-      <h2>FAQ</h2>
-
-      <div style={{ marginBottom: "24px" }}>
-        <p style={{ fontWeight: 500 }}>What kind of software can you build?</p>
-        <p>
-          Custom web applications, SaaS products, dashboards, internal tools,
-          business applications (ordering systems, CRMs, billing platforms), MCP
-          servers and AI integrations, websites and landing pages, and API
-          integrations and automation.
-        </p>
-      </div>
-
-      <div style={{ marginBottom: "24px" }}>
-        <p style={{ fontWeight: 500 }}>How much does a custom web app cost?</p>
-        <p>
-          It depends on the scope. Simple landing pages start around $500. A full
-          SaaS MVP with authentication, payments, and a core feature set typically
-          runs $3,000–$10,000. Enterprise applications and complex integrations are
-          scoped individually. I provide a clear proposal with price, scope, and
-          timeline before you commit.
-        </p>
-      </div>
-
-      <div style={{ marginBottom: "24px" }}>
-        <p style={{ fontWeight: 500 }}>Do you work with international clients?</p>
-        <p>
-          Yes. I work with clients in the US, UK, Europe, and globally. I&apos;m based in
-          India (IST) but maintain overlap with US and EU business hours.
-        </p>
-      </div>
-
-      <div style={{ marginBottom: "24px" }}>
-        <p style={{ fontWeight: 500 }}>What is your typical timeline?</p>
-        <p>
-          A landing page or small site: 1–2 weeks. A focused SaaS MVP: 4–8 weeks.
-          Complex applications: 2–4 months. I give you a specific timeline in the
-          proposal, and I meet it.
-        </p>
-      </div>
-
-      <div style={{ marginBottom: "24px" }}>
-        <p style={{ fontWeight: 500 }}>How do we communicate during a project?</p>
-        <p>
-          Async-first. I use Slack, Linear, or whatever you use. Weekly written
-          updates with what shipped, what&apos;s next, and any decisions needed. I don&apos;t
-          do daily standups — I do weekly check-ins that respect your time.
-        </p>
+        <Link href={hire.ctaPrimary.href} style={{ fontSize: "17px" }}>
+          {hire.ctaPrimary.label}
+        </Link>
       </div>
     </>
   );

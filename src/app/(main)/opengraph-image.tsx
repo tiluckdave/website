@@ -1,12 +1,12 @@
 import { ImageResponse } from "next/og";
 import { getInterBoldFont } from "@/lib/og-utils";
+import { siteConfig } from "@/lib/config";
 
 export const runtime = "nodejs";
-export const alt = "Tilak Dave — Software Engineer";
+export const alt = `${siteConfig.name} — Software Engineer`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// PRD Section 4.5 — Home page OG image
 export default function OGImage() {
   const font = getInterBoldFont();
 
@@ -16,66 +16,32 @@ export default function OGImage() {
         style={{
           width: "100%",
           height: "100%",
-          background: "#111111",
+          background: "#0B0F14",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
+          justifyContent: "space-between",
           padding: "80px",
           fontFamily: "Inter",
         }}
       >
-        <div
-          style={{
-            color: "#B0A999",
-            fontSize: "16px",
-            marginBottom: "24px",
-          }}
-        >
-          tiluckdave.in
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ color: "#5C6170", fontSize: "16px", marginBottom: "24px", display: "flex" }}>
+            {siteConfig.domain}
+          </div>
+          <div style={{ color: "#E4E4E0", fontSize: "48px", fontWeight: 700, lineHeight: 1.2, maxWidth: "900px", display: "flex" }}>
+            {siteConfig.name}
+          </div>
+          <div style={{ color: "#8B8F9A", fontSize: "24px", marginTop: "24px", maxWidth: "800px", display: "flex" }}>
+            Software Engineer
+          </div>
         </div>
-        <div
-          style={{
-            color: "#E8E4DF",
-            fontSize: "48px",
-            fontWeight: 700,
-            lineHeight: 1.2,
-            maxWidth: "900px",
-          }}
-        >
-          Tilak Dave
-        </div>
-        <div
-          style={{
-            color: "#9A8A7E",
-            fontSize: "24px",
-            marginTop: "24px",
-            maxWidth: "800px",
-          }}
-        >
-          Software Engineer
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            bottom: "48px",
-            right: "80px",
-            color: "#8A8478",
-            fontSize: "16px",
-          }}
-        >
-          tiluckdave.in
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <div style={{ color: "#5C6170", fontSize: "16px", display: "flex" }}>
+            {siteConfig.domain}
+          </div>
         </div>
       </div>
     ),
-    {
-      ...size,
-      fonts: [
-        {
-          name: "Inter",
-          data: font,
-          weight: 700,
-        },
-      ],
-    }
+    { ...size, fonts: [{ name: "Inter", data: font, weight: 700 }] }
   );
 }

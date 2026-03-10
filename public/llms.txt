@@ -2,7 +2,7 @@
 
 > Software engineer specializing in API integrations, full-stack
 > development, and AI-powered solutions. Available for freelance
-> projects globally. Based in Hyderabad, India.
+> projects globally. Based in India.
 
 ## About
 - [About Tilak Dave](https://tiluckdave.in/about): Background,
@@ -24,12 +24,13 @@
 
 ## Contact
 - Website: https://tiluckdave.in
-- Email: hi@tiluckdave.in
+- Email: hello@tiluckdave.in
 - Booking: https://tiluckdave.in/hire/book
 
 ## Key Facts
 - 25+ production integrations shipped
 - Built MCP servers for enterprise use cases
+- Built production ready business applications and SaaS products used by real people
 - Full-stack: React, Next.js, Node.js, TypeScript, Firebase, PostgreSQL
 - Specialties: MCP servers, API integrations, SDK/connector development, custom business applications
 - Available for freelance projects worldwide

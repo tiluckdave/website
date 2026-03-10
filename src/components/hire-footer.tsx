@@ -1,11 +1,11 @@
 import Link from "next/link";
+import { siteConfig } from "@/lib/config";
 
-// PRD Section 8.2 — Hire section footer includes Privacy Policy link
 export default function HireFooter() {
   return (
     <footer
       style={{
-        maxWidth: "720px",
+        maxWidth: "680px",
         margin: "0 auto",
         padding: "24px 24px 48px",
         borderTop: "1px solid var(--border)",
@@ -18,23 +18,13 @@ export default function HireFooter() {
         gap: "12px",
       }}
     >
-      <span>© 2026 Tilak Dave</span>
+      <span>© 2026 {siteConfig.name}</span>
       <div style={{ display: "flex", gap: "16px" }}>
-        <Link href="https://github.com/tiluckdave" style={{ color: "var(--text-secondary)" }}>
-          GitHub
-        </Link>
-        <Link href="https://twitter.com/tiluckdave" style={{ color: "var(--text-secondary)" }}>
-          Twitter/X
-        </Link>
-        <Link href="https://linkedin.com/in/tiluckdave" style={{ color: "var(--text-secondary)" }}>
-          LinkedIn
-        </Link>
-        <Link href="/rss.xml" style={{ color: "var(--text-secondary)" }}>
-          RSS
-        </Link>
-        <Link href="/privacy" style={{ color: "var(--text-secondary)" }}>
-          Privacy Policy
-        </Link>
+        <Link href={siteConfig.social.github} className="nav-link">GitHub</Link>
+        <Link href={siteConfig.social.twitter} className="nav-link">Twitter/X</Link>
+        <Link href={siteConfig.social.linkedin} className="nav-link">LinkedIn</Link>
+        <Link href="/rss.xml" className="nav-link">RSS</Link>
+        <Link href="/privacy" className="nav-link">Privacy Policy</Link>
       </div>
     </footer>
   );

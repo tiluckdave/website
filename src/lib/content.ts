@@ -4,12 +4,13 @@ import matter from "gray-matter";
 import { calculateReadingTime } from "./reading-time";
 
 const articlesDir = path.join(process.cwd(), "content/articles");
-const projectsDir = path.join(process.cwd(), "content/projects");
+const projectsFile = path.join(process.cwd(), "content/projects.json");
 
 export interface ArticleFrontmatter {
   title: string;
   date: string;
   description: string;
+  image?: string;
   tags: string[];
   published: boolean;
   series?: string;
@@ -23,19 +24,15 @@ export interface Article {
   readingTime: number;
 }
 
-export interface ProjectFrontmatter {
+export interface Project {
+  slug: string;
   title: string;
   description: string;
+  image?: string;
   liveUrl?: string;
   repoUrl?: string;
   date: string;
   featured: boolean;
-}
-
-export interface Project {
-  slug: string;
-  frontmatter: ProjectFrontmatter;
-  content: string;
 }
 
 const isDev = process.env.NODE_ENV === "development";
@@ -59,7 +56,6 @@ export function getAllArticles(): Article[] {
         readingTime: calculateReadingTime(content),
       };
     })
-    // In production, hide unpublished articles
     .filter((a) => isDev || a.frontmatter.published)
     .sort(
       (a, b) =>
@@ -89,28 +85,14 @@ export function getArticleBySlug(slug: string): Article | null {
 }
 
 export function getAllProjects(): Project[] {
-  if (!fs.existsSync(projectsDir)) return [];
+  if (!fs.existsSync(projectsFile)) return [];
 
-  const files = fs.readdirSync(projectsDir).filter((f) => f.endsWith(".mdx"));
+  const raw = fs.readFileSync(projectsFile, "utf-8");
+  const projects = JSON.parse(raw) as Project[];
 
-  const projects = files
-    .map((file) => {
-      const slug = file.replace(/\.mdx$/, "");
-      const raw = fs.readFileSync(path.join(projectsDir, file), "utf-8");
-      const { data, content } = matter(raw);
-      const frontmatter = data as ProjectFrontmatter;
-
-      return { slug, frontmatter, content };
-    })
-    .sort((a, b) => {
-      // Featured first, then by date
-      if (a.frontmatter.featured && !b.frontmatter.featured) return -1;
-      if (!a.frontmatter.featured && b.frontmatter.featured) return 1;
-      return (
-        new Date(b.frontmatter.date).getTime() -
-        new Date(a.frontmatter.date).getTime()
-      );
-    });
-
-  return projects;
+  return projects.sort((a, b) => {
+    if (a.featured && !b.featured) return -1;
+    if (!a.featured && b.featured) return 1;
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
 }

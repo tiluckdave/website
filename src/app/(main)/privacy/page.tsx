@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "Privacy policy for tiluckdave.in — how data is collected, used, and protected.",
+  title: siteConfig.seo.privacy.title,
+  description: siteConfig.seo.privacy.description,
   alternates: {
-    canonical: "https://tiluckdave.in/privacy",
+    canonical: `${siteConfig.url}/privacy`,
   },
 };
 
-// PRD Section 11 — Privacy policy with all 12 required points
 export default function PrivacyPage() {
   return (
     <>
@@ -20,7 +20,7 @@ export default function PrivacyPage() {
       <h2>1. Data Controller</h2>
       <p>
         Tilak Dave, reachable at{" "}
-        <a href="mailto:hi@tiluckdave.in">hi@tiluckdave.in</a>.
+        <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
       </p>
 
       <h2>2. Data Collected</h2>
@@ -70,7 +70,7 @@ export default function PrivacyPage() {
         If you are in the EU, you have the right to access, correct, erase, port,
         or object to processing of your personal data. To exercise these rights,
         email{" "}
-        <a href="mailto:hi@tiluckdave.in">hi@tiluckdave.in</a>.
+        <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
       </p>
 
       <h2>9. International Transfers</h2>
@@ -88,7 +88,7 @@ export default function PrivacyPage() {
       <h2>11. Contact</h2>
       <p>
         For privacy requests or questions:{" "}
-        <a href="mailto:hi@tiluckdave.in">hi@tiluckdave.in</a>.
+        <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
       </p>
 
       <h2>12. Updates</h2>

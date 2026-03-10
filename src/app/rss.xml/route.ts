@@ -1,8 +1,8 @@
 import { getAllArticles } from "@/lib/content";
+import { siteConfig } from "@/lib/config";
 
-const BASE_URL = "https://tiluckdave.in";
+const BASE_URL = siteConfig.url;
 
-// PRD Section 6.4 — RSS feed for all published articles
 export function GET() {
   const articles = getAllArticles();
 
@@ -10,7 +10,6 @@ export function GET() {
     .map((article) => {
       const url = `${BASE_URL}/articles/${article.slug}`;
       const pubDate = new Date(article.frontmatter.date).toUTCString();
-      // Escape HTML entities in content for RSS
       const description = article.frontmatter.description
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
@@ -30,7 +29,7 @@ export function GET() {
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tilak Dave</title>
+    <title>${siteConfig.name}</title>
     <link>${BASE_URL}</link>
     <description>Software engineer specializing in API integrations, full-stack development, and AI-powered solutions.</description>
     <language>en-us</language>

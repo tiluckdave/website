@@ -1,81 +1,118 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "About",
-  description: "Software engineer from Hyderabad, India. Building things that matter.",
+  title: siteConfig.seo.about.title,
+  description: siteConfig.seo.about.description,
+  keywords: [...siteConfig.seo.about.keywords],
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
   alternates: {
-    canonical: "https://tiluckdave.in/about",
+    canonical: `${siteConfig.url}/about`,
+  },
+  openGraph: {
+    title: `About ${siteConfig.name}`,
+    description: siteConfig.seo.about.ogDescription,
+    url: `${siteConfig.url}/about`,
+    images: [{ url: "/about/opengraph-image", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/about/opengraph-image"],
   },
 };
 
-// PRD Section 6.2 — About page
 export default function AboutPage() {
   return (
-    <>
+    <div className="animate-in">
       <h1>About</h1>
 
-      {/* TILAK: Replace with your bio paragraphs */}
-      <p>
-        I&apos;m Tilak Dave, a software engineer based in Hyderabad, India. I build
-        web applications, API integrations, and AI-powered tools for startups and
-        businesses worldwide.
-      </p>
-      <p>
-        I specialize in making software work together — whether that means building
-        custom connectors, designing backend systems, or creating AI-powered features
-        that actually solve problems. I&apos;ve shipped 25+ production integrations and
-        built MCP servers used in enterprise workflows.
-      </p>
-      <p>
-        When I&apos;m not writing code, I organize TEDx events, follow RCB obsessively,
-        and think about how to make complex systems feel simple.
-      </p>
+      <div>
+        <Image
+          src="/images/about/photo.png"
+          alt={siteConfig.name}
+          width={160}
+          height={160}
+          className="bio-photo"
+          style={{
+            borderRadius: "50%",
+            border: "2px solid var(--border)",
+            float: "right",
+            marginLeft: "24px",
+            marginBottom: "16px",
+            objectFit: "cover",
+          }}
+        />
 
-      {/* TILAK: Add your photo at public/images/tilak.jpg and uncomment */}
-      {/* <img
-        src="/images/tilak.jpg"
-        alt="Tilak Dave"
-        style={{ width: "200px", height: "200px", objectFit: "cover", margin: "24px 0" }}
-      /> */}
+        <p>
+          I&apos;m Tilak Dave, software developer based in India. I build
+          web applications, API integrations, and AI-powered tools for startups and
+          businesses all over the world.
+        </p>
+        <p>
+          I specialize in making software work together - whether that means building
+          custom integrations, designing backend systems, or creating AI-powered features
+          that actually solve problems. I&apos;ve shipped 50+ production integrations and
+          built MCP servers used in enterprise workflows.
+        </p>
+        <p>
+          When I&apos;m not writing code, I watch cricket, cook food,
+          and think about how to make simple thinsg complex.
+        </p>
+        <div style={{ clear: "both" }} />
+      </div>
 
-      <h2>Experience</h2>
-      {/* TILAK: Replace with your actual experience */}
+      <h2>Work Experience</h2>
       <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
         <div>
-          <div style={{ fontWeight: 500 }}>Software Engineer</div>
+          <div style={{ fontWeight: 500 }}>Associate Software Engineer</div>
           <div style={{ color: "var(--text-secondary)", fontSize: "14px" }}>
-            Current Company · 2024 – Present
+            Workato · September 2024 - Present
           </div>
           <div style={{ color: "var(--text-secondary)", fontSize: "14px", marginTop: "4px" }}>
-            Building integrations and AI features.
+            Building integrations and MCP servers for the enterprise.
+          </div>
+        </div>
+        <div>
+          <div style={{ fontWeight: 500 }}>Software Developer Intern</div>
+          <div style={{ color: "var(--text-secondary)", fontSize: "14px" }}>
+            Afterquote · August 2023 - March 2024
+          </div>
+          <div style={{ color: "var(--text-secondary)", fontSize: "14px", marginTop: "4px" }}>
+            Built SaaS tool for RFQ management for manufacturers.
           </div>
         </div>
       </div>
 
       <h2>Now</h2>
-      {/* TILAK: Update this section with what you're currently working on */}
-      <p>
-        Currently exploring Model Context Protocol deeply and building tools for
-        developer workflows. Reading about distributed systems. Working on getting
-        to 100 pushups.
-      </p>
+      <ul style={{ paddingLeft: "1.3em", listStyle: "disc" }}>
+        <li>
+          Currently exploring Model Context Protocol deeply and building MCP servers for enterprise.
+        </li>
+        <li>
+          Contributing to open source projects.
+        </li>
+        <li>
+          Working on getting to 100 pushups and 100 wpm typing.
+        </li>
+      </ul>
 
       <h2>Fun Stuff</h2>
-      {/* TILAK: Update with your personal interests */}
-      <p>
-        Lifelong RCB fan (we&apos;re winning this year, I know). Organized three TEDx
-        events. I think serverless functions are overrated for most use cases. I have
-        opinions about tabs vs spaces that I&apos;ll share if you ask.
-      </p>
+      <ul style={{ paddingLeft: "1.3em", listStyle: "disc" }}>
+        <li>Lifelong RCB fan</li>
+        <li>I have organized three TEDx events.</li>
+        <li>I cook better than most people I know</li>
+        <li>I have won 20 hackathons till date</li>
+      </ul>
 
       <h2>Support</h2>
       <p style={{ color: "var(--text-secondary)" }}>
         If my work or writing helped you:{" "}
-        <Link href="https://buymeacoffee.com/tiluckdave">Buy Me a Coffee</Link>,{" "}
-        <Link href="https://github.com/sponsors/tiluckdave">GitHub Sponsors</Link>,{" "}
-        <Link href="https://paypal.me/tiluckdave">PayPal</Link>.
+        <Link href={siteConfig.support.buyMeACoffee}>Buy Me a Coffee</Link>,{" "}
+        <Link href={siteConfig.support.githubSponsors}>GitHub Sponsors</Link>,{" "}
+        <Link href={siteConfig.support.paypal}>PayPal</Link>.
       </p>
-    </>
+    </div>
   );
 }

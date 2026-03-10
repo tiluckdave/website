@@ -1,22 +1,22 @@
 import Link from "next/link";
+import { siteConfig } from "@/lib/config";
 
-// PRD Section 8.1 — Hire section navigation
 export default function HireNav() {
   return (
     <header
       style={{
-        maxWidth: "720px",
+        maxWidth: "680px",
         margin: "0 auto",
-        padding: "24px 24px",
+        padding: "20px 24px",
       }}
     >
       <nav
+        className="nav-inner"
         style={{
           display: "flex",
           alignItems: "baseline",
           justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: "12px",
+          gap: "16px",
           fontSize: "15px",
           lineHeight: 1,
         }}
@@ -27,39 +27,17 @@ export default function HireNav() {
             color: "var(--text-primary)",
             textDecoration: "none",
             fontWeight: 500,
+            flexShrink: 0,
           }}
         >
-          Tilak Dave
+          {siteConfig.shortName}
         </Link>
-        <div style={{ display: "flex", gap: "24px", flexWrap: "wrap" }}>
-          <HireNavLink href="/hire">Services</HireNavLink>
-          <HireNavLink href="/hire/work">Work</HireNavLink>
-          <HireNavLink href="/hire/book">Book a Call</HireNavLink>
-          <HireNavLink href="/hire/contact">Contact</HireNavLink>
+        <div className="nav-links-group" style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "flex-end" }}>
+          {siteConfig.hireNav.links.map((link) => (
+            <Link key={link.href} href={link.href} className="nav-link">{link.label}</Link>
+          ))}
         </div>
       </nav>
     </header>
-  );
-}
-
-function HireNavLink({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      style={{
-        color: "var(--text-secondary)",
-        textDecoration: "underline",
-        textUnderlineOffset: "3px",
-        fontWeight: 400,
-      }}
-    >
-      {children}
-    </Link>
   );
 }

@@ -9,19 +9,19 @@ Read PRD.md in full before writing any code. Re-read the relevant PRD section be
 
 ## HARD RULES — NEVER VIOLATE THESE
 
-1. **No cards.** No elevated containers, no shadows, no bordered boxes, no rounded-corner containers. Content sits directly on the page surface. If you catch yourself wrapping content in a styled container with background/border/shadow, stop and remove it.
+1. **No cards EXCEPT: service blocks on /hire, MDX `<LinkPreview>` component, and the hire CTA section on the home page.** On main site pages (home, about, projects, articles), content sits directly on the page surface — no elevated containers, no shadows. Service cards on /hire use `.service-card` class with `--bg-secondary` background, `1px border`, and `border-radius: 0.5rem`. The home page hire CTA section is a soft `--bg-secondary` box with border. These are the only three card exceptions.
 
 2. **No decorative images.** The only images on the entire site are: one photo on /about, dynamically generated OG images (text-only PNGs via next/og), and images within article MDX content. No hero images, no background images, no icons, no SVG decorations, no illustrations.
 
-3. **No animations.** Zero. The only motion allowed is: link underline weight change on hover (400 → 500), and optional View Transitions API for page navigation (progressive enhancement only). No fade-ins, no slide-ins, no scale effects, no loading animations, no skeleton screens.
+3. **Subtle fade-in and stagger animations are used globally.** `.stagger-children` applies sequential `fadeSlideUp` to list items. `.animate-in` fades a single element. `.hover-lift` applies to service cards and project images. Nav and footer NEVER animate. `prefers-reduced-motion` must be respected — all animations have a reduced-motion fallback in globals.css.
 
-4. **No bold colors.** The accent color is warm brass (#B08A57 light, #C9B06B dark). It appears ONLY on links, the "Hire me" nav item, and active nav indicators. Nowhere else. No colored backgrounds, no colored badges, no colored tags, no gradients anywhere on the site.
+4. **No bold colors.** The accent color is hunter green (#2C5F4B light, #4A9B7F dark). It appears ONLY on links, the "Hire me" nav item, and active nav indicators. Nowhere else. No colored backgrounds, no colored badges, no colored tags. Subtle gradients (`--gradient-hero`, `--gradient-section`, `--gradient-glow`) are allowed ONLY on /hire pages, not on main site pages.
 
-5. **Single column, 640px max-width.** All page content is a single centered column at max-width 640px. Navigation bar max-width is 720px. No sidebars, no multi-column layouts, no grid layouts for content. The only exception is the Cal.com embed which can be full-width within its container.
+5. **680px max-width for ALL content including nav and footer.** One value: `--max-width: 680px`. Nav, footer, and every page content wrapper all use this. No element except background gradients and noise texture extends beyond 680px of content. No sidebars, no multi-column layouts. The ONLY grid is `.services-grid` on the /hire page. Cal.com embed can be full-width within its container.
 
 6. **System fonts only.** Zero external font requests. Use the exact font stacks from PRD section 4.3. Do NOT install or import any font packages (no `next/font`, no Google Fonts, no Geist, no Inter for the site — Inter Bold TTF is only bundled for Satori OG image generation).
 
-7. **Links are always underlined.** Every link on the site has `text-decoration: underline` in its default state. No exceptions. No "hover to reveal underline" patterns. Hover changes font-weight only (400 → 500), not color.
+7. **Links are always underlined.** Every link on the site has `text-decoration: underline` in its default state. No exceptions. No "hover to reveal underline" patterns. Hover changes `text-decoration-thickness` from 1px to 2px and reduces opacity to 0.8 — not font-weight, not color.
 
 8. **No UI component libraries.** No shadcn, no Radix, no Headless UI, no Material UI, no Chakra. Build all components from scratch with Tailwind utility classes. The site is simple enough that component libraries add unnecessary complexity.
 
@@ -29,7 +29,7 @@ Read PRD.md in full before writing any code. Re-read the relevant PRD section be
 
 10. **No hamburger menus.** Mobile navigation shows all links stacked vertically or in a simple layout. No toggle, no slide-in panel, no overlay.
 
-11. **No tooltips, modals, dropdowns, accordions, tabs, carousels, or sliders.** None of these UI patterns exist anywhere on the site.
+11. **No tooltips, modals, dropdowns, carousels, or sliders.** Accordions are allowed ONLY for the FAQ section on `/hire` page (see `faq-list.tsx`). Code tabs are allowed inside MDX content only (see `code-tabs.tsx`). No other interactive disclosure patterns anywhere on the site.
 
 12. **Dark mode follows system preference only.** Use `prefers-color-scheme` media query in CSS/Tailwind. No toggle switch. No mode selector. No JavaScript theme switching. If the user's OS is dark, the site is dark. Period.
 
@@ -38,6 +38,16 @@ Read PRD.md in full before writing any code. Re-read the relevant PRD section be
 14. **Every page must be statically generated or server-rendered.** No client-side-only pages. No loading spinners for content. The only `"use client"` components allowed are: Cal.com embed wrapper, contact form, and code block copy button.
 
 15. **Follow the PRD exactly.** If the PRD says a page has specific content in a specific order, build exactly that. Do not add sections, features, or UI elements that are not in the PRD. Do not add "nice to have" improvements. If it's in the "Explicitly Out of Scope" section (PRD section 14), do not build it under any circumstances.
+
+16. **All hardcoded values must come from `src/lib/config.ts`.** Never hardcode URLs, email addresses, social links, Cal.com config, support links, or domain names directly in components. If it's a site-wide constant, it belongs in `siteConfig`. This makes global updates trivial and prevents stale values scattered across the codebase.
+
+17. **Code blocks must have syntax highlighting.** All code blocks in MDX content MUST be highlighted via `rehype-pretty-code` with `github-light` (light mode) and `github-dark` (dark mode) themes. Code blocks without highlighting are a bug. The language identifier on the opening fence (e.g., ` ```ts `) is required for highlighting to work.
+
+18. **Project images are always 16:9 aspect ratio, full content width, rounded-lg, with 1px border.** This applies on the home page, /projects listing, and /hire/work. Use `aspect-ratio: 16/9`, `border-radius: 0.5rem`, `border: 1px solid var(--border)`, `overflow: hidden`. Gray placeholder with project name in `--font-mono` when no image.
+
+19. **Every page has a noise texture overlay and ambient gradient glow behind content.** These are the ONLY full-viewport elements. `.noise-bg` is on the root `<body>`. `.ambient-glow` div is in each layout. Hire layouts use `.ambient-glow--hire` for a stronger glow. These are cosmetic only and never affect layout.
+
+20. **`prefers-reduced-motion` must be respected.** All CSS animations have a fallback block inside `@media (prefers-reduced-motion: reduce)` that sets `animation: none`, `opacity: 1`, and `transform: none`. Never skip this.
 
 ---
 

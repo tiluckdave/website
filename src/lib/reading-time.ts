@@ -1,4 +1,3 @@
-// Average reading speed: 200 words per minute
 const WORDS_PER_MINUTE = 200;
 
 export function calculateReadingTime(content: string): number {

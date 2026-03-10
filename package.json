@@ -5,9 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "project-image": "node scripts/generate-project-image.mjs"
   },
   "dependencies": {
+    "@calcom/embed-react": "^1.5.3",
     "@vercel/analytics": "^1.6.1",
     "gray-matter": "^4.0.3",
     "next": "16.1.6",
@@ -15,6 +17,7 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "rehype-pretty-code": "^0.14.3",
+    "remark-gfm": "^4.0.1",
     "resend": "^6.9.3",
     "shiki": "^4.0.2"
   },
@@ -23,6 +26,8 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/sharp": "^0.32.0",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   },

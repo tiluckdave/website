@@ -1,24 +1,22 @@
 import Link from "next/link";
+import { siteConfig } from "@/lib/config";
 
-// PRD Section 8.1 — Main site navigation
-// "Tilak Dave" left, nav links right. "Hire me →" accent-colored.
-// Mobile: all links shown, no hamburger.
 export default function Nav() {
   return (
     <header
       style={{
-        maxWidth: "720px",
+        maxWidth: "680px",
         margin: "0 auto",
-        padding: "24px 24px",
+        padding: "20px 24px",
       }}
     >
       <nav
+        className="nav-inner"
         style={{
           display: "flex",
           alignItems: "baseline",
           justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: "12px",
+          gap: "16px",
           fontSize: "15px",
           lineHeight: 1,
         }}
@@ -29,49 +27,18 @@ export default function Nav() {
             color: "var(--text-primary)",
             textDecoration: "none",
             fontWeight: 500,
+            flexShrink: 0,
           }}
         >
-          Tilak Dave
+          {siteConfig.shortName}
         </Link>
-        <div style={{ display: "flex", gap: "24px", flexWrap: "wrap" }}>
-          <NavLink href="/projects">Projects</NavLink>
-          <NavLink href="/articles">Articles</NavLink>
-          <NavLink href="/about">About</NavLink>
-          <Link
-            href="/hire"
-            style={{
-              color: "var(--accent)",
-              textDecoration: "underline",
-              textUnderlineOffset: "3px",
-              fontWeight: 400,
-            }}
-          >
-            Hire me →
-          </Link>
+        <div className="nav-links-group" style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "flex-end" }}>
+          {siteConfig.nav.links.map((link) => (
+            <Link key={link.href} href={link.href} className="nav-link">{link.label}</Link>
+          ))}
+          <Link href={siteConfig.nav.cta.href} className="nav-link--hire">{siteConfig.nav.cta.label}</Link>
         </div>
       </nav>
     </header>
-  );
-}
-
-function NavLink({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      style={{
-        color: "var(--text-secondary)",
-        textDecoration: "underline",
-        textUnderlineOffset: "3px",
-        fontWeight: 400,
-      }}
-    >
-      {children}
-    </Link>
   );
 }

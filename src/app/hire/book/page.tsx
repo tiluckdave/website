@@ -1,28 +1,40 @@
 import Link from "next/link";
 import CalEmbed from "@/components/cal-embed";
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "Book a Call",
-  description: "Schedule a free 30-minute discovery call with Tilak Dave to discuss your project.",
+  title: siteConfig.seo.hireBook.title,
+  description: siteConfig.seo.hireBook.description,
+  keywords: [...siteConfig.seo.hireBook.keywords],
   alternates: {
-    canonical: "https://tiluckdave.in/hire/book",
+    canonical: `${siteConfig.url}/hire/book`,
+  },
+  openGraph: {
+    title: siteConfig.seo.hireBook.ogTitle,
+    description: siteConfig.seo.hireBook.ogDescription,
+    url: `${siteConfig.url}/hire/book`,
+    images: [{ url: "/hire/opengraph-image", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/hire/opengraph-image"],
   },
 };
 
-// PRD Section 7.3 — Booking page with Cal.com embed
 export default function HireBookPage() {
+  const { hireBook } = siteConfig;
   return (
-    <>
-      <h1>Book a free 30-minute discovery call</h1>
-      <p>Pick a time that works for you. I&apos;ll come prepared with questions.</p>
+    <div className="animate-in">
+      <h1>{hireBook.heading}</h1>
+      <p>{hireBook.subheading}</p>
 
       <CalEmbed />
 
       <p style={{ marginTop: "24px" }}>
-        Prefer email?{" "}
-        <Link href="/hire/contact">Send project details →</Link>
+        {hireBook.preferEmailText}{" "}
+        <Link href={hireBook.preferEmailLink.href}>{hireBook.preferEmailLink.label}</Link>
       </p>
-    </>
+    </div>
   );
 }

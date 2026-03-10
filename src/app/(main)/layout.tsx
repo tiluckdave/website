@@ -1,7 +1,6 @@
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 
-// Main site layout — wraps all non-hire pages with main site nav/footer
 export default function MainLayout({
   children,
 }: {
@@ -9,12 +8,13 @@ export default function MainLayout({
 }) {
   return (
     <>
+      <div className="ambient-glow" aria-hidden="true" />
       <Nav />
       <main
         style={{
-          maxWidth: "640px",
+          maxWidth: "680px",
           margin: "0 auto",
-          padding: "48px 24px 96px",
+          padding: "40px 24px 96px",
         }}
       >
         {children}

@@ -3,7 +3,6 @@ import { getAllArticles, getAllProjects } from "@/lib/content";
 
 const BASE_URL = "https://tiluckdave.in";
 
-// PRD Section 9.1 — Dynamic sitemap covering all pages
 export default function sitemap(): MetadataRoute.Sitemap {
   const articles = getAllArticles();
   const projects = getAllProjects();

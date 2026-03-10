@@ -1,20 +1,19 @@
 import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
+import Callout from "@/components/mdx/callout";
+import { Steps, Step } from "@/components/mdx/steps";
+import FileTree from "@/components/mdx/file-tree";
+import Figure from "@/components/mdx/figure";
+import LinkPreview from "@/components/mdx/link-preview";
+import CodeTabs from "@/components/mdx/code-tabs";
+import CodeBlock from "@/components/code-block";
 
-// Compatible with React.ComponentProps<typeof MDXProvider>['components']
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type MDXComponents = Record<string, any>;
 
-// PRD Section 4.3 & 4.4 — MDX component overrides
-// Ensures all rendered HTML follows design language: no cards, proper link styling
 export const mdxComponents: MDXComponents = {
   a: ({ href, children, ...props }: ComponentPropsWithoutRef<"a">) => {
     if (href?.startsWith("/") || href?.startsWith("#")) {
-      return (
-        <Link href={href} {...props}>
-          {children}
-        </Link>
-      );
+      return <Link href={href} {...props}>{children}</Link>;
     }
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
@@ -22,7 +21,7 @@ export const mdxComponents: MDXComponents = {
       </a>
     );
   },
-  // Blockquotes — no borders, just italic text
+
   blockquote: ({ children }: ComponentPropsWithoutRef<"blockquote">) => (
     <blockquote
       style={{
@@ -36,9 +35,10 @@ export const mdxComponents: MDXComponents = {
       {children}
     </blockquote>
   ),
-  // Images within articles — no decorative styling
+
+  pre: (props: ComponentPropsWithoutRef<"pre">) => <CodeBlock {...props} />,
+
   img: ({ src, alt, ...props }: ComponentPropsWithoutRef<"img">) => (
-    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={src}
       alt={alt ?? ""}
@@ -46,4 +46,12 @@ export const mdxComponents: MDXComponents = {
       {...props}
     />
   ),
+
+  Callout,
+  Steps,
+  Step,
+  FileTree,
+  Figure,
+  LinkPreview,
+  CodeTabs,
 };
