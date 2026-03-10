@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     canonical: `${siteConfig.url}/about`,
   },
   openGraph: {
+    type: "website",
     title: `About ${siteConfig.name}`,
     description: siteConfig.seo.about.ogDescription,
     url: `${siteConfig.url}/about`,

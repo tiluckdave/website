@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const ogImageUrl = article.frontmatter.image
     ? article.frontmatter.image
-    : `/articles/${slug}/opengraph-image`;
+    : `${siteConfig.url}/articles/${slug}/opengraph-image`;
 
   return {
     title: article.frontmatter.title,
@@ -53,13 +53,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       authors: [siteConfig.name],
       tags: article.frontmatter.tags,
       images: [{ url: ogImageUrl, width: 1200, height: 630, alt: article.frontmatter.title }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: article.frontmatter.title,
-      description: article.frontmatter.description,
-      images: [ogImageUrl],
-    },
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: article.frontmatter.title,
+    description: article.frontmatter.description,
+    images: [ogImageUrl],
+  },
   };
 }
 
