@@ -59,7 +59,7 @@ export default function AboutPage() {
         </p>
         <p>
           When I&apos;m not writing code, I watch cricket, cook food,
-          and think about how to make simple thinsg complex.
+          and think about how to make simple things complex.
         </p>
         <div style={{ clear: "both" }} />
       </div>
@@ -104,7 +104,7 @@ export default function AboutPage() {
         <li>Lifelong RCB fan</li>
         <li>I have organized three TEDx events.</li>
         <li>I cook better than most people I know</li>
-        <li>I have won 20 hackathons till date</li>
+        <li>I have won 20 hackathons to date</li>
       </ul>
 
       <h2>Support</h2>

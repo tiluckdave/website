@@ -11,8 +11,6 @@
   --accent-hover: #1E4535;
   --accent-subtle: rgba(44, 95, 75, 0.06);
   --border: rgba(26, 26, 46, 0.08);
-  --gradient-start: #FAFAF7;
-  --gradient-end: #F0F0EC;
 
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif,
@@ -33,8 +31,6 @@
     --accent-hover: #7BB89A;
     --accent-subtle: rgba(91, 154, 123, 0.08);
     --border: rgba(228, 228, 224, 0.06);
-    --gradient-start: #0B0F14;
-    --gradient-end: #111822;
   }
 }
 
@@ -325,24 +321,8 @@ pre code {
   }
 }
 
-.gradient-hero {
-  background: linear-gradient(
-    180deg,
-    var(--bg-primary) 0%,
-    var(--bg-secondary) 100%
-  );
-}
-
 .gradient-section {
   background: var(--bg-secondary);
-}
-
-.gradient-glow {
-  background: radial-gradient(
-    ellipse at 50% 0%,
-    var(--accent-subtle) 0%,
-    transparent 70%
-  );
 }
 
 .code-block-wrapper {

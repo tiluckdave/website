@@ -3,7 +3,6 @@ export const siteConfig = {
 	shortName: "Tilak",
 	domain: "tiluckdave.in",
 	url: "https://tiluckdave.in",
-	location: "India",
 
 	email: "hello@tiluckdave.in",
 	whatsapp: "+918625996825",
@@ -145,10 +144,6 @@ export const siteConfig = {
 			],
 		},
 	},
-
-	articlesPerPage: 10,
-	projectsOnHome: 2,
-	articlesOnHome: 3,
 
 	nav: {
 		links: [
@@ -318,5 +313,3 @@ export const siteConfig = {
 	},
 
 } as const;
-
-export type SiteConfig = typeof siteConfig;

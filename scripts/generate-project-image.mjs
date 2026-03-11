@@ -64,7 +64,6 @@ const urlBarY = 8;
 const urlBarW = frameW - 88 - 16;
 const urlBarH = 20;
 
-// Seeded LCG for deterministic noise
 let seed = 0x9e3779b9;
 function rand() {
   seed = (seed ^ (seed << 13)) >>> 0;

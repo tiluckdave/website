@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-// PRD Section 2 — Domain redirects
-// hire.tiluckdave.in → tiluckdave.in/hire (301)
-// www.tiluckdave.in → tiluckdave.in (301)
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
   const url = request.nextUrl;

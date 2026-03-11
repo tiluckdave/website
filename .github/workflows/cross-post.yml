@@ -53,13 +53,11 @@ jobs:
           const BASE_URL = 'https://tiluckdave.in';
           const TRACKING_FILE = '.github/cross-posted.json';
 
-          // Load tracking data
           let tracked = {};
           if (fs.existsSync(TRACKING_FILE)) {
             tracked = JSON.parse(fs.readFileSync(TRACKING_FILE, 'utf-8'));
           }
 
-          // Get new files from environment variable
           const newFilesRaw = process.env.NEW_FILES || '';
           const newFiles = newFilesRaw.split('\n').filter(Boolean);
 
@@ -67,16 +65,12 @@ jobs:
             return new Promise(resolve => setTimeout(resolve, ms));
           }
 
-          // Sanitize MDX → Markdown for cross-posting
           function sanitizeMdx(content, slug) {
             return content
-              // Remove imports and exports
               .replace(/^import\s+.*$/gm, '')
               .replace(/^export\s+.*$/gm, '')
-              // Replace relative image paths with absolute URLs
               .replace(/!\[([^\]]*)\]\(\.\/([^)]+)\)/g, `![$1](${BASE_URL}/images/$2)`)
               .replace(/!\[([^\]]*)\]\(\/([^)]+)\)/g, `![$1](${BASE_URL}/$2)`)
-              // Replace custom MDX components with plain text note
               .replace(/<[A-Z][A-Za-z]*[^/]*\/>/g, `\n*See original post: ${BASE_URL}/articles/${slug}*\n`)
               .replace(/<[A-Z][A-Za-z]*[^>]*>[\s\S]*?<\/[A-Z][A-Za-z]*>/g, `\n*See original post: ${BASE_URL}/articles/${slug}*\n`)
               .trim();
@@ -196,7 +190,6 @@ jobs:
               await sleep(2500);
             }
 
-            // Save tracking file
             fs.writeFileSync(TRACKING_FILE, JSON.stringify(tracked, null, 2));
           }
 

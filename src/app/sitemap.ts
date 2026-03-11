@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
 import { getAllArticles, getAllProjects } from "@/lib/content";
+import { siteConfig } from "@/lib/config";
 
-const BASE_URL = "https://tiluckdave.in";
+const BASE_URL = siteConfig.url;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const articles = getAllArticles();

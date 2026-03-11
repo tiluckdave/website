@@ -1,7 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getAllArticles, getArticleBySlug } from "@/lib/content";
 import { getInterBoldFont } from "@/lib/og-utils";
-import { siteConfig } from "@/lib/config";
 
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
@@ -40,14 +39,14 @@ export default async function OGImage({ params }: { params: Promise<{ slug: stri
         }}
       >
         <div style={{ display: "flex" }}>
-          <div style={{ color: "#8B8F9A", fontSize: "16px", display: "flex" }}>Article</div>
+          <div style={{ color: "#8B8F9A", fontSize: "28px", display: "flex" }}>Article</div>
         </div>
-        <div style={{ color: "#E4E4E0", fontSize: "42px", fontWeight: 700, lineHeight: 1.2, maxWidth: "1000px", display: "flex" }}>
+        <div style={{ color: "#E4E4E0", fontSize: "56px", fontWeight: 700, lineHeight: 1.15, maxWidth: "1000px", display: "flex" }}>
           {title}
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div style={{ color: "#5C6170", fontSize: "16px", display: "flex" }}>{date}</div>
-          <div style={{ color: "#C9B06B", fontSize: "18px", fontWeight: 700, display: "flex" }}>Read article →</div>
+          <div style={{ color: "#5C6170", fontSize: "24px", display: "flex" }}>{date}</div>
+          <div style={{ color: "#C9B06B", fontSize: "28px", fontWeight: 700, display: "flex" }}>Read article →</div>
         </div>
       </div>
     ),
