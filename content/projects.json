@@ -1,5 +1,19 @@
 [
   {
+    "slug": "hound-mcp",
+    "title": "Hound MCP",
+    "description": "Dependency security scanner for AI coding agents",
+    "category": "MCP Server · 2026",
+    "image": "/images/projects/hound-mcp.png",
+    "liveUrl": "https://www.npmjs.com/package/hound-mcp",
+    "repoUrl": "https://github.com/tiluckdave/hound-mcp",
+    "date": "2026",
+    "featured": true,
+    "problem": "AI coding agents lack awareness of supply chain security — they install packages without checking vulnerabilities, licenses, or typosquatting risks.",
+    "solution": "Built an open-source MCP server that scans packages for vulnerabilities, checks licenses, inspects dependency trees, and detects typosquatting — with zero API keys and zero config.",
+    "result": "AI agents can now make informed decisions about dependencies, catching security issues before they enter the codebase."
+  },
+  {
     "slug": "dinecard",
     "title": "DineCard",
     "description": "AI powered restaurant digital menu",
@@ -22,7 +36,7 @@
     "liveUrl": "https://prempushp.in",
     "repoUrl": "https://github.com/tiluckdave/prempushp",
     "date": "2025",
-    "featured": true,
+    "featured": false,
     "problem": "A family food brand needed a professional online presence with a product catalog to reach customers beyond word-of-mouth.",
     "solution": "Built a full product catalog website with clean design, fast load times, and easy navigation for the brand's range of products.",
     "result": "The brand now has a professional digital storefront that drives customer inquiries and builds trust with new buyers."
