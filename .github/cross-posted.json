@@ -2,13 +2,19 @@
   "who-am-i": {
     "slug": "who-am-i",
     "devto": "https://dev.to/tiluckdave/who-am-i-2nag",
-    "hashnode": "https://tiluckdave.hashnode.dev/who-am-i",
-    "postedAt": "2026-03-10T13:09:07.133Z"
+    "hashnode": "https://tiluckdave.hashnode.dev/who-am-i-1",
+    "postedAt": "2026-03-10T13:09:07.133Z",
+    "devtoId": 3335102,
+    "hashnodeId": "69bc0961b0bbf458e59d2138",
+    "updatedAt": "2026-03-19T14:34:09.158Z"
   },
   "communication": {
     "slug": "communication",
     "devto": "https://dev.to/tiluckdave/communication-5c5g",
-    "hashnode": "https://tiluckdave.hashnode.dev/communication",
-    "postedAt": "2026-03-16T20:14:10.084Z"
+    "hashnode": "https://tiluckdave.hashnode.dev/communication-1",
+    "postedAt": "2026-03-16T20:14:10.084Z",
+    "devtoId": 3360228,
+    "hashnodeId": "69bc0958b25e474751cf19da",
+    "updatedAt": "2026-03-19T14:34:00.752Z"
   }
 }
