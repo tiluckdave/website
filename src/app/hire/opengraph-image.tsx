@@ -34,7 +34,7 @@ export default function OGImage() {
           </div>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div style={{ color: "#C9B06B", fontSize: "28px", fontWeight: 700, display: "flex" }}>Hire me →</div>
+          <div style={{ color: "#5B9A7B", fontSize: "28px", fontWeight: 700, display: "flex" }}>Hire me →</div>
           <div style={{ color: "#5C6170", fontSize: "24px", display: "flex" }}>{siteConfig.domain}</div>
         </div>
       </div>

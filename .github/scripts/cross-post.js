@@ -38,6 +38,33 @@ function extractAttr(attrsString, name) {
   return null;
 }
 
+// ---------------------------------------------------------------------------
+// Tag helpers — each platform has different rules
+// ---------------------------------------------------------------------------
+
+function devtoTags(tags) {
+  // Dev.to: max 4 tags, lowercase, alphanumeric only (no hyphens), max 30 chars
+  return (tags || [])
+    .slice(0, 4)
+    .map(t => t.toLowerCase().replace(/[^a-z0-9]/g, ''))
+    .filter(Boolean)
+    .filter(t => t.length <= 30);
+}
+
+function hashnodeTags(tags) {
+  // Hashnode expects { slug, name } objects
+  return (tags || []).map(t => ({
+    slug: t.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-'),
+    name: t,
+  }));
+}
+
+function coverImageUrl(frontmatter, slug) {
+  // Use explicit image from frontmatter, or fall back to generated OG image
+  if (frontmatter.image) return absolutizeUrl(frontmatter.image);
+  return `${BASE_URL}/articles/${slug}/opengraph-image`;
+}
+
 function absolutizeUrl(url) {
   if (!url) return '';
   if (url.startsWith('http')) return url;
@@ -176,13 +203,11 @@ function buildDevToBody(frontmatter, slug, markdown) {
       body_markdown: `*This article was originally published at [tiluckdave.in](${canonicalUrl})*\n\n${markdown}`,
       published: true,
       canonical_url: canonicalUrl,
-      tags: (frontmatter.tags || []).slice(0, 4),
+      tags: devtoTags(frontmatter.tags),
       description: frontmatter.description || '',
+      main_image: coverImageUrl(frontmatter, slug),
     },
   };
-  if (frontmatter.image) {
-    body.article.main_image = absolutizeUrl(frontmatter.image);
-  }
   return body;
 }
 
@@ -273,11 +298,9 @@ async function postToHashnode(frontmatter, slug, markdown) {
     contentMarkdown: buildHashnodeMarkdown(slug, markdown),
     originalArticleURL: canonicalUrl,
     publicationId: process.env.HASHNODE_PUBLICATION_ID,
-    tags: [],
+    tags: hashnodeTags(frontmatter.tags),
+    coverImageOptions: { coverImageURL: coverImageUrl(frontmatter, slug) },
   };
-  if (frontmatter.image) {
-    input.coverImageOptions = { coverImageURL: absolutizeUrl(frontmatter.image) };
-  }
   return hashnodeGql(query, { input });
 }
 

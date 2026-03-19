@@ -5,6 +5,27 @@ import { calculateReadingTime } from "./reading-time";
 
 const articlesDir = path.join(process.cwd(), "content/articles");
 const projectsFile = path.join(process.cwd(), "content/projects.json");
+const crossPostedFile = path.join(process.cwd(), ".github/cross-posted.json");
+
+export interface CrossPostLinks {
+  devto?: string;
+  hashnode?: string;
+}
+
+export function getCrossPostLinks(slug: string): CrossPostLinks | null {
+  if (!fs.existsSync(crossPostedFile)) return null;
+
+  const raw = fs.readFileSync(crossPostedFile, "utf-8");
+  const tracked = JSON.parse(raw) as Record<string, { devto?: string; hashnode?: string }>;
+  const entry = tracked[slug];
+  if (!entry) return null;
+
+  const links: CrossPostLinks = {};
+  if (entry.devto) links.devto = entry.devto;
+  if (entry.hashnode) links.hashnode = entry.hashnode;
+
+  return Object.keys(links).length > 0 ? links : null;
+}
 
 export interface ArticleFrontmatter {
   title: string;

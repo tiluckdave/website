@@ -1,0 +1,231 @@
+---
+title: "Your AI coding agent is installing vulnerable packages. I built the fix."
+date: "2026-03-19"
+description: "I scanned a codebase Claude Code generated for me. Three packages had critical CVEs. The agent never mentioned it. So I built Hound — an open-source MCP server that gives AI agents vulnerability scanning, license checks, and supply chain protection. Zero config, zero API keys."
+tags: ["ai", "security", "opensource", "mcp"]
+published: true
+---
+
+I asked Claude Code to set up an Express API with auth. It installed 23 packages in under a minute. Scaffolded routes, middleware, database layer — clean code, well-structured, ready to ship.
+
+Three of those packages had known critical vulnerabilities. One had a CVSS score of 9.8.
+
+Claude didn't mention it. It didn't know.
+
+---
+
+## This affects you right now
+
+If you use Claude Code, Cursor, Copilot, or any AI coding agent — your agent is recommending and installing packages based on popularity and relevance. Not security. Not license compatibility. Not whether the package was last updated in 2021.
+
+`npm audit` exists. Snyk exists. Socket exists. But these are human tools — they require a human to run them, read the output, and decide what to do. Your AI agent doesn't use any of them. It just installs and moves on.
+
+Think about how you work with AI agents now. You ask for a feature. The agent picks libraries, installs them, writes code, and you review the output. At no point in that workflow does anyone — human or AI — check whether those dependencies are safe.
+
+Every project you've built with an AI agent likely has unreviewed vulnerabilities in its dependency tree. The [2024 State of Open Source Security report](https://snyk.io/reports/open-source-security/) found the average application carries 49 of them.
+
+I built [Hound](https://github.com/tiluckdave/hound-mcp) because this gap shouldn't exist.
+
+<Figure src="/images/projects/hound-mcp.png" alt="Hound MCP inspecting the requests package in Claude Code" caption="Hound running hound_inspect on requests@2.31.0 — vulnerabilities, license, and publish date in one call" />
+
+---
+
+## 60 seconds to fix it
+
+One command. No API keys. No accounts. No config files.
+
+```bash
+claude mcp add hound -- npx -y hound-mcp
+```
+
+That's it. Your AI agent now has 12 security tools it can use automatically — vulnerability scanning, license checking, typosquat detection, dependency auditing — across npm, PyPI, Go, Cargo, Maven, NuGet, and RubyGems.
+
+You don't learn the tools. You don't configure anything. You just keep working the way you already do, and your agent starts making safer decisions.
+
+Using Cursor, Windsurf, or Claude Desktop? Add this to your MCP config:
+
+```json
+{
+  "mcpServers": {
+    "hound": {
+      "command": "npx",
+      "args": ["-y", "hound-mcp"]
+    }
+  }
+}
+```
+
+VS Code Copilot:
+
+```json
+{
+  "mcp": {
+    "servers": {
+      "hound": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "hound-mcp"]
+      }
+    }
+  }
+}
+```
+
+<Callout type="tip">Config file locations: Claude Desktop (macOS) at `~/Library/Application Support/Claude/claude_desktop_config.json`, Cursor at `~/.cursor/mcp.json`, Windsurf at `~/.codeium/windsurf/mcp_config.json`.</Callout>
+
+---
+
+## What your agent can do now
+
+### "Audit this project"
+
+You join a new team. Inherit a codebase. Say *"audit the dependencies for security issues"* and your agent reads the lockfile and runs `hound_audit`:
+
+```text
+🐕 Hound Audit — package-lock.json
+══════════════════════════════════════════════════
+Scanned 142 packages
+
+🔴 CRITICAL — 2 packages
+──────────────────────────────
+  lodash@4.17.20
+    GHSA-35jh-r3h4-6jhm · Prototype pollution via zipObjectDeep
+    Fix: upgrade to 4.17.21
+
+  axios@0.21.1
+    GHSA-42xw-2xvc-qx8m · Server-side request forgery
+    Fix: upgrade to 0.21.2
+
+🟠 HIGH — 1 package
+──────────────────────────────
+  minimist@1.2.5
+    GHSA-xvch-5gv4-984h · Prototype pollution
+    Fix: upgrade to 1.2.6
+
+✅ 139 packages clean
+
+Source: OSV.dev
+```
+
+142 packages. Three flagged. Fix versions included. The agent upgrades them without you reading a single line of audit output. That's the entire workflow — you say "audit", it's done.
+
+### "Is this package safe to install?"
+
+Before your agent runs `npm install`, it can now check first:
+
+```text
+🚫 Pre-install check: lodash@4.17.20 (npm)
+════════════════════════════════════════════════════════════
+Verdict: NO-GO
+
+🚫 Blockers
+──────────────────────────────
+  • 2 CRITICAL/HIGH vulnerabilities known for this version
+
+⚠️  Warnings
+──────────────────────────────
+  • Package version is 3 year(s) old — may be abandoned
+
+💡 Run hound_vulns for full vulnerability details.
+💡 Run hound_upgrade to find a safe version.
+```
+
+GO. CAUTION. NO-GO. A clear verdict your agent can act on — pick a safe version, suggest an alternative, or warn you before proceeding.
+
+### "Express or Fastify?"
+
+Instead of guessing or Googling, your agent compares with actual security data:
+
+```text
+⚖️  Package Comparison (npm)
+══════════════════════════════════════════════════
+                        express         fastify
+──────────────────────────────────────────────────
+Version                 4.18.2          4.26.2
+Vulnerabilities         0               0
+OpenSSF Scorecard       6.8/10          7.2/10
+Stars                   64,128          31,204
+Days since release      821             45
+License                 MIT             MIT
+
+🏆 Recommendation: fastify
+   More recently maintained and slightly higher security score.
+```
+
+Not "which one is more popular" — which one is actively maintained, has better security practices, and was updated this century.
+
+### "Is this a real package or a typosquat?"
+
+Supply chain attacks use package names that are one character off from popular libraries. `hound_typosquat` generates likely variants and checks if they exist in the registry — catching attacks like `lodahs` or `axois` before they land in your lockfile.
+
+[Watch the full demo →](https://github.com/user-attachments/assets/5b1908b8-2bdc-41c3-b95a-bb3677e6e5c3)
+
+---
+
+## All 12 tools
+
+You'll use three or four daily. The rest are there when you need them.
+
+| Tool | What it does |
+| --- | --- |
+| `hound_audit` | Scan an entire lockfile for vulnerabilities |
+| `hound_preinstall` | GO / CAUTION / NO-GO before installing |
+| `hound_score` | 0–100 health score with letter grade (A–F) |
+| `hound_compare` | Side-by-side two packages with a recommendation |
+| `hound_upgrade` | Find the minimum safe version that fixes all vulns |
+| `hound_vulns` | All known CVEs for a specific package version |
+| `hound_inspect` | Full package profile — license, vulns, scorecard, stars |
+| `hound_license_check` | Scan a lockfile against a license policy |
+| `hound_tree` | Full resolved dependency tree with transitive deps |
+| `hound_typosquat` | Detect typosquatting variants of a package name |
+| `hound_advisories` | Full advisory details by GHSA, CVE, or OSV ID |
+| `hound_popular` | Scan popular packages in an ecosystem for vulns |
+
+Works across **seven ecosystems**: npm, PyPI, Go, Maven, Cargo, NuGet, and RubyGems. Same tools, same output, regardless of language.
+
+Three built-in prompts — `security_audit`, `package_evaluation`, and `pre_release_check` — chain these tools into multi-step workflows your agent follows automatically.
+
+---
+
+## Why zero config is non-negotiable
+
+Most security tools: sign up → generate API key → set env vars → configure YAML → maybe install a GitHub App → restart your editor. Each step is small. Together they're enough friction that most developers never bother.
+
+Hound uses two free, unauthenticated public APIs maintained by Google: [deps.dev](https://deps.dev) for package metadata and OpenSSF Scorecards, and [OSV](https://osv.dev) for vulnerability data. No keys, no tokens, no accounts.
+
+This is a hard rule, not a temporary shortcut. It's in the [contributing guidelines](https://github.com/tiluckdave/hound-mcp/blob/main/CONTRIBUTING.md): **Hound must stay zero-config and free forever.** PRs that require API keys don't get merged.
+
+The people who need security tooling most — solo developers, students, early-stage startups, open source maintainers — are the ones least likely to pay for it. Hound is built for them.
+
+---
+
+## How it works under the hood
+
+Hound is an MCP server — [Model Context Protocol](https://modelcontextprotocol.io), an open standard by Anthropic that lets AI agents talk to external tools through a unified interface. Think USB-C for AI: one plug, any tool, any agent.
+
+It runs as a local subprocess on your machine. When your agent calls a Hound tool, the request stays local — Hound reads your lockfile, queries the two Google APIs over HTTPS, and returns formatted results. Your code never leaves your machine.
+
+The lockfile parser handles six formats natively — `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml`, `requirements.txt`, `Cargo.lock`, and `go.sum` — with pure TypeScript regex, no external parser dependencies. The batch query to OSV checks up to 100 packages in a single API call, which is why a full audit takes seconds, not minutes.
+
+---
+
+## What's coming
+
+- **`hound_diff`** — compare two lockfile snapshots to catch newly introduced risks in PRs
+- **GitHub Action** — run `hound_audit` as an automated PR check, no AI agent required
+- **Docker support** — Hound in CI/CD pipelines
+- **Bun and Gradle parsers** — more ecosystems, more coverage
+
+---
+
+## Try it, break it, improve it
+
+Hound is MIT-licensed and open for contributions. The codebase is TypeScript, tests use Vitest, CI runs across Node 18, 20, and 22.
+
+If you've never contributed to open source before — the issues labeled [good first issue](https://github.com/tiluckdave/hound-mcp/issues?q=is%3Aopen+label%3A%22good+first+issue%22) are genuinely approachable. Adding lockfile parser tests, extracting duplicated constants, fixing version string inconsistencies. Real issues, real impact, good entry points.
+
+If you've used Hound and something broke or felt wrong — [open an issue](https://github.com/tiluckdave/hound-mcp/issues). That's equally valuable.
+
+The one rule: **zero config, free forever.**
+
+[GitHub](https://github.com/tiluckdave/hound-mcp) · [npm](https://www.npmjs.com/package/hound-mcp) · [Issues](https://github.com/tiluckdave/hound-mcp/issues) · [Discussions](https://github.com/tiluckdave/hound-mcp/discussions)

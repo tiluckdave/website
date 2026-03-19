@@ -4,7 +4,7 @@ import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import remarkGfm from "remark-gfm";
-import { getAllArticles, getArticleBySlug } from "@/lib/content";
+import { getAllArticles, getArticleBySlug, getCrossPostLinks } from "@/lib/content";
 import { mdxComponents } from "@/components/mdx-components";
 import { siteConfig } from "@/lib/config";
 import type { Metadata } from "next";
@@ -69,6 +69,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
   if (!article) notFound();
 
+  const crossPostLinks = getCrossPostLinks(slug);
   const allArticles = getAllArticles();
   const seriesArticles = article.frontmatter.series
     ? allArticles
@@ -160,6 +161,38 @@ export default async function ArticlePage({ params }: PageProps) {
           />
         </div>
       </article>
+
+      {crossPostLinks && (
+        <div
+          style={{
+            marginTop: "32px",
+            paddingTop: "24px",
+            borderTop: "1px solid var(--border)",
+            fontSize: "14px",
+            color: "var(--text-secondary)",
+          }}
+        >
+          <span>Also published on </span>
+          {[
+            crossPostLinks.devto && (
+              <a key="devto" href={crossPostLinks.devto} target="_blank" rel="noopener noreferrer">
+                Dev.to
+              </a>
+            ),
+            crossPostLinks.hashnode && (
+              <a key="hashnode" href={crossPostLinks.hashnode} target="_blank" rel="noopener noreferrer">
+                Hashnode
+              </a>
+            ),
+          ]
+            .filter(Boolean)
+            .reduce<React.ReactNode[]>((acc, link, i) => {
+              if (i > 0) acc.push(<span key={`sep-${i}`}> · </span>);
+              acc.push(link);
+              return acc;
+            }, [])}
+        </div>
+      )}
 
       {article.frontmatter.series && (prevArticle || nextArticle) && (
         <nav
