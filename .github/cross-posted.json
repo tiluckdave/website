@@ -16,5 +16,14 @@
     "devtoId": 3360228,
     "hashnodeId": "69bc0958b25e474751cf19da",
     "updatedAt": "2026-03-19T14:34:00.752Z"
+  },
+  "hound-mcp": {
+    "slug": "hound-mcp",
+    "devtoId": 3372655,
+    "devto": "https://dev.to/tiluckdave/your-ai-coding-agent-is-installing-vulnerable-packages-i-built-the-fix-379n",
+    "hashnodeId": "69bc123cc59bc4cdcc52db45",
+    "hashnode": "https://tiluckdave.hashnode.dev/your-ai-coding-agent-is-installing-vulnerable-packages-i-built-the-fix",
+    "updatedAt": "2026-03-19T15:11:57.052Z",
+    "postedAt": "2026-03-19T15:11:57.052Z"
   }
 }
