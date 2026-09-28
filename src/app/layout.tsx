@@ -56,6 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="noise-bg">
+        <div className="site-pattern" aria-hidden="true" />
         {children}
         <Analytics />
       </body>
