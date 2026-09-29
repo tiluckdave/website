@@ -1,7 +1,27 @@
 # tiluckdave.in
 
-Personal website and freelance portfolio for Tilak Dave.
+Personal website and portfolio of [Tilak Dave](https://tiluckdave.in) — Product Engineer working on AI, MCP and connectors.
 
-Built with Next.js, Tailwind CSS, and MDX.
+## Tech Stack
 
-**Live:** [tiluckdave.in](https://tiluckdave.in)
+- **Framework:** [Next.js](https://nextjs.org/) (App Router)
+- **Styling:** CSS & [Tailwind CSS](https://tailwindcss.com/)
+- **Typography:** Iowan Old Style
+- **Deployment:** [Vercel](https://vercel.com/)
+
+## Development
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start local dev server
+pnpm dev
+
+# Build for production
+pnpm build
+```
+
+## License
+
+MIT © [Tilak Dave](https://tiluckdave.in)

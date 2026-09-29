@@ -1,23 +1,29 @@
-import { getAllArticles } from "@/lib/content";
 import { siteConfig } from "@/lib/config";
+import { getAllContent } from "@/lib/mdx";
 
 const BASE_URL = siteConfig.url;
 
 export function GET() {
-  const articles = getAllArticles();
+  const contentItems = getAllContent().filter(
+    (item) => item.category === "blogs" || item.category === "notes"
+  );
 
-  const items = articles
-    .map((article) => {
-      const url = `${BASE_URL}/articles/${article.slug}`;
-      const pubDate = new Date(article.frontmatter.date).toUTCString();
-      const description = article.frontmatter.description
+  const items = contentItems
+    .map((item) => {
+      const url = `${BASE_URL}/${item.slug}`;
+      const dateVal = item.frontmatter.date
+        ? new Date(item.frontmatter.date)
+        : new Date();
+      const pubDate = (!isNaN(dateVal.getTime()) ? dateVal : new Date()).toUTCString();
+      const title = item.frontmatter.heading || item.frontmatter.title;
+      const description = (item.frontmatter.description || title)
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;");
 
       return `
     <item>
-      <title><![CDATA[${article.frontmatter.title}]]></title>
+      <title><![CDATA[${title}]]></title>
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
       <description><![CDATA[${description}]]></description>
@@ -31,7 +37,7 @@ export function GET() {
   <channel>
     <title>${siteConfig.name}</title>
     <link>${BASE_URL}</link>
-    <description>Software engineer specializing in API integrations, full-stack development, and AI-powered solutions.</description>
+    <description>Product engineer working on AI, MCP and connectors.</description>
     <language>en-us</language>
     <atom:link href="${BASE_URL}/rss.xml" rel="self" type="application/rss+xml" />
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>

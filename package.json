@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "project-image": "node scripts/generate-project-image.mjs"
+    "start": "next start"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",

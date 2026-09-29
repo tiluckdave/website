@@ -1,0 +1,73 @@
+---
+title: "Hound MCP"
+description: "Dependency security for AI agents"
+type: "project"
+date: "2026"
+order: 1
+---
+
+# Hound MCP
+
+<ByLine identity />
+
+Open-source MCP server that scans packages for vulnerabilities, checks licenses, inspects dependency trees, and detects typosquatting with zero API keys.
+
+<ProjectLinks>
+  <ProjectLink href="https://www.npmjs.com/package/hound-mcp">npm package ↗</ProjectLink>
+  <ProjectLink href="https://github.com/tiluckdave/hound-mcp">GitHub repository ↗</ProjectLink>
+</ProjectLinks>
+
+## The Problem
+
+Modern AI coding agents (Claude, Cursor, Windsurf, Copilot Workspace) can generate and execute code at extraordinary speed. However, they lack supply chain security awareness. When an agent decides to install third-party packages, it blindly runs commands like `npm install` or `pip install` without checking for:
+
+- Known CVE vulnerabilities in direct or transitive dependencies
+- Typosquatting attacks where malicious packages impersonate popular libraries
+- Restrictive or incompatible open-source licenses (GPL, AGPL) in commercial codebases
+
+---
+
+## The Solution
+
+Hound MCP is a lightweight, local-first Model Context Protocol server. It provides AI agents with tools to inspect dependencies before installing or importing them. It requires **zero API keys** and **zero configuration**.
+
+When an agent plans to add a dependency, Hound MCP queries security advisory databases and verifies the package health, author credibility, download counts, and license compatibility in milliseconds.
+
+---
+
+## Key Capabilities
+
+### 🛡️ Vulnerability & CVE Auditing
+Scans packages against open vulnerability databases to prevent insecure dependencies from ever entering your lockfile.
+
+### 🔍 Typosquatting Defense
+Detects suspicious package names that subtly mimic prominent packages (e.g. `cross-env` vs `crossenv`) to intercept supply chain attacks.
+
+### 📜 License Compliance
+Identifies licenses and flags copyleft or problematic licenses before they infect proprietary commercial code.
+
+### ⚡ Zero API Keys & Local Fast
+No third-party subscription or token needed. Runs locally via npx with instantaneous response times.
+
+---
+
+## Quickstart Configuration
+
+Add Hound to your Claude Desktop configuration (`claude_desktop_config.json`) or Cursor settings:
+
+```json
+{
+  "mcpServers": {
+    "hound": {
+      "command": "npx",
+      "args": ["-y", "hound-mcp"]
+    }
+  }
+}
+```
+
+---
+
+## Results & Impact
+
+AI agents equipped with Hound MCP catch supply chain security threats before code reaches staging or production. Developers can safely grant autonomy to agents knowing a security checkpoint protects every package installation.

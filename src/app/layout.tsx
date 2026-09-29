@@ -18,13 +18,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${siteConfig.name} — Software Engineer` }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: `${siteConfig.name} — Product Engineer` }],
   },
   twitter: {
     card: "summary_large_image",
     site: siteConfig.twitterHandle,
     creator: siteConfig.twitterHandle,
-    images: ["/opengraph-image"],
+    images: ["/og-image.png"],
   },
   alternates: {
     canonical: siteConfig.url,
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     },
   },
   other: {
-    "og:logo": `${siteConfig.url}/icon`,
+    "og:logo": `${siteConfig.url}/pfp.png`,
   },
 };
 
@@ -56,7 +56,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="noise-bg">
-        <div className="site-pattern" aria-hidden="true" />
         {children}
         <Analytics />
       </body>
