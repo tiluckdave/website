@@ -17,3 +17,6 @@ User-agent: Bingbot
 Allow: /
 
 Sitemap: https://tiluckdave.in/sitemap.xml
+# LLMs & AI Agents Roadmap
+# https://llmstxt.org
+# https://tiluckdave.in/llms.txt

@@ -9,7 +9,7 @@ Personal website, technical portfolio, and digital garden for **Tilak Dave** (`t
 - **Framework**: Next.js 16 (App Router, Turbopack, React 19)
 - **Styling**: Vanilla CSS (`src/styles/globals.css`) with CSS custom properties and dark/light mode tokens
 - **Content / MDX**: MDX with `next-mdx-remote/rsc`, `gray-matter`, `rehype-pretty-code`, `remark-gfm`, `shiki`
-- **Game Embed**: Godot 4 WebAssembly export (`/public/games/roadkill/`) embedded directly via `RoadRash` component
+- **Game Embed**: Godot 4 WebAssembly export (`/public/games/roadrash/`) embedded directly via `RoadRash` component
 - **Media & Fonts**: Local web fonts (Newsreader / Instrument Serif, Inter / Sans, Mono) & Next.js Image / video streaming
 - **Package Manager**: `pnpm` (strict package management)
 
@@ -27,7 +27,7 @@ tiluckdave-in/
 │   └── projects/               # Project case studies (e.g. hound-mcp.mdx, dinecard.mdx)
 ├── public/
 │   ├── fonts/                  # Custom serif, sans, and monospace webfonts
-│   ├── games/roadkill/         # Standalone Godot 4 HTML5/WASM runtime files
+│   ├── games/roadrash/         # Standalone Godot 4 HTML5/WASM runtime files
 │   ├── images/
 │   │   ├── articles/           # Editorial images used across figures and MDX
 │   │   ├── home-poster.jpg     # Desktop sidebar poster

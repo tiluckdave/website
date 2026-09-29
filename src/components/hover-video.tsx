@@ -10,7 +10,7 @@ interface HoverVideoProps {
 }
 
 export default function HoverVideo({
-  posterSrc = "/images/home-poster.jpg",
+  posterSrc = "/images/home-poster.webp",
   videoSrc = "/images/home-animation.mp4",
   alt = "Illustration animation",
   className = "",
@@ -57,7 +57,9 @@ export default function HoverVideo({
         ref={videoRef}
         src={videoSrc}
         poster={posterSrc}
-        preload="metadata"
+        width={720}
+        height={1280}
+        preload="none"
         muted
         playsInline
         disablePictureInPicture

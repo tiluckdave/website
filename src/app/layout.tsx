@@ -48,6 +48,8 @@ export const metadata: Metadata = {
   },
 };
 
+import WebMcpProvider from "@/components/webmcp-provider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -55,7 +57,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/images/home-poster.webp"
+          type="image/webp"
+          fetchPriority="high"
+        />
+        <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM Context Index" />
+        <link rel="alternate" type="text/markdown" href="/llms-full.txt" title="LLM Full Context" />
+      </head>
       <body className="noise-bg">
+        <WebMcpProvider />
         {children}
         <Analytics />
       </body>

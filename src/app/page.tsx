@@ -257,7 +257,7 @@ export default function HomePage() {
           {/* Right Column: Fixed Video (Desktop Only) */}
           <div className="home-video-col" aria-hidden="true">
             <HoverVideo
-              posterSrc="/images/home-poster.jpg"
+              posterSrc="/images/home-poster.webp"
               videoSrc="/images/home-animation.mp4"
             />
           </div>

@@ -1,0 +1,29 @@
+# Tilak Dave
+
+> Product engineer working on AI, MCP (Model Context Protocol), connectors, and scalable web platforms.
+
+Tilak Dave is a Product Engineer based in Hyderabad, India, working at Workato on AI agent architectures, Model Context Protocol (MCP) integrations, custom connectors, and scalable web applications.
+
+## Navigation & Core Pages
+
+- [Home & Biography](https://tiluckdave.in): Interactive bio, career story, retro arcade games, and recent updates.
+- [Full Text Context](https://tiluckdave.in/llms-full.txt): Complete consolidated markdown text for LLM indexing and deep context ingestion.
+- [RSS Feed](https://tiluckdave.in/rss.xml): RSS 2.0 feed for articles, notes, and updates.
+- [Sitemap](https://tiluckdave.in/sitemap.xml): XML sitemap for search crawlers and agents.
+
+## Projects
+
+- [Hound MCP](https://tiluckdave.in/hound-mcp): Dependency security for AI agents
+- [DineCard](https://tiluckdave.in/dinecard): AI digital menu for restaurants
+- [Prempushp](https://tiluckdave.in/prempushp): Food brand storefront and dashboard
+
+## Notes & Articles
+
+- [Beliefs](https://tiluckdave.in/beliefs): Core technical, engineering, and personal principles.
+
+## Social & Contact
+
+- Email: tiluckdave@gmail.com
+- GitHub: https://github.com/tiluckdave
+- LinkedIn: https://linkedin.com/in/tiluckdave
+- Twitter / X: https://x.com/tiluckdave

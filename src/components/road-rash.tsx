@@ -110,12 +110,13 @@ export default function RoadRash() {
         ) : (
           <iframe
             key={gameKey}
-            src={`/games/roadkill/index.html?v=${gameKey}_3`}
+            src={`/games/roadrash/index.html?v=${gameKey}_3`}
             className="road-rash-game-iframe"
             allow="autoplay; fullscreen; gamepad; focus-without-user-activation"
             allowFullScreen
+            loading="lazy"
             scrolling="no"
-            title="Roadkill Arcade Game"
+            title="RoadRash Arcade Game"
           />
         )}
       </div>

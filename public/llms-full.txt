@@ -1,0 +1,392 @@
+# Tilak Dave — Full Knowledge Context
+
+> Product engineer working on AI, MCP (Model Context Protocol), connectors, and scalable web platforms.
+
+---
+
+## 1. Quick Bio
+
+
+I am a product engineer, and I work on MCP and connectors at [Workato](/workato). I've been coding for the past 6 years, and making AI do it for the latter half of that.
+
+I enjoy learning about and understanding engineering, as well as building products. I try to do open source contributions every now and then, have organized three TEDx events, and won many hacks.
+
+Outside of engineering, I watch cricket and have recently started keeping fit.
+
+
+---
+
+## 2. Extended Story & Biography
+
+
+We always had an old computer at home, but I was 9 years old when my dad bought a decent laptop on which he had gotten a game installed.
+
+My brother and I used to fight over it so we could play Road Rash.
+
+<Collapsible title="Play RoadRash">
+  <RoadRash />
+</Collapsible>
+
+That laptop was my whole world. Eventually, I got curious about what else I could do on it. 
+
+In 4th grade, I figured out how to make animated PowerPoint presentations all by myself — no guides, no tutorials, just clicking around. Within a few months, I was demoing animations at school.
+
+It sounds small, but that feeling of being capable with a machine, understanding it, and creating something from scratch is where everything started.
+
+From there, I went deeper — web development, WordPress, YouTube tutorials. Long hours of trying things just to see what would happen. 
+
+Growing up in Akola wasn't just screens, though. It was running around with my dog, Bela, and hanging out with a tight group of school friends who made everyday life fun before everything became about careers and engineering.
+
+<FigureGrid ratio="2:3" align="center">
+  <Figure
+    src="/images/articles/with_my_dog.png"
+    alt="Me and my dog, Bela"
+    caption="Me and my dog, Bela"
+  />
+  <Figure
+    src="/images/articles/friends.png"
+    alt="School friends"
+    caption="School friends"
+  />
+</FigureGrid>
+
+By the time I had to choose what to study, there wasn't really a decision to make. I just knew.
+
+When I finished school, unlike most, I enrolled in a Diploma in Computer Engineering at Government Polytechnic Pune.
+
+I skipped chemistry, biology, and physics to learn computer science from day one. Building real projects gave me a strong foundation for engineering college later. I don't know if I'd make the same choice again, but it turned out well.
+
+I was 16 when I moved to Pune. I had never lived away from home. 
+
+The first few weeks felt like total freedom — a new city, no curfew, no one watching. 
+
+Then came my first bad day. I came back to an empty room: no one to sit with, no one to rant to, no food waiting, and no familiar smells from the kitchen. I had to cook, do laundry, and solve my own problems, then wake up and do it again.
+
+<FigureGrid ratio="3:2" align="center">
+  <Figure
+    src="/images/articles/gpp.jpg"
+    alt="Government Polytechnic Pune"
+    caption="Government Polytechnic Pune"
+  />
+  <Figure
+    src="/images/articles/diploma.png"
+    alt="Diploma award ceremony"
+    caption="Diploma award ceremony"
+  />
+</FigureGrid>
+
+I adapted. Living on my own shaped me from the inside, and I'm grateful for it.
+
+Six years after leaving home at 16, I graduated from Vishwakarma Institute of Technology in 2025.
+
+<Figure
+  src="/images/articles/graduation.jpg"
+  alt="Graduation day"
+  caption="Graduation, 2025 — VIT Pune"
+  width="300px"
+/>
+
+Nobody taught me to code. Teachers and classes did the formality, but the real learning happened differently.
+
+The hard part of coding is starting, and the harder part is staying grounded. Early on, everyone thinks they're an expert. Realizing how little I actually knew took time.
+
+Talent or opportunities didn't pull me through — consistency did. Staying up until 2 am became normal, and building something every day was what I looked forward to.
+
+I've participated in over 20 hackathons and won half of them. You learn to build fast, think under pressure, and ship something in a room full of competitors.
+
+SIH 2023 was different. We built *NyaySathi* — a legal AI assistant for marginalized communities.
+
+<FigureGrid ratio="3:2" align="center">
+  <Figure
+    src="/images/articles/sih.jpg"
+    alt="Smart India Hackathon 2023"
+    caption="Our fav SIH team pic"
+  />
+  <Figure
+    src="/images/articles/winning_sih.jpg"
+    alt="SIH Trophy"
+    caption="SIH Trophy"
+  />
+</FigureGrid>
+
+We failed a hundred times before anything worked. We didn't eat, our first two evaluations were terrible, and some of us cried. But because we were best friends, the energy shifted, and things started falling into place. 
+
+At 10 pm, they announced our name as the winners. I don't think about that night because of the trophy, but because of what we pulled off as a team.
+
+I joined TEDxVITPune on Day 1 of college. At first, I kept to myself, unsure of what I was doing there.
+
+It quickly became more than a club. The thrill of grinding for months with a team to pull off a massive campus event got under my skin. When my pre-final year came and most batchmates shifted focus to placements, I stayed. The people at TEDx had become my closest friends.
+
+In my final year, I became the licensee and lead organizer, leading a team of seven close friends with nine editions of history behind us. It was the hardest thing I'd ever done — weekly setbacks, plans falling apart, and breaking down under pressure. But we held each other up.
+
+We produced the 10th edition: *Dimes of Dynamism*.
+
+<FigureGrid ratio="2:3" align="center">
+  <Figure
+    src="/images/articles/tedx.jpeg"
+    alt="TEDxVITPune 10th edition"
+    caption="TEDxVITPune 10th edition"
+  />
+  <Figure
+    src="/images/articles/tedx_core.jpg"
+    alt="TEDxVITPune Core Team"
+    caption="TEDxVITPune Core Team"
+  />
+</FigureGrid>
+
+In September 2025, I passed the baton to the next team. A part of me still hasn't let go; TEDx was my real home on campus.
+
+Today, I'm an Associate Software Engineer at [Workato](/workato), working on connectors, MCP, and AI.
+
+Outside of work, I build side projects, contribute to open source, and help my brother build his business. Most things I start never get finished, and I've learned to be honest with myself about where my genuine curiosity lies.
+
+When I'm immersed in something, time vanishes. I'll sit at my desk for 12–15 hours, look up at 3 am, and realize I never felt tired. That kind of absorption is the most honest thing I know about myself.
+
+<Figure
+  src="/images/articles/desk.jpeg"
+  alt="My desk setup"
+  caption="Where most of it happens"
+  width="300px"
+/>
+
+I used to think grades were everything. Then I realized doing well inside a room doesn't matter once you step outside of it.
+
+What I'm chasing is simple: financial freedom to choose work freely, taking care of the people I love, giving back without needing profit, and earning respect among people who care about the craft.
+
+I'm not there yet. 
+
+Right now, I live in Akola and work remotely. I hit the gym, cook most nights, watch cricket, and hang out with family. After dinner, I'm back at my desk until I finish something or break it completely. I'm 22, still figuring it out.
+
+
+---
+
+## 3. Projects
+
+### Hound MCP
+URL: https://tiluckdave.in/hound-mcp
+Summary: Dependency security for AI agents
+
+
+# Hound MCP
+
+<ByLine identity />
+
+Open-source MCP server that scans packages for vulnerabilities, checks licenses, inspects dependency trees, and detects typosquatting with zero API keys.
+
+<ProjectLinks>
+  <ProjectLink href="https://www.npmjs.com/package/hound-mcp">npm package ↗</ProjectLink>
+  <ProjectLink href="https://github.com/tiluckdave/hound-mcp">GitHub repository ↗</ProjectLink>
+</ProjectLinks>
+
+## The Problem
+
+Modern AI coding agents (Claude, Cursor, Windsurf, Copilot Workspace) can generate and execute code at extraordinary speed. However, they lack supply chain security awareness. When an agent decides to install third-party packages, it blindly runs commands like `npm install` or `pip install` without checking for:
+
+- Known CVE vulnerabilities in direct or transitive dependencies
+- Typosquatting attacks where malicious packages impersonate popular libraries
+- Restrictive or incompatible open-source licenses (GPL, AGPL) in commercial codebases
+
+---
+
+## The Solution
+
+Hound MCP is a lightweight, local-first Model Context Protocol server. It provides AI agents with tools to inspect dependencies before installing or importing them. It requires **zero API keys** and **zero configuration**.
+
+When an agent plans to add a dependency, Hound MCP queries security advisory databases and verifies the package health, author credibility, download counts, and license compatibility in milliseconds.
+
+---
+
+## Key Capabilities
+
+### 🛡️ Vulnerability & CVE Auditing
+Scans packages against open vulnerability databases to prevent insecure dependencies from ever entering your lockfile.
+
+### 🔍 Typosquatting Defense
+Detects suspicious package names that subtly mimic prominent packages (e.g. `cross-env` vs `crossenv`) to intercept supply chain attacks.
+
+### 📜 License Compliance
+Identifies licenses and flags copyleft or problematic licenses before they infect proprietary commercial code.
+
+### ⚡ Zero API Keys & Local Fast
+No third-party subscription or token needed. Runs locally via npx with instantaneous response times.
+
+---
+
+## Quickstart Configuration
+
+Add Hound to your Claude Desktop configuration (`claude_desktop_config.json`) or Cursor settings:
+
+```json
+{
+  "mcpServers": {
+    "hound": {
+      "command": "npx",
+      "args": ["-y", "hound-mcp"]
+    }
+  }
+}
+```
+
+---
+
+## Results & Impact
+
+AI agents equipped with Hound MCP catch supply chain security threats before code reaches staging or production. Developers can safely grant autonomy to agents knowing a security checkpoint protects every package installation.
+
+
+---
+
+### DineCard
+URL: https://tiluckdave.in/dinecard
+Summary: AI digital menu for restaurants
+
+
+# DineCard
+
+<ByLine identity />
+
+AI powered restaurant digital menu with instant QR access, real-time item updates, and smart culinary recommendations.
+
+<ProjectLinks>
+  <ProjectLink href="https://dinecard.in">Visit Live Site ↗</ProjectLink>
+  <ProjectLink href="https://github.com/tiluckdave/dinecard">Source Code ↗</ProjectLink>
+</ProjectLinks>
+
+## The Problem
+
+Restaurants face a constant battle with traditional printed menus. Updating prices to reflect supply costs, adding seasonal dishes, or crossing off 86'd items mid-shift requires expensive reprints and ruins guest presentation. Furthermore, paper menus cannot answer guest dietary questions, suggest wine pairings, or translate unfamiliar culinary terms.
+
+---
+
+## The Solution
+
+DineCard is an intelligent digital menu experience accessible in seconds by scanning a tabletop QR code. Built from the ground up for speed, visual clarity, and mobile responsiveness, it gives restaurateurs total control over their menus in real-time.
+
+---
+
+## Key Features
+
+### 📱 App-Free QR Onboarding
+Guests simply point their camera and browse immediately. No app downloads, accounts, or cumbersome registration barriers.
+
+### ⚡ Real-Time Inventory & Pricing
+Toggle items out-of-stock instantly from any smartphone. Update daily specials and prices with immediate reflection across all tables.
+
+### 🤖 AI Pairing & Recommendations
+Suggests complementary appetizers, beverage pairings, and house favorites based on guest preferences and dietary restrictions.
+
+### 🌐 Dietary Filters & Accessibility
+Instant filtering for vegan, gluten-free, halal, and allergen-sensitive diets, with multi-language translation.
+
+---
+
+## Results & Impact
+
+Restaurants using DineCard have eliminated recurring printing costs, reduced menu maintenance to seconds, and improved table turn times by enabling guests to browse and decide on orders faster.
+
+
+---
+
+### Prempushp
+URL: https://tiluckdave.in/prempushp
+Summary: Food brand storefront and dashboard
+
+
+# Prempushp
+
+<ByLine identity />
+
+Product catalog website, billing system, and custom administrative dashboard built for Prempushp food brand.
+
+<ProjectLinks>
+  <ProjectLink href="https://prempushp.in">Storefront ↗</ProjectLink>
+  <ProjectLink href="https://admin.prempushp.in">Admin Portal ↗</ProjectLink>
+  <ProjectLink href="https://github.com/tiluckdave/prempushp">Catalog Code ↗</ProjectLink>
+  <ProjectLink href="https://github.com/tiluckdave/prempushp-admin">Admin Code ↗</ProjectLink>
+</ProjectLinks>
+
+## A Personal Project
+
+Building something for your family hits in a way client work doesn't. Prempushp is my brother's food brand based in Akola, Maharashtra. Every time the site loads correctly or an order goes through, it feels personal.
+
+Before this project, all customer inquiries, price negotiations, and product listings were handled manually over telephone calls and scattered WhatsApp chats. There was no single source of truth for inventory, pricing, or product specifications.
+
+---
+
+## What We Built
+
+We developed a comprehensive two-tier architecture tailored to the exact workflow of a growing food enterprise:
+
+### 1. Public Product Catalog (prempushp.in)
+A clean, lightning-fast digital catalog optimized for mobile browsers. Displays detailed specifications, pack sizes, nutritional facts, and direct WhatsApp purchase integration.
+
+### 2. Operations Dashboard (admin.prempushp.in)
+A private administrative command center for the team to update product details, monitor inventory, manage inbound customer leads, and generate billing invoices without touching spreadsheets.
+
+---
+
+![Prempushp Admin Dashboard Preview](/images/projects/prempushp-admin.png)
+
+---
+
+## Results & Impact
+
+Prempushp transitioned from a purely local, word-of-mouth business into a digital-ready food brand. Customers across Maharashtra now share direct links to specific items, inquiries are processed faster, and manual catalog maintenance errors have been eliminated.
+
+
+
+---
+
+## 4. Notes & Articles
+
+### Things I believe
+URL: https://tiluckdave.in/beliefs
+Date: 2026
+
+
+# Things I believe
+
+<ByLine identity />
+
+## I trust my gut.
+
+Not blindly. I know my gut has been wrong and will be wrong. But when something doesn't sit right, I say so. I hold strong opinions loosely. I'll argue for something and change my mind in the same conversation if the other person says something better. That's not a weakness. That's the way I prefer.
+
+## Anecdata beats data
+
+Stats can tell you what happened. One person's experience tells you why. I trust the story more than I trust stats.
+
+## Grit beats talent
+
+I've seen talented people disappear, and I've seen grinding people arrive. The second group is more reliable every time. I don't think I'm the most gifted person in any room. But I definitely try to be as persistent as possible.
+
+## Work is my hobby
+
+I am mostly thinking about work, even when I am not working. I don't consider my job as work. For me, work is everything I do for myself.
+
+## I believe in God's plan
+
+There's a saying I come back to whenever things don't go the way I wanted: _If it's not happening the way I planned, it's happening the way God planned_ I trust God, that's not resignation. It takes the edge off failure. It lets me keep moving.
+
+## I believe growth potential matters
+
+What someone can become is more interesting than what they are. I try to see that in people and I hope people see it in me. Because if you judged me only by what I've already done, you'd be missing the point.
+
+## I try to assume good intent.
+
+Most people don't make your life harder. They're having their own bad day, carrying their own weight, moving through their own confusion. I'd rather give someone the benefit of the doubt and occasionally be wrong than spend my energy being suspicious. I also accept criticism instead of hearing it emotionally.
+
+## And I move fast
+
+Speed is the most underrated skill. I use AI not to replace thinking but to put 10 minds at work. I try to move faster than the room because the world doesn't wait, and I don't either.
+
+
+---
+
+## 5. Contact & Social Profiles
+
+- Website: https://tiluckdave.in
+- Email: tiluckdave@gmail.com
+- GitHub: https://github.com/tiluckdave
+- LinkedIn: https://linkedin.com/in/tiluckdave
+- Twitter / X: https://x.com/tiluckdave
