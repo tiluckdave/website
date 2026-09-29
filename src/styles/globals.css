@@ -1188,9 +1188,23 @@ tr:last-child td {
 }
 
 @media (max-width: 640px) {
+  .figure-container {
+    max-width: min(300px, 100%) !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
   .figure-grid {
     grid-template-columns: 1fr !important;
-    gap: 24px !important;
+    gap: 28px !important;
+    justify-items: center;
+  }
+
+  .figure-grid .figure-container {
+    max-width: min(300px, 100%) !important;
+    width: 100% !important;
+    margin: 0 auto !important;
   }
 }
 
@@ -1570,6 +1584,24 @@ tr:last-child td {
 
 .road-rash-author-link:hover {
   color: #ffffff !important;
+}
+
+/* Responsive visibility: RoadRash is strictly desktop-only (>= 1100px) */
+@media (max-width: 1099px) {
+  .collapsible-roadrash,
+  .desktop-only,
+  .road-rash-direct-container,
+  .road-rash-container,
+  .collapsible-wrapper:has(.road-rash-direct-container),
+  .collapsible-wrapper:has([class*="road-rash"]) {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
 }
 
 /* In-Game HUD Overlay */

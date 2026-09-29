@@ -15,12 +15,26 @@ export default function HoverVideo({
   alt = "Illustration animation",
   className = "",
 }: HoverVideoProps) {
+  const [isDesktop, setIsDesktop] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const isHovered = useRef(false);
   const [blink, setBlink] = useState(false);
   const timer = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
+  useEffect(() => {
+    const mql = window.matchMedia("(min-width: 1100px)");
+    const update = () => setIsDesktop(mql.matches);
+    update();
+    mql.addEventListener("change", update);
+    return () => {
+      mql.removeEventListener("change", update);
+      if (timer.current) clearTimeout(timer.current);
+    };
+  }, []);
+
+  if (!isDesktop) {
+    return null;
+  }
 
   const play = () => {
     isHovered.current = true;

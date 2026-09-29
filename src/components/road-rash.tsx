@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function PlayIcon() {
   return (
@@ -76,6 +76,21 @@ export default function RoadRash() {
   const [hasStarted, setHasStarted] = useState(false);
   const [gameKey, setGameKey] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const mql = window.matchMedia("(min-width: 1100px)");
+    const update = () => setIsDesktop(mql.matches);
+    update();
+    mql.addEventListener("change", update);
+    return () => mql.removeEventListener("change", update);
+  }, []);
+
+  if (mounted && !isDesktop) {
+    return null;
+  }
 
   const reloadGame = () => {
     if (!hasStarted) {
@@ -91,7 +106,7 @@ export default function RoadRash() {
 
   return (
     <div
-      className={`road-rash-direct-container ${
+      className={`road-rash-direct-container desktop-only ${
         isFullscreen ? "road-rash-fullscreen-mode" : ""
       }`}
     >

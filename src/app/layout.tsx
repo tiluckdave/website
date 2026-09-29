@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { siteConfig } from "@/lib/config";
+import WebMcpProvider from "@/components/webmcp-provider";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
@@ -30,6 +31,7 @@ export const metadata: Metadata = {
     canonical: siteConfig.url,
     types: {
       "application/rss+xml": `${siteConfig.url}/rss.xml`,
+      "text/markdown": `${siteConfig.url}/llms.txt`,
     },
   },
   robots: {
@@ -48,8 +50,6 @@ export const metadata: Metadata = {
   },
 };
 
-import WebMcpProvider from "@/components/webmcp-provider";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -57,17 +57,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link
-          rel="preload"
-          as="image"
-          href="/images/home-poster.webp"
-          type="image/webp"
-          fetchPriority="high"
-        />
-        <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM Context Index" />
-        <link rel="alternate" type="text/markdown" href="/llms-full.txt" title="LLM Full Context" />
-      </head>
       <body className="noise-bg">
         <WebMcpProvider />
         {children}
