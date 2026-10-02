@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, Suspense, type ReactNode } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, usePathname } from "next/navigation";
 
 interface BioToggleProps {
   defaultBio?: ReactNode;
@@ -10,14 +10,18 @@ interface BioToggleProps {
 
 function BioToggleInner({ defaultBio, longBio }: BioToggleProps) {
   const searchParams = useSearchParams();
+  const currentPathname = usePathname();
   const [mode, setMode] = useState<"default" | "long">("default");
 
   useEffect(() => {
     const tabParam = searchParams?.get("bio") || searchParams?.get("tab");
     const hash = typeof window !== "undefined" ? window.location.hash : "";
+    const pathname = currentPathname || (typeof window !== "undefined" ? window.location.pathname : "");
 
     if (
       tabParam === "long" ||
+      pathname.includes("who-am-i") ||
+      pathname === "/about" ||
       hash.includes("long") ||
       hash.includes("road") ||
       hash.includes("pune") ||
@@ -32,7 +36,7 @@ function BioToggleInner({ defaultBio, longBio }: BioToggleProps) {
       hash.includes("right-now")
     ) {
       setMode("long");
-      if (tabParam && typeof window !== "undefined") {
+      if (tabParam && typeof window !== "undefined" && !pathname.includes("who-am-i")) {
         window.history.replaceState(null, "", window.location.pathname + window.location.hash);
       }
       if (hash && hash !== "#long") {
@@ -51,7 +55,9 @@ function BioToggleInner({ defaultBio, longBio }: BioToggleProps) {
         window.history.replaceState(null, "", window.location.pathname);
       }
     }
-  }, [searchParams]);
+  }, [searchParams, currentPathname]);
+
+
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -117,7 +123,24 @@ function BioToggleInner({ defaultBio, longBio }: BioToggleProps) {
       </div>
 
       <div className="bio-text">
-        {mode === "default" ? defaultBio : longBio}
+        <div
+          className={`bio-content-default ${
+            mode === "long" ? "bio-content--hidden" : ""
+          }`}
+          data-bio-mode="default"
+          aria-hidden={mode !== "default"}
+        >
+          {defaultBio}
+        </div>
+        <div
+          className={`bio-content-long ${
+            mode === "default" ? "bio-content--hidden" : ""
+          }`}
+          data-bio-mode="long"
+          aria-hidden={mode !== "long"}
+        >
+          {longBio}
+        </div>
       </div>
     </section>
   );
@@ -125,8 +148,53 @@ function BioToggleInner({ defaultBio, longBio }: BioToggleProps) {
 
 export default function BioToggle(props: BioToggleProps) {
   return (
-    <Suspense fallback={null}>
+    <Suspense
+      fallback={
+        <section className="bio-section">
+          <div className="bio-tabs-header">
+            <span className="bio-tab-label">Bio</span>
+            <div className="bio-tabs-group" role="tablist">
+              <button
+                type="button"
+                role="tab"
+                aria-selected={true}
+                className="bio-tab-btn bio-tab-btn--active"
+              >
+                Default
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={false}
+                className="bio-tab-btn "
+              >
+                Long
+              </button>
+            </div>
+          </div>
+
+          <div className="bio-text">
+            <div
+              className="bio-content-default "
+              data-bio-mode="default"
+              aria-hidden={false}
+            >
+              {props.defaultBio}
+            </div>
+            <div
+              className="bio-content-long bio-content--hidden"
+              data-bio-mode="long"
+              aria-hidden={true}
+            >
+              {props.longBio}
+            </div>
+          </div>
+        </section>
+      }
+    >
       <BioToggleInner {...props} />
     </Suspense>
   );
 }
+
+

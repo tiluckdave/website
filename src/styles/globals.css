@@ -1876,3 +1876,10 @@ tr:last-child td {
     display: flex;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Bio Toggle Visibility Helper
+   -------------------------------------------------------------------------- */
+.bio-content--hidden {
+  display: none !important;
+}

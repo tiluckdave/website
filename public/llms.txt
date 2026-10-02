@@ -19,7 +19,10 @@ Tilak Dave is a Product Engineer based in Hyderabad, India, working at Workato o
 
 ## Notes & Articles
 
+- [About AI](https://tiluckdave.in/ai): Perspective on AI and optimism.
 - [Beliefs](https://tiluckdave.in/beliefs): Core technical, engineering, and personal principles.
+
+
 
 ## Social & Contact
 

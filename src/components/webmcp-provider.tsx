@@ -24,6 +24,7 @@ export const webMcpTools = [
           { slug: "prempushp", title: "PremPushp", description: "Flower commerce platform built for local businesses." },
         ],
         notes: [
+          { slug: "ai", title: "About AI", description: "Be optimistic" },
           { slug: "beliefs", title: "Beliefs", description: "Core technical, engineering, and personal principles." },
         ],
         contact: {
@@ -104,6 +105,13 @@ export const webMcpTools = [
           title: "DineCard",
           url: "https://tiluckdave.in/dinecard",
           matchReason: "Smart dining companion app.",
+        });
+      }
+      if (q.includes("optimis") || q.includes("about ai") || q === "ai") {
+        results.push({
+          title: "About AI",
+          url: "https://tiluckdave.in/ai",
+          matchReason: "Perspective on AI and optimism: 'Be optimistic'.",
         });
       }
       if (q.includes("belief") || q.includes("philosophy") || q.includes("principle")) {

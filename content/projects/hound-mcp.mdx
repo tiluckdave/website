@@ -1,6 +1,6 @@
 ---
 title: "Hound MCP"
-description: "Dependency security for AI agents"
+description: "Dependency security scanner for AI coding agents"
 type: "project"
 date: "2026"
 order: 1
@@ -10,64 +10,19 @@ order: 1
 
 <ByLine identity />
 
-Open-source MCP server that scans packages for vulnerabilities, checks licenses, inspects dependency trees, and detects typosquatting with zero API keys.
-
 <ProjectLinks>
   <ProjectLink href="https://www.npmjs.com/package/hound-mcp">npm package ↗</ProjectLink>
   <ProjectLink href="https://github.com/tiluckdave/hound-mcp">GitHub repository ↗</ProjectLink>
 </ProjectLinks>
 
-## The Problem
+I code with AI agents everyday. While watching an agent scaffold a service, I realized it casually ran `npm install` on packages without checking anything. Agents have root execution access in your terminal with zero supply chain awareness.
 
-Modern AI coding agents (Claude, Cursor, Windsurf, Copilot Workspace) can generate and execute code at extraordinary speed. However, they lack supply chain security awareness. When an agent decides to install third-party packages, it blindly runs commands like `npm install` or `pip install` without checking for:
+If an agent installs a typosquatted library or a version with an active CVE, the exploit happens before you even review the PR.
 
-- Known CVE vulnerabilities in direct or transitive dependencies
-- Typosquatting attacks where malicious packages impersonate popular libraries
-- Restrictive or incompatible open-source licenses (GPL, AGPL) in commercial codebases
+I built Hound MCP as a local, zero-config Model Context Protocol server that gives agents tools to inspect packages before installing or committing them.
 
----
+The hard rule was zero API keys. Most security tools fail on adoption because of onboarding friction. Hound runs locally over stdio and queries Google's public `deps.dev` and `OSV.dev` endpoints. Lockfiles are parsed with pure TypeScript regex across seven ecosystems, batching 100 packages per query so audits take seconds.
 
-## The Solution
+The trickiest part was typosquatting detection — balancing Levenshtein string distance against download velocity so new, legitimate packages don't trigger false alarms.
 
-Hound MCP is a lightweight, local-first Model Context Protocol server. It provides AI agents with tools to inspect dependencies before installing or importing them. It requires **zero API keys** and **zero configuration**.
-
-When an agent plans to add a dependency, Hound MCP queries security advisory databases and verifies the package health, author credibility, download counts, and license compatibility in milliseconds.
-
----
-
-## Key Capabilities
-
-### 🛡️ Vulnerability & CVE Auditing
-Scans packages against open vulnerability databases to prevent insecure dependencies from ever entering your lockfile.
-
-### 🔍 Typosquatting Defense
-Detects suspicious package names that subtly mimic prominent packages (e.g. `cross-env` vs `crossenv`) to intercept supply chain attacks.
-
-### 📜 License Compliance
-Identifies licenses and flags copyleft or problematic licenses before they infect proprietary commercial code.
-
-### ⚡ Zero API Keys & Local Fast
-No third-party subscription or token needed. Runs locally via npx with instantaneous response times.
-
----
-
-## Quickstart Configuration
-
-Add Hound to your Claude Desktop configuration (`claude_desktop_config.json`) or Cursor settings:
-
-```json
-{
-  "mcpServers": {
-    "hound": {
-      "command": "npx",
-      "args": ["-y", "hound-mcp"]
-    }
-  }
-}
-```
-
----
-
-## Results & Impact
-
-AI agents equipped with Hound MCP catch supply chain security threats before code reaches staging or production. Developers can safely grant autonomy to agents knowing a security checkpoint protects every package installation.
+Today, Hound MCP is open source on npm with 12 tools to audit, pre-check, and score dependencies.

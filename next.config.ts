@@ -121,6 +121,47 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: "/articles/who-am-i",
+        destination: "/?bio=long",
+      },
+      {
+        source: "/who-am-i",
+        destination: "/?bio=long",
+      },
+      {
+        source: "/about",
+        destination: "/?bio=long",
+      },
+      {
+        source: "/about-ai",
+        destination: "/ai",
+      },
+      {
+        source: "/articles/:slug",
+        destination: "/:slug",
+      },
+      {
+        source: "/projects/:slug",
+        destination: "/:slug",
+      },
+      {
+        source: "/notes/:slug",
+        destination: "/:slug",
+      },
+      {
+        source: "/blogs/:slug",
+        destination: "/:slug",
+      },
+      {
+        source: "/blog/:slug",
+        destination: "/:slug",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
+
